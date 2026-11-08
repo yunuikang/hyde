@@ -235,6 +235,19 @@ def e6(datasets):
 STAGES = {"cache": cache, "E0": e0, "E1": e1, "E2": e2, "E3": e3, "E4": e4, "E5": e5, "E6": e6}
 
 
+def wait_for_disk(min_gb: float = 5.0, poll_sec: int = 300) -> None:
+    """The volume is shared with other users; when it is (nearly) full, wait instead of failing jobs."""
+    import shutil
+    warned = False
+    while shutil.disk_usage(ROOT).free / 2**30 < min_gb:
+        if not warned:
+            print(f"##### disk free < {min_gb} GB — waiting (checks every {poll_sec}s)", flush=True)
+            warned = True
+        time.sleep(poll_sec)
+    if warned:
+        print("##### disk space available again — resuming", flush=True)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("stage", choices=STAGES)
@@ -254,6 +267,7 @@ def main():
         print(f"\n##### [{k}/{len(mine)}] {' '.join(cmd[1:])}", flush=True)
         if args.dry:
             continue
+        wait_for_disk()
         t0 = time.time()
         rc = subprocess.run(cmd, cwd=ROOT).returncode
         if rc != 0:

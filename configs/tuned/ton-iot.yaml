@@ -1,4 +1,4 @@
-# tuned by tune.py on 2026-11-08 01:10 (seed 0, criterion val macro_f1, subsample None)
+# tuned by tune.py on 2026-11-08 07:01 (seed 0, criterion val macro_f1, subsample None)
 encoder:
   bins: 16
 step1:
@@ -10,6 +10,7 @@ step1:
     lr: 0.05
 step2:
   readout: mass
+  benign_split: 0
   mass:
     lr: 0.035
 class_weight:
