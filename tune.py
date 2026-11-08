@@ -26,6 +26,7 @@ import yaml
 
 from hyde.config import CONFIGS, ROOT, build_config, datasets_registry
 from hyde.data import load_dataset
+from hyde.io import write_text
 from hyde.metrics import classification_report
 from hyde.model import HyDE
 from run import HydeSession, prepare_data
@@ -60,6 +61,10 @@ class Tuner:
         self.log: list = []
         self.out_dir = ROOT / "results" / "tune" / data
         self.out_dir.mkdir(parents=True, exist_ok=True)
+        log_path = self.out_dir / "log.json"            # resume: candidates finished before a crash
+        if log_path.exists():
+            self.log = json.loads(log_path.read_text())
+        self.done = {r["key"]: r for r in self.log if r.get("key")}
 
     def session(self, cfg) -> HydeSession:
         key = json.dumps(cfg["encoder"], sort_keys=True)
@@ -80,12 +85,12 @@ class Tuner:
         m, _ = self.val_metrics(model, sess, th1)
         return model, sess, m
 
-    def record(self, axis, value, metrics, sec):
-        row = {"axis": axis, "value": value, **metrics, "sec": round(sec, 1)}
+    def record(self, axis, value, metrics, sec, key=None):
+        row = {"axis": axis, "value": value, **metrics, "sec": round(sec, 1), "key": key}
         self.log.append(row)
         print(f"[tune {self.data}] {axis}={value}: val macro={metrics['macro_f1']:.4f} "
               f"weighted={metrics['weighted_f1']:.4f} ({sec:.0f}s)", flush=True)
-        (self.out_dir / "log.json").write_text(json.dumps(self.log, indent=1))
+        write_text(self.out_dir / "log.json", json.dumps(self.log, indent=1))
 
     def axis(self, name, candidates, apply):
         """Try each candidate on a copy of self.cfg; keep the best (first wins ties)."""
@@ -93,9 +98,15 @@ class Tuner:
         for value in candidates:
             cfg = copy.deepcopy(self.cfg)
             apply(cfg, value)
-            t0 = time.time()
-            _, _, m = self.train(cfg)
-            self.record(name, value, m, time.time() - t0)
+            key = json.dumps(cfg, sort_keys=True, default=str)
+            if key in self.done:                          # finished before a restart
+                r = self.done[key]
+                m = {"macro_f1": r["macro_f1"], "weighted_f1": r["weighted_f1"]}
+                print(f"[tune {self.data}] {name}={value}: cached val macro={m['macro_f1']:.4f}", flush=True)
+            else:
+                t0 = time.time()
+                _, _, m = self.train(cfg)
+                self.record(name, value, m, time.time() - t0, key)
             if best is None or m[self.key] > best[0] + 1e-9:
                 best = (m[self.key], value, cfg)
         self.cfg = best[2]
@@ -164,7 +175,7 @@ class Tuner:
         path = CONFIGS / "tuned" / f"{self.data}.yaml"
         header = (f"# tuned by tune.py on {time.strftime('%Y-%m-%d %H:%M')} (seed {c['seed']}, "
                   f"criterion val {self.key}, subsample {c['data']['tune_subsample']})\n")
-        path.write_text(header + yaml.safe_dump(tuned, sort_keys=False))
+        write_text(path, header + yaml.safe_dump(tuned, sort_keys=False))
         print(f"[tune {self.data}] wrote {path}\n{yaml.safe_dump(tuned, sort_keys=False)}", flush=True)
 
 

@@ -21,6 +21,7 @@ import torch
 from sklearn.cluster import KMeans
 
 from .data import stratified_subset
+from .io import save_npz
 from .metrics import fast_f1
 
 ENCODE_CHUNK = 8192
@@ -342,4 +343,4 @@ class HyDE:
             if self.bias is not None:
                 arrays["step2_bias"] = self.bias.cpu().numpy()
         meta = {**meta, "readout": self.readout, "encoder": self.enc.kind, "D": self.enc.D}
-        np.savez_compressed(path, meta=np.asarray(json.dumps(meta)), **arrays)
+        save_npz(path, compressed=True, meta=np.asarray(json.dumps(meta)), **arrays)

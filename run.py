@@ -40,6 +40,7 @@ import torch                                                     # noqa: E402
 from hyde.config import ROOT, build_config, datasets_registry    # noqa: E402
 from hyde.data import load_dataset, split_fit_val, stratified_subset   # noqa: E402
 from hyde.encoders import build_encoder                          # noqa: E402
+from hyde.io import write_text                                   # noqa: E402
 from hyde.metrics import classification_report, unknown_report   # noqa: E402
 from hyde.model import HyDE                                      # noqa: E402
 
@@ -278,8 +279,7 @@ def main(argv=None):
         "peak_rss_mb": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024,
         "peak_gpu_mb": torch.cuda.max_memory_allocated() / 2**20 if torch.cuda.is_available() else 0.0,
     })
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(res, indent=1, default=float))
+    write_text(out, json.dumps(res, indent=1, default=float))
     t = res["test"]
     print(f"=== test macro-F1 {t['macro_f1'] * 100:.2f} | weighted-F1 {t['weighted_f1'] * 100:.2f} "
           f"| acc {t['accuracy'] * 100:.2f} | {res['wall_sec']:.0f}s -> {out}", flush=True)

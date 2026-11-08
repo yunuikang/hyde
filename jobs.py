@@ -47,6 +47,14 @@ def tuned(ds: str) -> dict:
     return yaml.safe_load(open(path))
 
 
+def ready(datasets) -> list[str]:
+    """Datasets whose tuning (E1) is finished; the others are skipped with a note."""
+    ok = [d for d in datasets if (ROOT / "configs" / "tuned" / f"{d}.yaml").exists()]
+    if len(ok) < len(datasets):
+        print(f"(waiting for E1 tuning: {[d for d in datasets if d not in ok]})", flush=True)
+    return ok
+
+
 def R(*args) -> list[str]:
     return [sys.executable, str(ROOT / "run.py"), *map(str, args)]
 
@@ -68,7 +76,7 @@ def e1(datasets):
 
 def e2(datasets):
     jobs = []
-    for d in datasets:
+    for d in ready(datasets):
         tuned(d)
         jobs += [R("--data", d, "--seed", s, "--tag", "final", "--save-model") for s in SEEDS]
     return jobs
@@ -98,7 +106,7 @@ def ablation_arms(ds: str) -> dict[str, list[str]]:
 
 def e3(datasets):
     jobs = []
-    for d in datasets:
+    for d in ready(datasets):
         for arm, sets in ablation_arms(d).items():
             extra = [x for s in sets for x in ("--set", s)]
             jobs += [R("--data", d, "--seed", s, "--tag", f"ablation/{arm}", *extra) for s in SEEDS]
@@ -133,9 +141,10 @@ def scenarios() -> list[dict]:
 
 def e4(datasets):
     jobs = []
+    ok = ready(datasets)
     for sc in scenarios():
         d = sc["dataset"]
-        if d not in datasets:
+        if d not in ok:
             continue
         tuned(d)
         base = ["--data", d, "--set", "unknown.enabled=true"] + (["--holdout", sc["holdout"]] if sc["holdout"] else [])
@@ -151,7 +160,7 @@ def e4(datasets):
 
 def e5(datasets):
     jobs = []
-    for d in datasets:
+    for d in ready(datasets):
         if d not in TIER_A:
             continue
         tuned(d)

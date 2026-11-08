@@ -20,6 +20,7 @@ from pathlib import Path
 import numpy as np
 
 from .config import ROOT, datasets_registry
+from .io import save_npz
 
 CACHE = ROOT / "cache"
 NA_TOKEN = "<NA>"
@@ -240,7 +241,7 @@ def build_cache(name: str, threads: int = 6, verbose: bool = True) -> Path:
     }
     CACHE.mkdir(exist_ok=True)
     path = CACHE / f"{name}.npz"
-    np.savez(path, X_num=X_num, X_cat=X_cat, y=y, X_num_test=X_num_te, X_cat_test=X_cat_te,
+    save_npz(path, X_num=X_num, X_cat=X_cat, y=y, X_num_test=X_num_te, X_cat_test=X_cat_te,
              y_test=y_te, meta=np.asarray(json.dumps(meta)))
     log(f"test: {y_te.size:,} rows, test-only labels: {test_only or 'none'}")
     log(f"dropped: {dropped}")
