@@ -1,0 +1,53 @@
+# HyDE default configuration. Every run = this file + configs/tuned/<ds>.yaml + --set overrides.
+seed: 0
+threads: 6                 # CPU threads for torch / polars / sklearn / xgboost / lightgbm
+device: cuda               # cuda | cpu
+
+data:
+  val_frac: 0.2            # stratified fit/val split of the official train file
+  tune_subsample: null     # e.g. 0.1 for Tier B tuning (fraction of fit rows, stratified)
+
+encoder:
+  type: pairbind           # pairbind | nonlinear
+  D: 10000
+  bins: 16                 # PairBind: max PLE bins per numeric feature
+  categorical_threshold: 32
+  tree_min_samples_leaf: 64
+  tree_min_fraction_leaf: 0.001
+  tree_fit_max: 100000
+
+step1:
+  enabled: true
+  K: null                  # null -> datasets.yaml K (elbow)
+  kmeans_fit_max: 5000
+  theta1: 0.90
+  retrain:
+    enabled: true
+    epochs: 5
+    lr: 0.05
+    batch: 512
+
+step2:
+  readout: mass            # mass | adamw
+  mass:  {lr: 0.035, batch: 8192}
+  adamw: {lr: 0.01, weight_decay: 0.0001, batch: 4096}
+  epochs: 60
+  patience: 8
+  select_metric: macro_f1  # macro_f1 | weighted_f1 (checkpoint + tuning criterion)
+  val_select_max: 200000   # stratified val subset used for per-epoch checkpoint selection
+
+class_weight: {p: 0.0, cap: 100.0}     # p = 0 -> off
+hard_negative: {beta: 0.0}             # 0 -> off
+boosting: {T: 0, d_cap_mult: 100.0}    # 0 -> off (T>0 replaces the MASS/AdamW readout)
+
+unknown:
+  enabled: false
+  reject_rate: 0.05        # theta2 = this quantile of known-attack val scores
+
+eval:
+  int8_proto: false        # score with sign(prototypes) (deployment-size experiment)
+  infer_check_rows: 20000  # compare infer.py (numpy) vs torch predictions on this many test rows
+
+ml:                        # baselines.py
+  class_weight_p: [0.0, 0.5]   # chosen on val macro-F1 for xgboost / lightgbm / random_forest / mlp
+  mlp: {hidden: 512, layers: 3, lr: 0.001, batch: 256, epochs: 50, patience: 8}

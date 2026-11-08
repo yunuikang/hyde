@@ -1,0 +1,36 @@
+# Dataset registry. CSVs are read in place from multi-tester/data/<dir>/{training,test}-flow.csv.
+root: /home/work/yunuikang/multi-tester/data
+
+datasets:
+  mirai:           {dir: mirai,           K: 3, tier: A}
+  nsl-kdd:         {dir: nsl-kdd,         K: 4, tier: A}
+  unsw-nb15:       {dir: unsw-nb15,       K: 6, tier: A}
+  ton-iot:         {dir: ton-iot,         K: 5, tier: A}
+  cicids2017:      {dir: cicids2017,      K: 5, tier: A, label_canon: cicids2017}
+  xiiotid:         {dir: xiiotid,         K: 7, tier: A}
+  wustl-iiot-2021: {dir: wustl-iiot-2021, K: 5, tier: A}
+  edge-iiot:
+    dir: edge-iiot
+    K: 6
+    tier: A
+    categorical: [dns.qry.name.len, http.referer, http.request.method, http.request.version,
+                  mqtt.conack.flags, mqtt.protoname, mqtt.topic]
+  cicids2018:      {dir: cicids2018,      K: 4, tier: B}
+  lspr23:          {dir: lspr23,          K: 5, tier: B, categorical: [Segment_src, Segment_dst]}
+  nf-ton-iot-v3:   {dir: nf-ton-iot-v3,   K: 6, tier: B, train_cap: null}   # set 10000000 if memory runs out
+
+# Columns compared after normalisation: strip, lower-case, spaces/'-' -> '_'.
+label_column: attack_name
+drop_label_columns: [attack_flag, attack_step, label, class, target, y]
+drop_metadata: [window_start, window_end, timestamp, start_time, end_time, flow_id,
+                src_ip, dst_ip, source_ip, destination_ip, src_ip_addr, dst_ip_addr,
+                source_ip_addr, destination_ip_addr, source_address, destination_address]
+drop_metadata_suffix: [_ip, _ip_addr]
+# Where/when a flow happened, or label-derived -> lets a model memorise the testbed.
+drop_leaky: [src_port, dst_port, l4_src_port, l4_dst_port, scr_port, des_port, sport, dport,
+             srcport, dstport, destination_port, dst_port, tcp.srcport, tcp.dstport, udp.port,
+             http.tls_port, date,
+             unknown]          # NSL-KDD difficulty level (0-21), derived from the label
+always_categorical: [protocol, service, flag]
+max_categories: 4096
+benign_aliases: [benign, benigntraffic, benign_traffic, normal, "-", ""]
