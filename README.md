@@ -18,6 +18,20 @@ python infer.py --model models/final/mirai__s0.npz \
 ```
 처음 쓰는 데이터셋은 CSV를 한 번 파싱해 `cache/<ds>.npz`를 만든다(대형은 수 분~수십 분).
 
+## 세션이 끊겼을 때 / 이어서 하기
+
+전체 실험은 `run_all.sh` 하나로 돈다. **언제 다시 실행해도 안전하다** — 끝난 결과는 건너뛰고 남은 것만 돈다.
+```bash
+cd /home/work/yunuikang/hyde
+python status.py                                             # 단계별 완료/계획 수, 실행 중 프로세스, 각 로그 마지막 줄
+nohup bash run_all.sh >> logs/run_all.log 2>&1 &             # (재)시작 — 이미 돌고 있으면 실행하지 말 것
+```
+- 이미 돌고 있는지는 `python status.py`의 `running:`으로 확인한다(두 개를 동시에 띄우면 같은 작업을 중복 실행).
+- 결과·캐시·모델·튜닝 기록은 임시 파일에 쓴 뒤 이름을 바꿔 저장한다 → 쓰는 도중 끊겨도 깨진 파일이 남지 않는다.
+- 튜닝(`tune.py`)은 끝난 후보를 `results/tune/<ds>/log.json`에 남기므로 중간에 끊겨도 그 지점부터 이어서 한다.
+- 진행 순서: CPU 줄 = E0(ML) / GPU 줄 = E1 튜닝 → E2 최종 → E3 ablation → E4 unknown → E5 차원.
+- 로그: `logs/run_all.log`(단계 시작·종료), `logs/E*.log`(각 실행 출력).
+
 ## 실험 단계 (EXPERIMENT_PLAN.md)
 ```bash
 python jobs.py E0            # ML 대조군 6종 × 11 데이터셋 × 3시드     → results/ml/
