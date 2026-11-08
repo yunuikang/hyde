@@ -4,8 +4,8 @@ root: /home/work/yunuikang/multi-tester/data
 datasets:
   mirai:           {dir: mirai,           K: 3, tier: A}
   nsl-kdd:         {dir: nsl-kdd,         K: 4, tier: A}
-  unsw-nb15:       {dir: unsw-nb15,       K: 6, tier: A}
-  ton-iot:         {dir: ton-iot,         K: 5, tier: A}
+  unsw-nb15:       {dir: unsw-nb15,       K: 6, tier: A, categorical: [state]}          # TCP state, stored as int codes
+  ton-iot:         {dir: ton-iot,         K: 5, tier: A, categorical: [l7_proto]}       # nDPI protocol id (nominal)
   cicids2017:      {dir: cicids2017,      K: 5, tier: A, label_canon: cicids2017}
   xiiotid:         {dir: xiiotid,         K: 7, tier: A}
   wustl-iiot-2021: {dir: wustl-iiot-2021, K: 5, tier: A}
@@ -17,7 +17,7 @@ datasets:
                   mqtt.conack.flags, mqtt.protoname, mqtt.topic]
   cicids2018:      {dir: cicids2018,      K: 4, tier: B}
   lspr23:          {dir: lspr23,          K: 5, tier: B, categorical: [Segment_src, Segment_dst]}
-  nf-ton-iot-v3:   {dir: nf-ton-iot-v3,   K: 6, tier: B, train_cap: null}   # set 10000000 if memory runs out
+  nf-ton-iot-v3:   {dir: nf-ton-iot-v3,   K: 6, tier: B, categorical: [l7_proto], train_cap: null}   # cap 10000000 if memory runs out
 
 # Columns compared after normalisation: strip, lower-case, spaces/'-' -> '_'.
 label_column: attack_name
