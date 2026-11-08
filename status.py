@@ -43,8 +43,10 @@ def main():
             done = sum((ROOT / "cache" / f"{d}.npz").exists() for d in jobs.DATASETS)
             print(f"{name:6} {done:>6} / {len(jobs.DATASETS):<8}")
             continue
+        if name != "E1":                                   # E2 may prepend tune.py (extend) jobs
+            js = [c for c in js if not c[1].endswith("tune.py")]
         done = sum(outputs(c).exists() for c in js)
-        extra = note.getvalue().strip().replace("\n", " ")
+        extra = " ".join(dict.fromkeys(note.getvalue().split("\n"))).strip()
         print(f"{name:6} {done:>6} / {len(js):<8} {extra}")
     ps = subprocess.run("ps -eo pid,etime,args | grep -E 'run.py|tune.py|load_dataset|run_all.sh' | grep -v grep",
                         shell=True, capture_output=True, text=True).stdout.strip()
