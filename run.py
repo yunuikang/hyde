@@ -45,6 +45,7 @@ from hyde.metrics import classification_report, unknown_report   # noqa: E402
 from hyde.model import HyDE                                      # noqa: E402
 
 RESULTS, MODELS = ROOT / "results", ROOT / "models"
+UNKNOWN_RATES = (0.01, 0.05, 0.10)          # theta2 = these quantiles of known-attack val scores
 UNKNOWN = -1
 
 
@@ -149,6 +150,12 @@ def evaluate_hyde(model: HyDE, sess: HydeSession, cfg: dict, prep_test=None, swe
     out["val"].pop("per_class")
     if cfg["unknown"]["enabled"]:
         out["unknown"] = unknown_report(rd.y_test, p_test, sc_test["s2cos"], rd.classes)
+        out["unknown_by_rate"] = {}
+        for rate in UNKNOWN_RATES:                         # post-hoc, same model
+            t2 = HyDE.calibrate_theta2(sc_val, rd.y_val, rate, th1)
+            pt = HyDE.predict(sc_test, th1, t2)
+            out["unknown_by_rate"][str(rate)] = {"theta2": t2, **unknown_report(rd.y_test, pt, sc_test["s2cos"], rd.classes),
+                                                 "test_macro_f1": classification_report(rd.y_test, pt, rd.classes)["macro_f1"]}
     if sweep_theta1:
         out["theta1_sweep"] = []
         for t in sweep_theta1:
@@ -169,7 +176,7 @@ def evaluate_hyde(model: HyDE, sess: HydeSession, cfg: dict, prep_test=None, swe
     return out
 
 
-def run_hyde(cfg: dict, rd: RunData, save_path: Path | None) -> dict:
+def run_hyde(cfg: dict, rd: RunData, save_path: Path | None, bench_cpu_rows: int = 0) -> dict:
     t0 = time.time()
     sess = HydeSession(cfg, rd)
     model = sess.new_model()
@@ -184,6 +191,18 @@ def run_hyde(cfg: dict, rd: RunData, save_path: Path | None) -> dict:
                                "dataset": rd.ds.name, "preprocess": _preprocess_meta(rd.ds)})
         res["model_path"] = str(save_path)
         res["model_bytes"] = save_path.stat().st_size
+        if bench_cpu_rows:
+            from infer import Predictor
+            m = min(bench_cpu_rows, rd.y_test.size)
+            pr = Predictor(str(save_path))
+            t0 = time.time()
+            pr.predict(rd.ds.X_num_test[:m], rd.ds.X_cat_test[:m], batch=1024)
+            res["cpu_numpy_ms_per_sample"] = 1e3 * (time.time() - t0) / m
+            pr8 = Predictor(str(save_path), int8_proto=True)
+            t0 = time.time()
+            pr8.predict(rd.ds.X_num_test[:m], rd.ds.X_cat_test[:m], batch=1024)
+            res["cpu_numpy_int8_ms_per_sample"] = 1e3 * (time.time() - t0) / m
+            res["cpu_bench_rows"] = m
         n = min(int(cfg["eval"]["infer_check_rows"]), rd.y_test.size)
         if n:
             from infer import Predictor
@@ -211,9 +230,20 @@ def run_ml(name: str, cfg: dict, rd: RunData, measure_size: bool = False) -> dic
     res = {"ml": info, "train_sec": info["train_sec"], "infer_ms_per_sample": 1e3 * infer_sec / max(pt.shape[0], 1)}
     if cfg["unknown"]["enabled"]:                                # max-probability open-set rule
         known_attack = rd.y_val != 0
-        th = float(np.quantile(pv.max(1)[known_attack], cfg["unknown"]["reject_rate"])) if known_attack.any() else -1.0
-        p_val[(p_val != 0) & (pv.max(1) < th)] = UNKNOWN
-        p_test[(p_test != 0) & (pt.max(1) < th)] = UNKNOWN
+
+        def route(rate):
+            th = float(np.quantile(pv.max(1)[known_attack], rate)) if known_attack.any() else -1.0
+            a, b = p_val.copy(), p_test.copy()
+            a[(a != 0) & (pv.max(1) < th)] = UNKNOWN
+            b[(b != 0) & (pt.max(1) < th)] = UNKNOWN
+            return th, a, b
+
+        res["unknown_by_rate"] = {}
+        for rate in UNKNOWN_RATES:
+            t2, _, b = route(rate)
+            res["unknown_by_rate"][str(rate)] = {"theta2": t2, **unknown_report(rd.y_test, b, pt.max(1), rd.classes),
+                                                 "test_macro_f1": classification_report(rd.y_test, b, rd.classes)["macro_f1"]}
+        th, p_val, p_test = route(cfg["unknown"]["reject_rate"])
         res["theta2"] = th
         res["unknown"] = unknown_report(rd.y_test, p_test, pt.max(1), rd.classes)
     res["val"] = classification_report(rd.y_val, p_val, rd.classes)
@@ -242,6 +272,7 @@ def main(argv=None):
     ap.add_argument("--holdout", default="", help="comma-separated class names removed from training (unknown test)")
     ap.add_argument("--save-model", action="store_true")
     ap.add_argument("--measure-size", action="store_true", help="ML: pickle size of the fitted model")
+    ap.add_argument("--bench-cpu", type=int, default=0, help="HyDE: time numpy (infer.py) inference on N test rows")
     ap.add_argument("--threads", type=int, default=None)
     ap.add_argument("--force", action="store_true", help="re-run even if the result JSON exists")
     args = ap.parse_args(argv)
@@ -264,7 +295,7 @@ def main(argv=None):
 
     if args.model == "hyde":
         save = MODELS / args.tag / f"{args.data}__s{args.seed}.npz" if args.save_model else None
-        res = run_hyde(cfg, rd, save)
+        res = run_hyde(cfg, rd, save, args.bench_cpu)
     else:
         res = run_ml(args.model, cfg, rd, args.measure_size)
 

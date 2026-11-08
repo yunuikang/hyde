@@ -18,13 +18,25 @@ python infer.py --model models/final/mirai__s0.npz \
 ```
 처음 쓰는 데이터셋은 CSV를 한 번 파싱해 `cache/<ds>.npz`를 만든다(대형은 수 분~수십 분).
 
+## 세션 3개로 나눠 실행 (2026-11-08~)
+
+| 세션 | 명령 | 맡는 일 |
+|---|---|---|
+| 1 | `nohup bash run_lane.sh A 6 >> logs/lane_A.log 2>&1 &` | Tier A 8개: E1 → E2 → E3 → E4 → E5 |
+| 2 | `nohup bash run_lane.sh B 6 >> logs/lane_B.log 2>&1 &` | Tier B 3개(cicids2018, lspr23, nf-ton): E1 → E5 |
+| 3 | `nohup bash run_lane.sh ML <코어수> >> logs/lane_ML.log 2>&1 &` | E0 ML 대조군 전부 |
+| 마지막 | `nohup bash run_lane.sh COST 6 >> logs/lane_COST.log 2>&1 &` | E6 비용 측정 — **다른 작업이 모두 끝난 뒤, 한 세션에서 단독으로** |
+
+각 세션에서 먼저 `cd /home/work/yunuikang/hyde`. 같은 lane을 두 세션에서 동시에 돌리지 않는다.
+논문의 시간·처리량·모델 크기 수치는 E6에서만 가져온다(다른 단계는 작업이 겹쳐 측정이 오염됨).
+
 ## 세션이 끊겼을 때 / 이어서 하기
 
 전체 실험은 `run_all.sh` 하나로 돈다. **언제 다시 실행해도 안전하다** — 끝난 결과는 건너뛰고 남은 것만 돈다.
 ```bash
 cd /home/work/yunuikang/hyde
 python status.py                                             # 단계별 완료/계획 수, 실행 중 프로세스, 각 로그 마지막 줄
-nohup bash run_all.sh >> logs/run_all.log 2>&1 &             # (재)시작 — 이미 돌고 있으면 실행하지 말 것
+nohup bash run_lane.sh <A|B|ML> <threads> >> logs/lane_<X>.log 2>&1 &   # 해당 세션의 lane (재)시작
 ```
 - 이미 돌고 있는지는 `python status.py`의 `running:`으로 확인한다(두 개를 동시에 띄우면 같은 작업을 중복 실행).
 - 결과·캐시·모델·튜닝 기록은 임시 파일에 쓴 뒤 이름을 바꿔 저장한다 → 쓰는 도중 끊겨도 깨진 파일이 남지 않는다.

@@ -259,6 +259,7 @@ M ← 0                                   (C×D, zero-init)
 | `macro_f1_attack_only` | benign을 뺀 macro |
 | `per_class` | 클래스별 P, R, F1, support (test에만 저장) |
 | `binary` | benign 대 나머지로 접은 TP/FP/TN/FN, F1(공격), recall, precision, **FPR**, 이진 macro-F1. 예측 −1은 공격으로 센다 |
+| `unknown_by_rate` | reject rate 1% / 5% / 10%별 unknown 지표와 θ2 (같은 모델에서 사후 계산) |
 | `unknown` 블록 (unknown 실험) | unknown recall / precision / F1, **AUROC**(s2cos 기준, known 공격 대 unknown), known 클래스만의 macro/weighted-F1, benign → unknown 오탐률 |
 | `fast_f1` | 학습 중 val 계산용 빠른 버전(혼동행렬 기반) |
 
@@ -318,13 +319,17 @@ M ← 0                                   (C×D, zero-init)
 | E2 | 튜닝 구성 × 3시드 + 모델 저장 | `results/final/`, `models/final/` |
 | E3 | ablation: 튜닝 구성에서 **구성요소 하나만 뒤집는다**(`ablation_arms`) | `results/ablation/<arm>/` |
 | E4 | unknown: 데이터셋마다 큰/중간/작은 공격 클래스(test ≥ 30행)를 각각 holdout. 2-step / 1-step / RF / xgboost 비교 | `results/unknown/<variant>/<scenario>/` |
-| E5 | D ∈ {1000, 2000, 5000}, seed 0, Tier A, 모델 저장(크기 측정) | `results/e5/D<d>/` |
+| E5 | D ∈ {1000, 2000, 5000} × 3시드, 11개 전부, 모델 저장 | `results/e5/D<d>/` |
+| E6 | 비용 측정: 다른 작업 없이 단독, seed 0, 같은 스레드 수. HyDE 학습 시간·GPU 추론·numpy CPU 추론(float/int8)·모델 크기, ML 6종 학습·추론 시간·모델 크기 | `results/cost/` |
 
 E3 ablation 팔의 규칙
 - `encoder_nonlinear`: 인코더만 nonlinear로 바꾼다.
-- class weight / hard negative / boosting / 정상 하위 프로토타입: 튜닝에서 켜졌으면 끄고, 꺼졌으면 켠다(p=0.5, β=1, T=10, k=elbow K).
+- class weight / hard negative / boosting / 정상 하위 프로토타입: 튜닝에서 켜졌으면 끄고, 꺼졌으면 켠다.
+  켤 때의 값은 **튜닝 기록에서 val이 가장 좋았던 '켬' 값**(`jobs.best_on`) — 임의로 정한 값을 쓰지 않는다.
 - Step1이 튜닝에서 켜졌으면 `step1_off`, `step1_K1`, `step1_retrain_*`.
-  꺼졌으면 `step1_on`(θ1=0.95)으로 "켰을 때"를 보인다.
+  꺼졌으면 제안한 Step1(K = elbow, retrain 켬, θ1·retrain lr은 튜닝 기록에서 val 최고, 동점이면 가장 낮은 θ1)을
+  켠 `step1_on`, 거기서 K=1로 바꾼 `step1_on_K1`(클러스터링 기여), retrain을 뒤집은 `step1_on_retrain_*`.
+  E4의 2-step도 같은 Step1 설정을 쓴다.
 
 E4 세부
 - 시나리오는 처음 실행할 때 `results/unknown/scenarios.csv`에 고정된다. 다시 뽑지 않는다.
