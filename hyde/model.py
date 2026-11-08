@@ -61,6 +61,10 @@ class HyDE:
         self.ensemble = None     # SAMME: (T, C, D), alphas (T,)
         self.readout = None
         self.history: dict = {}
+        # Benign sub-prototypes: Step2 may train benign as k sub-classes (indices C..C+k-2 besides 0)
+        # and merges them back at prediction. Ce = number of trained classes, merge[c] = original class.
+        self.Ce = n_classes
+        self.merge = np.arange(n_classes)
 
     # ------------------------------------------------------------------ helpers
     def _H(self, prep, idx) -> torch.Tensor:
@@ -94,19 +98,29 @@ class HyDE:
 
     def _val_score(self, prep_val, idx_val, y_val) -> tuple[float, float]:
         pred = self._sorted_scores(prep_val, idx_val, lambda H: self._logits(H).argmax(1))
-        return fast_f1(y_val, pred.astype(np.int64), self.C)
+        return fast_f1(y_val, self.merge[pred.astype(np.int64)], self.C)
+
+    def _merge_scores(self, s: torch.Tensor) -> torch.Tensor:
+        """(B, Ce) -> (B, C): benign score = max over its sub-prototypes."""
+        if self.Ce == self.C:
+            return s
+        out = s[:, :self.C].clone()
+        out[:, self.benign] = torch.maximum(out[:, self.benign], s[:, self.C:].max(1).values)
+        return out
 
     def _order(self, prep, idx_fit, y_fit, beta: float) -> np.ndarray:
         """Epoch sample order: uniform permutation, or hard-negative resampling (Robinson 2021)."""
         if beta <= 0:
             return self.rng.permutation(idx_fit.size)
         yt = torch.as_tensor(y_fit, device=self.device)
+        merge_t = torch.as_tensor(self.merge, device=self.device)
         hard = np.empty(idx_fit.size, np.float32)
         for s, e, H in self._iter_H(prep, idx_fit):
             sims = self._class_cos(H)                                    # always cosine
             rows = torch.arange(e - s, device=self.device)
             correct = sims[rows, yt[s:e]].clone()
-            sims[rows, yt[s:e]] = -math.inf
+            same = merge_t[None, :] == merge_t[yt[s:e]][:, None]         # own class incl. benign siblings
+            sims[same] = -math.inf
             hard[s:e] = (sims.max(1).values - correct).cpu().numpy()
         logw = beta * (hard - hard.max())
         p = np.exp(logw.astype(np.float64))
@@ -143,9 +157,9 @@ class HyDE:
 
     def _fit_mass(self, prep, idx_fit, y_fit, prep_val, idx_val, y_val, cw):
         lr, bs = self.cfg["step2"]["mass"]["lr"], self.cfg["step2"]["mass"]["batch"]
-        self.M = torch.zeros(self.C, self.enc.D, device=self.device)
+        self.M = torch.zeros(self.Ce, self.enc.D, device=self.device)
         cwt = torch.as_tensor(cw, device=self.device) if cw is not None else None
-        eye = torch.eye(self.C, device=self.device)
+        eye = torch.eye(self.Ce, device=self.device)
 
         def step(idx, y):
             for s, e in _batches(idx.size, bs):
@@ -163,7 +177,7 @@ class HyDE:
                            lambda: setattr(self, "M", best["M"]))
 
     def _centroids(self, prep, idx, y) -> torch.Tensor:
-        sums = torch.zeros(self.C, self.enc.D, device=self.device)
+        sums = torch.zeros(self.Ce, self.enc.D, device=self.device)
         yt = torch.as_tensor(y, device=self.device)
         for s, e, H in self._iter_H(prep, idx):
             sums.index_add_(0, yt[s:e], H)
@@ -173,7 +187,7 @@ class HyDE:
         a = self.cfg["step2"]["adamw"]
         cent = self._centroids(prep, idx_fit, y_fit)
         W = torch.nn.Parameter(cent / cent.norm(dim=1, keepdim=True).clamp_min(1e-12))
-        b = torch.nn.Parameter(torch.zeros(self.C, device=self.device))
+        b = torch.nn.Parameter(torch.zeros(self.Ce, device=self.device))
         self.M, self.bias = W.data, b.data
         opt = torch.optim.AdamW([W, b], lr=a["lr"], weight_decay=a["weight_decay"])
         cwt = torch.as_tensor(cw, device=self.device) if cw is not None else None
@@ -206,14 +220,15 @@ class HyDE:
         if cw is not None:
             Dt = torch.as_tensor(cw, device=self.device)[yt]
             Dt = Dt / Dt.sum()
+        merge_t = torch.as_tensor(self.merge, device=self.device)
         protos, alphas, log = [], [], []
         for t in range(T):
-            Ct = torch.zeros(self.C, self.enc.D, device=self.device)
+            Ct = torch.zeros(self.Ce, self.enc.D, device=self.device)
             for s, e, H in self._iter_H(prep, idx_fit):
                 Ct.index_add_(0, yt[s:e], H * Dt[s:e, None])
             wrong = torch.empty(N, device=self.device)
             for s, e, H in self._iter_H(prep, idx_fit):
-                wrong[s:e] = (_cos(H, Ct).argmax(1) != yt[s:e]).float()
+                wrong[s:e] = (merge_t[_cos(H, Ct).argmax(1)] != merge_t[yt[s:e]]).float()   # siblings = correct
             eps = max(float((Dt * wrong).sum()), 1e-10)
             log.append({"t": t + 1, "eps": eps})
             if eps >= 1.0 - 1.0 / self.C:
@@ -230,9 +245,37 @@ class HyDE:
         self.ensemble = (torch.stack(protos), np.asarray(alphas, np.float64))
         self.history["samme"] = log
 
+    def _kmeans_benign(self, prep, rows: np.ndarray, k: int) -> np.ndarray:
+        """K-means on the HVs of `rows` (fit on <= kmeans_fit_max of them), cosine assignment."""
+        sample = np.sort(self.rng.choice(rows, size=min(self.cfg["step1"]["kmeans_fit_max"], rows.size),
+                                         replace=False))
+        Xs = torch.cat([H.cpu() for _, _, H in self._iter_H(prep, sample)]).numpy()
+        km = KMeans(n_clusters=k, n_init=10, random_state=self.cfg["seed"]).fit(Xs)
+        centers = torch.as_tensor(km.cluster_centers_, dtype=torch.float32, device=self.device)
+        out = np.empty(rows.size, np.int64)
+        for s, e, H in self._iter_H(prep, rows):
+            out[s:e] = _cos(H, centers).argmax(1).cpu().numpy()
+        return out
+
+    def split_benign(self, prep_fit, y_fit: np.ndarray, k: int) -> np.ndarray:
+        """Relabel benign fit rows into k sub-classes (multi-prototype normal traffic)."""
+        rows = np.flatnonzero(y_fit == self.benign)
+        if k <= 1 or rows.size <= k:
+            return y_fit
+        sub = self._kmeans_benign(prep_fit, rows, k)
+        y = y_fit.copy()
+        y[rows[sub > 0]] = self.C + sub[sub > 0] - 1
+        self.Ce = self.C + k - 1
+        self.merge = np.concatenate([np.arange(self.C), np.full(k - 1, self.benign)])
+        self.history["benign_split_sizes"] = np.bincount(sub, minlength=k).tolist()
+        return y
+
     def fit_step2(self, prep_fit, y_fit, prep_val, y_val):
         cw = class_weights(y_fit, self.C, float(self.cfg["class_weight"]["p"]),
-                           float(self.cfg["class_weight"]["cap"]))
+                           float(self.cfg["class_weight"]["cap"]))        # on the ORIGINAL classes
+        y_fit = self.split_benign(prep_fit, y_fit, int(self.cfg["step2"].get("benign_split", 0) or 0))
+        if cw is not None:
+            cw = cw[self.merge]                                           # sub-classes inherit benign weight
         idx_fit = np.arange(y_fit.size)
         sel = stratified_subset(np.arange(y_val.size), y_val, max_rows=self.cfg["step2"]["val_select_max"],
                                 seed=self.cfg["seed"], min_per_class=200)   # rare classes kept whole
@@ -250,16 +293,10 @@ class HyDE:
         D = self.enc.D
         normal = np.flatnonzero(y_fit == self.benign)
         K = self.K if normal.size > self.K else 1
-        if K > 1:
-            sample = np.sort(self.rng.choice(normal, size=min(s1["kmeans_fit_max"], normal.size), replace=False))
-            Xs = torch.cat([H.cpu() for _, _, H in self._iter_H(prep_fit, sample)]).numpy()
-            km = KMeans(n_clusters=K, n_init=10, random_state=self.cfg["seed"]).fit(Xs)
-            centers = torch.as_tensor(km.cluster_centers_, dtype=torch.float32, device=self.device)
+        assign = self._kmeans_benign(prep_fit, normal, K) if K > 1 else np.zeros(normal.size, np.int64)
         self.N = torch.zeros(K, D, device=self.device)
         for s, e, H in self._iter_H(prep_fit, normal):
-            assign = _cos(H, centers).argmax(1) if K > 1 else torch.zeros(e - s, dtype=torch.long,
-                                                                         device=self.device)
-            self.N.index_add_(0, assign, H)
+            self.N.index_add_(0, torch.as_tensor(assign[s:e], device=self.device), H)
         if s1["retrain"]["enabled"]:
             r = s1["retrain"]
             yt_all = torch.as_tensor(y_fit, device=self.device)
@@ -303,7 +340,7 @@ class HyDE:
         for _, _, H in self._iter_H(prep, idx):
             if N is not None:
                 s1.append(_cos(H, N).max(1).values.cpu().numpy())
-            s2.append(self._logits(H, int8).cpu().numpy())
+            s2.append(self._merge_scores(self._logits(H, int8)).cpu().numpy())
             s2cos.append(self._class_cos(H, int8).max(1).values.cpu().numpy())
         return {"s1": np.concatenate(s1) if s1 else None, "s2": np.concatenate(s2),
                 "s2cos": np.concatenate(s2cos)}
@@ -342,5 +379,7 @@ class HyDE:
             arrays["step2_M"] = self.M.cpu().numpy()
             if self.bias is not None:
                 arrays["step2_bias"] = self.bias.cpu().numpy()
+        if self.Ce > self.C:
+            arrays["step2_merge"] = self.merge                  # sub-prototype -> original class
         meta = {**meta, "readout": self.readout, "encoder": self.enc.kind, "D": self.enc.D}
         save_npz(path, compressed=True, meta=np.asarray(json.dumps(meta)), **arrays)

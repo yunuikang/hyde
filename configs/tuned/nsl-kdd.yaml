@@ -1,0 +1,20 @@
+# tuned by tune.py on 2026-11-08 00:44 (seed 0, criterion val macro_f1, subsample None)
+encoder:
+  bins: 16
+step1:
+  enabled: false
+  K: null
+  theta1: 0.9
+  retrain:
+    enabled: true
+    lr: 0.05
+step2:
+  readout: adamw
+  adamw:
+    lr: 0.03
+class_weight:
+  p: 0.5
+hard_negative:
+  beta: 0.0
+boosting:
+  T: 0

@@ -138,6 +138,11 @@ class Predictor:
         else:
             s2 = (H / math.sqrt(self.D)) @ self.M.T + self.bias if self.readout == "adamw" else H @ self.M.T
             s2cos = self._cos(H, self.M).max(1)
+        if "step2_merge" in self.a:                            # benign sub-prototypes -> benign
+            C = len(self.meta["classes"])
+            extra = s2[:, C:]
+            s2 = s2[:, :C].copy()
+            s2[:, 0] = np.maximum(s2[:, 0], extra.max(1))
         s1 = self._cos(H, self.N).max(1) if self.N is not None else None
         return {"s1": s1, "s2": s2, "s2cos": s2cos}
 

@@ -55,6 +55,16 @@ def ready(datasets) -> list[str]:
     return ok
 
 
+def outdated(datasets) -> list[str]:
+    """Tuned before the step2.benign_split axis existed -> need `tune.py` (extend mode) first."""
+    out = []
+    for d in datasets:
+        p = ROOT / "configs" / "tuned" / f"{d}.yaml"
+        if p.exists() and "benign_split" not in (yaml.safe_load(open(p)).get("step2") or {}):
+            out.append(d)
+    return out
+
+
 def R(*args) -> list[str]:
     return [sys.executable, str(ROOT / "run.py"), *map(str, args)]
 
@@ -75,7 +85,7 @@ def e1(datasets):
 
 
 def e2(datasets):
-    jobs = []
+    jobs = [[sys.executable, str(ROOT / "tune.py"), "--data", d] for d in outdated(ready(datasets))]
     for d in ready(datasets):
         tuned(d)
         jobs += [R("--data", d, "--seed", s, "--tag", "final", "--save-model") for s in SEEDS]
@@ -94,6 +104,9 @@ def ablation_arms(ds: str) -> dict[str, list[str]]:
         "hard_negative_" + ("off" if hn_on else "on"): [f"hard_negative.beta={0.0 if hn_on else 1.0}"],
         "boosting_" + ("off" if bt_on else "on"): [f"boosting.T={0 if bt_on else 10}"],
     }
+    bs = int((t["step2"] or {}).get("benign_split", 0) or 0)
+    arms["benign_split_" + ("off" if bs > 1 else "on")] = \
+        [f"step2.benign_split={0 if bs > 1 else REG['datasets'][ds]['K']}"]
     if t["step1"]["enabled"]:
         arms["step1_off"] = ["step1.enabled=false"]
         arms["step1_K1"] = ["step1.K=1"]

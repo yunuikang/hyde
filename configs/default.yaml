@@ -35,6 +35,7 @@ step2:
   patience: 8
   select_metric: macro_f1  # macro_f1 | weighted_f1 (checkpoint + tuning criterion)
   val_select_max: 200000   # stratified val subset used for per-epoch checkpoint selection
+  benign_split: 0          # >1: train benign as this many K-means sub-classes (merged at prediction)
 
 class_weight: {p: 0.0, cap: 100.0}     # p = 0 -> off
 hard_negative: {beta: 0.0}             # 0 -> off

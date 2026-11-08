@@ -37,6 +37,7 @@ GRID = {
     "cw_p": [0.0, 0.25, 0.5, 0.75, 1.0],
     "beta": [0.0, 0.5, 1.0, 2.0, 4.0],
     "boost_T": [0, 5, 10, 20],
+    "benign_split": ["off", "K", "2K"],                 # multi-prototype normal traffic (x elbow K)
     "retrain": [(False, None), (True, 0.01), (True, 0.05)],
     "theta1": [0.70, 0.80, 0.85, 0.90, 0.95, 0.97],
     "bins": [16, 8, 32],
@@ -44,9 +45,10 @@ GRID = {
 
 
 class Tuner:
-    def __init__(self, data: str, seed: int, subsample: float | None, threads: int | None = None):
+    def __init__(self, data: str, seed: int, subsample: float | None, threads: int | None = None,
+                 from_tuned: bool = False):
         self.data = data
-        cfg = build_config(data, [f"seed={seed}"], use_tuned=False)
+        cfg = build_config(data, [f"seed={seed}"], use_tuned=from_tuned)
         cfg["step1"]["enabled"] = False
         if subsample:
             cfg["data"]["tune_subsample"] = subsample
@@ -120,6 +122,13 @@ class Tuner:
         self.axis("class_weight.p", GRID["cw_p"], lambda c, v: c["class_weight"].__setitem__("p", v))
         self.axis("hard_negative.beta", GRID["beta"], lambda c, v: c["hard_negative"].__setitem__("beta", v))
         self.axis("boosting.T", GRID["boost_T"], lambda c, v: c["boosting"].__setitem__("T", v))
+        self.axis_benign_split()
+
+    def axis_benign_split(self):
+        K0 = datasets_registry()["datasets"][self.data]["K"]
+        values = {"off": 0, "K": K0, "2K": 2 * K0}
+        self.axis("step2.benign_split", [values[v] for v in GRID["benign_split"]],
+                  lambda c, v: c["step2"].__setitem__("benign_split", v))
 
     def stage_b(self):
         """Step1: train Step2 once, then K x retrain candidates with a post-hoc theta1 sweep."""
@@ -166,7 +175,7 @@ class Tuner:
             "encoder": {"bins": c["encoder"]["bins"]},
             "step1": {"enabled": c["step1"]["enabled"], "K": c["step1"]["K"], "theta1": c["step1"]["theta1"],
                       "retrain": {"enabled": c["step1"]["retrain"]["enabled"], "lr": c["step1"]["retrain"]["lr"]}},
-            "step2": {"readout": c["step2"]["readout"],
+            "step2": {"readout": c["step2"]["readout"], "benign_split": c["step2"]["benign_split"],
                       c["step2"]["readout"]: {"lr": c["step2"][c["step2"]["readout"]]["lr"]}},
             "class_weight": {"p": c["class_weight"]["p"]},
             "hard_negative": {"beta": c["hard_negative"]["beta"]},
@@ -187,11 +196,22 @@ def main():
                     help="fraction of fit rows used for tuning (default: 0.1 for Tier B, else all)")
     ap.add_argument("--threads", type=int, default=None)
     args = ap.parse_args()
-    if (ROOT / "configs" / "tuned" / f"{args.data}.yaml").exists():
-        print(f"skip (exists): configs/tuned/{args.data}.yaml  — delete it to re-tune")
-        return
     tier = datasets_registry()["datasets"][args.data].get("tier", "A")
     sub = args.subsample if args.subsample is not None else (0.1 if tier == "B" else None)
+    path = ROOT / "configs" / "tuned" / f"{args.data}.yaml"
+    if path.exists():
+        if "benign_split" in (yaml.safe_load(open(path)).get("step2") or {}):
+            print(f"skip (exists): configs/tuned/{args.data}.yaml  — delete it to re-tune")
+            return
+        # tuned before the benign_split axis existed: keep every earlier choice, add only that axis
+        # (Step1 is re-checked because Step2 changed).
+        print(f"[tune {args.data}] extending existing tuning with step2.benign_split", flush=True)
+        t = Tuner(args.data, args.seed, sub, args.threads, from_tuned=True)
+        t.cfg["step1"]["enabled"] = False
+        t.axis_benign_split()
+        t.stage_b()
+        t.save()
+        return
     t = Tuner(args.data, args.seed, sub, args.threads)
     t0 = time.time()
     t.stage_a()

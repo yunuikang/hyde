@@ -194,6 +194,15 @@ M ← 0                                   (C×D, zero-init)
 - ε ≥ 1 − 1/C이면 멈춘다. 점수 = Σ α_t·cos(H, C_t) / Σα.
 - class weight가 켜져 있으면 초기 D_1을 클래스 가중치에 비례하게 둔다.
 
+**정상 하위 프로토타입** (`step2.benign_split = k`, k > 1일 때)
+- 정상 트래픽에는 여러 유형(웹, DNS, 스트리밍 …)이 섞여 있어 benign 벡터 하나로는 평균이 되어 버린다.
+- 학습 전에 fit의 benign HV를 K-means로 k개로 나눠 **benign_1 … benign_k를 서로 다른 클래스로 학습**하고,
+  예측할 때 이들 점수의 최댓값을 benign 점수로 합친다(`split_benign`, `_merge_scores`).
+- Step1 게이트와 달리 Step2의 판단을 덮어쓰지 않고 **분류기의 표현력만 늘린다.**
+- class weight는 원래 클래스 기준으로 계산하고 하위 클래스가 benign의 가중치를 물려받는다.
+  hard negative와 SAMME에서는 benign 하위 클래스끼리 헷갈리는 것을 오답으로 치지 않는다.
+- 저장 파일에 `step2_merge`(하위 클래스 → 원래 클래스)가 들어가고 infer.py도 같은 방식으로 합친다.
+
 **class weight** (`class_weight.p`): `w_c = min((N/(C·n_c))^p, 100)`을 샘플 평균이 1이 되게 정규화한다. p=0이면 끈다.
 
 **hard negative** (`hard_negative.beta`, Robinson 2021)
@@ -289,6 +298,7 @@ M ← 0                                   (C×D, zero-init)
 | A | class weight p | 0, 0.25, 0.5, 0.75, 1.0 | |
 | A | hard negative β | 0, 0.5, 1, 2, 4 | |
 | A | boosting T | 0, 5, 10, 20 | |
+| A | 정상 하위 프로토타입 수 | 0(안 나눔), elbow K, 2K | 2026-11-08 추가. 이전에 튜닝된 데이터셋은 이 축만 추가 튜닝(확장 모드) 후 Step1 재확인 |
 | B | Step1 | 끔 / K ∈ {1, elbow, 2×elbow} × retrain {끔, lr 0.01, lr 0.05} × θ1 {0.70…0.97} | Step2는 한 번만 학습, θ1은 사후 스윕 → 조합 전체를 싸게 비교 |
 | C | PairBind bins | 16, 8, 32 | 전체 파이프라인 |
 
@@ -312,7 +322,7 @@ M ← 0                                   (C×D, zero-init)
 
 E3 ablation 팔의 규칙
 - `encoder_nonlinear`: 인코더만 nonlinear로 바꾼다.
-- class weight / hard negative / boosting: 튜닝에서 켜졌으면 끄고, 꺼졌으면 켠다(p=0.5, β=1, T=10).
+- class weight / hard negative / boosting / 정상 하위 프로토타입: 튜닝에서 켜졌으면 끄고, 꺼졌으면 켠다(p=0.5, β=1, T=10, k=elbow K).
 - Step1이 튜닝에서 켜졌으면 `step1_off`, `step1_K1`, `step1_retrain_*`.
   꺼졌으면 `step1_on`(θ1=0.95)으로 "켰을 때"를 보인다.
 
@@ -381,6 +391,7 @@ python3 infer.py --model mirai__s0.npz --csv test-flow.csv --repeat-seconds 120 
 | `step2.readout` | mass | mass / adamw |
 | `step2.mass.lr`, `adamw.lr` | 0.035 / 0.01 | |
 | `step2.epochs`, `patience`, `select_metric`, `val_select_max` | 60, 8, macro_f1, 200000 | 체크포인트 선택 |
+| `step2.benign_split` | 0 | > 1이면 benign을 그 수만큼 하위 클래스로 나눠 학습 |
 | `class_weight.p`, `cap` | 0 (끔), 100 | |
 | `hard_negative.beta` | 0 (끔) | |
 | `boosting.T`, `d_cap_mult` | 0 (끔), 100 | |
@@ -415,7 +426,7 @@ python3 infer.py --model mirai__s0.npz --csv test-flow.csv --repeat-seconds 120 
 |---|---|
 | 데이터 로더 | mirai, nsl-kdd, cicids2017, edge-iiot 캐시 생성. nsl의 test-only 17종(3,750행) 검출. cicids2017 웹 공격 통일 후 test-only 0 |
 | HyDE 경로 | MASS, AdamW, class weight, hard negative, SAMME, nonlinear, Step1 K=1, unknown holdout 모두 mirai에서 관통 |
-| infer.py 일치율 | 저장 모델의 numpy 추론이 학습 코드 예측과 **100% 일치** (모든 경로, cicids2017 포함) |
+| infer.py 일치율 | 저장 모델의 numpy 추론이 학습 코드 예측과 **100% 일치** (cicids2017 포함). SAMME만 99.989% — 라운드 점수 합산의 부동소수점 반올림으로 동점 근처 1행이 갈림 |
 | ML 6종 | mirai 관통, class weight 선택 동작 |
 | tune.py | mirai 전체 튜닝 2분 |
 | 속도 | cicids2017(fit 158만 행): epoch당 약 5초, 1회 약 100초, GPU 0.7 GB |
