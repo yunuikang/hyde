@@ -7,15 +7,15 @@
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | mirai | A | 40,893 | 9,335 | 26 | 1 (3) | 4 | 94.4 | 354 | 0 | 23 | 3 |
 | nsl-kdd | A | 125,973 | 22,544 | 37 | 3 (84) | 23 | 53.5 | 33,671 | 12 | 4 | 4 |
-| unsw-nb15 | A | 175,341 | 82,332 | 32 | 2 (146) | 10 | 31.9 | 430 | 0 | 2 | 6 |
-| ton-iot | A | 810,485 | 347,509 | 7 | 1 (5) | 10 | 17.2 | 3,043 | 0 | 4 | 5 |
+| unsw-nb15 | A | 175,341 | 82,332 | 31 | 3 (155) | 10 | 31.9 | 430 | 0 | 2 | 6 |
+| ton-iot | A | 810,485 | 347,509 | 6 | 2 (97) | 10 | 17.2 | 3,043 | 0 | 4 | 5 |
 | cicids2017 | A | 1,979,286 | 848,590 | 69 | 0 (0) | 15 | 80.3 | 198,730 | 3 | 11 | 5 |
 | xiiotid | A | 656,668 | 164,166 | 54 | 3 (23) | 10 | 51.3 | 906 | 0 | 6 | 7 |
 | wustl-iiot-2021 | A | 955,571 | 238,893 | 40 | 1 (8) | 5 | 92.7 | 5,181 | 0 | 4 | 5 |
 | edge-iiot | A | 1,775,360 | 443,841 | 36 | 7 (49) | 15 | 72.8 | 1,585 | 0 | 9 | 6 |
 | cicids2018 | B | 11,294,033 | 4,843,150 | 68 | 1 (3) | 15 | 83.0 | 156,177 | 1 | 12 | 4 |
 | lspr23 | B | 12,268,365 | 3,066,360 | 77 | 5 (92) | 14 | 95.3 | 2,339,346 | 4 | 12 | 5 |
-| nf-ton-iot-v3 | B | (캐시 없음) |||||||||
+| nf-ton-iot-v3 | B | 22,016,208 | 5,504,052 | 45 | 2 (138) | 10 | 61.0 | 4,203 | 0 | 4 | 6 |
 
 - 클래스 수는 benign 포함. 불균형 = train에서 가장 큰 클래스 ÷ 가장 작은 클래스.
 - 범주 피처의 원-핫 폭은 train에서 본 값의 수(+ 처음 보는 값 슬롯 1개는 제외).
@@ -79,9 +79,9 @@
 
 - 위치: `/home/work/yunuikang/multi-tester/data/unsw-nb15/{training,test}-flow.csv` · Tier A · Step1 K(elbow) = 6
 - 행: train 175,341 / test 82,332
-- 사용 피처: 숫자 32개 + 범주 2개 (`protocol` 133종, `service` 13종)
+- 사용 피처: 숫자 31개 + 범주 3개 (`protocol` 133종, `service` 13종, `state` 9종)
 - 드롭 — 다른 라벨 컬럼: `attack_flag`, `attack_step`
-- 숫자 피처 목록: `dur`, `state`, `spkts`, `dpkts`, `sbytes`, `dbytes`, `rate`, `sload`, `dload`, `sloss`, `dloss`, `sinpkt`, `dinpkt`, `sjit`, `djit`, `swin`, `stcpb`, `dtcpb`, `dwin`, `tcprtt`, `synack`, `ackdat`, `smean`, `dmean`, `trans_depth`, `response_body_len`, `ct_src_dport_ltm`, `ct_dst_sport_ltm`, `is_ftp_login`, `ct_ftp_cmd`, `ct_flw_http_mthd`, `is_sm_ips_ports`
+- 숫자 피처 목록: `dur`, `spkts`, `dpkts`, `sbytes`, `dbytes`, `rate`, `sload`, `dload`, `sloss`, `dloss`, `sinpkt`, `dinpkt`, `sjit`, `djit`, `swin`, `stcpb`, `dtcpb`, `dwin`, `tcprtt`, `synack`, `ackdat`, `smean`, `dmean`, `trans_depth`, `response_body_len`, `ct_src_dport_ltm`, `ct_dst_sport_ltm`, `is_ftp_login`, `ct_ftp_cmd`, `ct_flw_http_mthd`, `is_sm_ips_ports`
 
 | # | 클래스 | train | train % | test |
 |---:|---|---:|---:|---:|
@@ -100,10 +100,10 @@
 
 - 위치: `/home/work/yunuikang/multi-tester/data/ton-iot/{training,test}-flow.csv` · Tier A · Step1 K(elbow) = 5
 - 행: train 810,485 / test 347,509
-- 사용 피처: 숫자 7개 + 범주 1개 (`protocol` 5종)
+- 사용 피처: 숫자 6개 + 범주 2개 (`protocol` 5종, `l7_proto` 92종)
 - 드롭 — 누수(포트·날짜·난이도): `l4_src_port`, `l4_dst_port`
 - 드롭 — 다른 라벨 컬럼: `attack_flag`, `attack_step`
-- 숫자 피처 목록: `l7_proto`, `in_bytes`, `out_bytes`, `in_pkts`, `out_pkts`, `tcp_flags`, `flow_duration_milliseconds`
+- 숫자 피처 목록: `in_bytes`, `out_bytes`, `in_pkts`, `out_pkts`, `tcp_flags`, `flow_duration_milliseconds`
 
 | # | 클래스 | train | train % | test |
 |---:|---|---:|---:|---:|
@@ -270,3 +270,25 @@
 | 11 | not suspicious traffic | 82 | 0.001 | 19 |
 | 12 | web application attack | 20 | 0.000 | 4 |
 | 13 | attempted user privilege gain | 5 | 0.000 | 3 |
+
+## nf-ton-iot-v3
+
+- 위치: `/home/work/yunuikang/multi-tester/data/nf-ton-iot-v3/{training,test}-flow.csv` · Tier B · Step1 K(elbow) = 6
+- 행: train 22,016,208 / test 5,504,052
+- 사용 피처: 숫자 45개 + 범주 2개 (`protocol` 5종, `L7_PROTO` 133종)
+- 드롭 — 누수(포트·날짜·난이도): `L4_SRC_PORT`, `L4_DST_PORT`
+- 드롭 — 다른 라벨 컬럼: `attack_flag`, `attack_step`
+- 숫자 피처 목록: `IN_BYTES`, `IN_PKTS`, `OUT_BYTES`, `OUT_PKTS`, `TCP_FLAGS`, `CLIENT_TCP_FLAGS`, `SERVER_TCP_FLAGS`, `FLOW_DURATION_MILLISECONDS`, `DURATION_IN`, `DURATION_OUT`, `MIN_TTL`, `MAX_TTL`, `LONGEST_FLOW_PKT`, `SHORTEST_FLOW_PKT`, `MIN_IP_PKT_LEN`, `MAX_IP_PKT_LEN`, `SRC_TO_DST_SECOND_BYTES`, `DST_TO_SRC_SECOND_BYTES`, `RETRANSMITTED_IN_BYTES`, `RETRANSMITTED_IN_PKTS`, `RETRANSMITTED_OUT_BYTES`, `RETRANSMITTED_OUT_PKTS`, `SRC_TO_DST_AVG_THROUGHPUT`, `DST_TO_SRC_AVG_THROUGHPUT`, `NUM_PKTS_UP_TO_128_BYTES`, `NUM_PKTS_128_TO_256_BYTES`, `NUM_PKTS_256_TO_512_BYTES`, `NUM_PKTS_512_TO_1024_BYTES`, `NUM_PKTS_1024_TO_1514_BYTES`, `TCP_WIN_MAX_IN`, `TCP_WIN_MAX_OUT`, `ICMP_TYPE`, `ICMP_IPV4_TYPE`, `DNS_QUERY_ID`, `DNS_QUERY_TYPE`, `DNS_TTL_ANSWER`, `FTP_COMMAND_RET_CODE`, `SRC_TO_DST_IAT_MIN`, `SRC_TO_DST_IAT_MAX`, `SRC_TO_DST_IAT_AVG`, `SRC_TO_DST_IAT_STDDEV`, `DST_TO_SRC_IAT_MIN`, `DST_TO_SRC_IAT_MAX`, `DST_TO_SRC_IAT_AVG`, `DST_TO_SRC_IAT_STDDEV`
+
+| # | 클래스 | train | train % | test |
+|---:|---|---:|---:|---:|
+| 0 | benign | 13,433,771 | 61.018 | 3,358,443 |
+| 1 | ddos | 3,312,440 | 15.045 | 828,816 |
+| 2 | xss | 2,267,668 | 10.300 | 566,767 |
+| 3 | password | 1,276,710 | 5.799 | 318,067 |
+| 4 | scanning | 1,086,952 | 4.937 | 272,025 |
+| 5 | injection | 305,575 | 1.388 | 76,202 |
+| 6 | Backdoor | 162,629 | 0.739 | 40,755 |
+| 7 | dos | 162,449 | 0.738 | 41,007 |
+| 8 | mitm | 4,818 | 0.022 | 1,195 |
+| 9 | ransomware | 3,196 | 0.015 | 775 |
