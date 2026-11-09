@@ -11,6 +11,7 @@ encoder:
   type: pairbind           # pairbind | nonlinear
   D: 10000
   bins: 16                 # PairBind: max PLE bins per numeric feature
+  order: 2                 # PairBind binding order: 2 = feature-pair binding, 1 = PLE atoms only (ablation)
   categorical_threshold: 32
   tree_min_samples_leaf: 64
   tree_min_fraction_leaf: 0.001

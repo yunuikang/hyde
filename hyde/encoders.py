@@ -104,12 +104,13 @@ class PairBindEncoder:
 
     def __init__(self, D: int, seed: int, device: torch.device, bins: int = 16,
                  categorical_threshold: int = 32, tree_min_samples_leaf: int = 64,
-                 tree_min_fraction_leaf: float = 0.001, tree_fit_max: int = 100_000):
+                 tree_min_fraction_leaf: float = 0.001, tree_fit_max: int = 100_000, order: int = 2):
         self.D, self.seed, self.device = D, seed, device
         self.bins, self.categorical_threshold = bins, categorical_threshold
         self.tree_min_samples_leaf = tree_min_samples_leaf
         self.tree_min_fraction_leaf = tree_min_fraction_leaf
         self.tree_fit_max = tree_fit_max
+        self.order = order          # features bound per coordinate: 2 = PairBind, 1 = PLE atoms only (no binding)
         self.rules: list[_Rule] = []
         self.pairs: np.ndarray | None = None
 
@@ -139,9 +140,9 @@ class PairBindEncoder:
         if F < 2:
             raise ValueError("PairBind needs at least two features")
         pair_rng = np.random.default_rng(self.seed + 86028121)
-        self.pairs = np.empty((self.D, 2), np.int32)
+        self.pairs = np.empty((self.D, self.order), np.int32)
         for d in range(self.D):
-            self.pairs[d] = pair_rng.choice(F, size=2, replace=False)
+            self.pairs[d] = pair_rng.choice(F, size=self.order, replace=False)
         coord_lists = [np.flatnonzero(np.any(self.pairs == f, axis=1)) for f in range(F)]
         tie_gen = torch.Generator(device="cpu").manual_seed(self.seed + 49979687)
         all_ties = (torch.randint(0, 2, (F, self.D), generator=tie_gen, dtype=torch.int8) * 2 - 1)
@@ -268,5 +269,5 @@ def build_encoder(cfg: dict, device: torch.device):
                                categorical_threshold=e["categorical_threshold"],
                                tree_min_samples_leaf=e["tree_min_samples_leaf"],
                                tree_min_fraction_leaf=e["tree_min_fraction_leaf"],
-                               tree_fit_max=e["tree_fit_max"])
+                               tree_fit_max=e["tree_fit_max"], order=int(e.get("order", 2)))
     raise ValueError(f"unknown encoder {e['type']!r}")

@@ -12,6 +12,7 @@ Stages (EXPERIMENT_PLAN.md):
   E1  tuning                  tune.py per dataset                            -> configs/tuned/
   E2  final HyDE              tuned config x 3 seeds, model saved            -> results/final/, models/final/
   E3  ablation                one component changed per arm x 3 seeds        -> results/ablation/<arm>/
+  E3b PLE order-1 arm         encoder without pair binding x 3 seeds         -> results/ablation/encoder_ple_order1/
   E4  unknown                 largest/median/smallest attack held out; HyDE 2-step / 1-step / RF
                                                                             -> results/unknown/<variant>/<scenario>/
   E5  dimension D             D in {1000, 2000, 5000} x 3 seeds              -> results/e5/D<d>/
@@ -137,6 +138,7 @@ def ablation_arms(ds: str) -> dict[str, list[str]]:
     bs = int((t["step2"] or {}).get("benign_split", 0) or 0)
     arms = {
         "encoder_nonlinear": ["encoder.type=nonlinear"],
+        "encoder_ple_order1": ["encoder.order=1"],          # PLE atoms only: isolates the pair-binding gain
         "class_weight_" + ("off" if cw > 0 else "on"):
             [f"class_weight.p={0.0 if cw > 0 else best_on(ds, 'class_weight.p', 0.5)}"],
         "hard_negative_" + ("off" if hn > 0 else "on"):
@@ -168,6 +170,12 @@ def e3(datasets):
             extra = [x for s in sets for x in ("--set", s)]
             jobs += [R("--data", d, "--seed", s, "--tag", f"ablation/{arm}", *extra) for s in SEEDS]
     return jobs
+
+
+def e3b(datasets):
+    """Added 2026-11-09: only the PLE order-1 arm (run separately so running E3 lists are untouched)."""
+    return [R("--data", d, "--seed", s, "--tag", "ablation/encoder_ple_order1", "--set", "encoder.order=1")
+            for d in ready(datasets) for s in SEEDS]
 
 
 def scenarios() -> list[dict]:
@@ -234,7 +242,7 @@ def e6(datasets):
     return jobs
 
 
-STAGES = {"cache": cache, "E0": e0, "E1": e1, "E2": e2, "E3": e3, "E4": e4, "E5": e5, "E6": e6}
+STAGES = {"cache": cache, "E0": e0, "E1": e1, "E2": e2, "E3": e3, "E3b": e3b, "E4": e4, "E5": e5, "E6": e6}
 
 
 def wait_for_disk(min_gb: float = 5.0, poll_sec: int = 300) -> None:

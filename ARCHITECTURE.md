@@ -324,6 +324,7 @@ M ← 0                                   (C×D, zero-init)
 
 E3 ablation 팔의 규칙
 - `encoder_nonlinear`: 인코더만 nonlinear로 바꾼다.
+- `encoder_ple_order1`: PairBind에서 **피처쌍 결합만 뺀다**(좌표마다 피처 1개의 PLE 원자). nonlinear → order1 → PairBind 순으로 보면 구간화(PLE)와 결합의 기여가 분리된다. (E3b, 2026-11-09 추가)
 - class weight / hard negative / boosting / 정상 하위 프로토타입: 튜닝에서 켜졌으면 끄고, 꺼졌으면 켠다.
   켤 때의 값은 **튜닝 기록에서 val이 가장 좋았던 '켬' 값**(`jobs.best_on`) — 임의로 정한 값을 쓰지 않는다.
 - Step1이 튜닝에서 켜졌으면 `step1_off`, `step1_K1`, `step1_retrain_*`.
