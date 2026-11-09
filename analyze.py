@@ -104,16 +104,17 @@ def main():
         for d in DATASETS:
             hy = m(final[d], f)
             nl = m(load(f"ablation/encoder_nonlinear/{d}__hyde__s*.json"), f)
+            o1 = m(load(f"ablation/encoder_ple_order1/{d}__hyde__s*.json"), f)
             mls = {a: m(ml[(d, a)], f) for a in ML}
             best_ml = max((v[0] for v in mls.values() if v[0] is not None), default=None)
             best = max([x for x in [hy[0], best_ml] if x is not None], default=None)
             gap = (f"{hy[0] - best_ml:+.2f}" if hy[0] is not None and best_ml is not None else "—")
             wins += hy[0] is not None and best_ml is not None and hy[0] >= best_ml
-            rows.append([d, fmt(*hy, bold=hy[0] == best), fmt(*nl)] +
+            rows.append([d, fmt(*hy, bold=hy[0] == best), fmt(*nl), fmt(*o1)] +
                         [fmt(*mls[a], bold=mls[a][0] == best) for a in ML] + [gap])
         doc += [f"## A. HyDE vs ML — {title}", "",
-                table(["데이터셋", "**HyDE**", "기존 HDC (nonlinear)"] + [SHORT[a] for a in ML] + ["HyDE − ML 최선"], rows),
-                "", f"HyDE가 ML 최선 이상인 데이터셋: **{wins}개**. 기존 HDC = 같은 튜닝값에서 인코더만 nonlinear(E3 `encoder_nonlinear`).", ""]
+                table(["데이터셋", "**HyDE**", "기존 HDC (nonlinear)", "PLE만 (결합 없음)"] + [SHORT[a] for a in ML] + ["HyDE − ML 최선"], rows),
+                "", f"HyDE가 ML 최선 이상인 데이터셋: **{wins}개**. 기존 HDC = 같은 튜닝값에서 인코더만 nonlinear(E3 `encoder_nonlinear`). PLE만 = PairBind에서 피처쌍 결합만 뺀 것(E3b).", ""]
 
     # ------------------------------------------------------------------ A': binary (folded)
     rows = []
