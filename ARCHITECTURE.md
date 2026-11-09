@@ -318,7 +318,7 @@ M ← 0                                   (C×D, zero-init)
 | E1 | `tune.py` × 11 | `configs/tuned/` |
 | E2 | 튜닝 구성 × 3시드 + 모델 저장 | `results/final/`, `models/final/` |
 | E3 | ablation: 튜닝 구성에서 **구성요소 하나만 뒤집는다**(`ablation_arms`) | `results/ablation/<arm>/` |
-| E4 | unknown: 데이터셋마다 큰/중간/작은 공격 클래스(test ≥ 30행)를 각각 holdout. 2-step / 1-step / RF / xgboost 비교 | `results/unknown/<variant>/<scenario>/` |
+| E4 | unknown: 데이터셋마다 큰/중간/작은 공격 클래스(test ≥ 30행)를 각각 holdout. HyDE 2-step / 1-step / RF 비교 (ML은 RF만 — 2026-11-09 결정. 그 전에 돈 Tier A xgboost unknown 결과는 보고에서 제외) | `results/unknown/<variant>/<scenario>/` |
 | E5 | D ∈ {1000, 2000, 5000} × 3시드, 11개 전부, 모델 저장 | `results/e5/D<d>/` |
 | E6 | 비용 측정: 다른 작업 없이 단독, seed 0, 같은 스레드 수. HyDE 학습 시간·GPU 추론·numpy CPU 추론(float/int8)·모델 크기, ML 6종 학습·추론 시간·모델 크기 | `results/cost/` |
 

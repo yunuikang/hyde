@@ -22,7 +22,7 @@ python infer.py --model models/final/mirai__s0.npz \
 
 | 세션 | 명령 | 맡는 일 |
 |---|---|---|
-| 1 | `nohup bash run_lane.sh A 6 >> logs/lane_A.log 2>&1 &` | Tier A 8개: E1 → E2 → E3 → E4 → E5 |
+| 1 | `nohup bash run_after_A.sh >> logs/after_A.log 2>&1 &` | Tier A 8개 E1 → E5, 끝나면 Lane B(역순)·ML(역순) 보조 |
 | 2 | `nohup bash run_lane.sh B 6 >> logs/lane_B.log 2>&1 &` | Tier B 3개(cicids2018, lspr23, nf-ton): E1 → E5 |
 | 3 | `nohup bash run_lane.sh ML <코어수> >> logs/lane_ML.log 2>&1 &` | E0 ML 대조군 전부 |
 | 마지막 | `nohup bash run_lane.sh COST 6 >> logs/lane_COST.log 2>&1 &` | E6 비용 측정 — **다른 작업이 모두 끝난 뒤, 한 세션에서 단독으로** |
