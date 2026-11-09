@@ -16,7 +16,7 @@ datasets:
     categorical: [dns.qry.name.len, http.referer, http.request.method, http.request.version,
                   mqtt.conack.flags, mqtt.protoname, mqtt.topic]
   cicids2018:      {dir: cicids2018,      K: 4, tier: B}
-  lspr23:          {dir: lspr23,          K: 5, tier: B, categorical: [Segment_src, Segment_dst]}
+  lspr23:          {dir: lspr23,          K: 5, tier: B}
   nf-ton-iot-v3:   {dir: nf-ton-iot-v3,   K: 6, tier: B, categorical: [l7_proto], train_cap: null}   # cap 10000000 if memory runs out
 
 # Columns compared after normalisation: strip, lower-case, spaces/'-' -> '_'.
@@ -30,6 +30,8 @@ drop_metadata_suffix: [_ip, _ip_addr]
 drop_leaky: [src_port, dst_port, l4_src_port, l4_dst_port, scr_port, des_port, sport, dport,
              srcport, dstport, destination_port, dst_port, tcp.srcport, tcp.dstport, udp.port,
              http.tls_port, date,
+             label_src, label_dst,     # lspr23 per-host labels: Label_dst=1 is 99.998% one attack class (2026-11-09)
+             segment_src, segment_dst, # lspr23 network segment of the IP (location, same rule as IPs)
              unknown]          # NSL-KDD difficulty level (0-21), derived from the label
 always_categorical: [protocol, service, flag]
 max_categories: 4096

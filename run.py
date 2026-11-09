@@ -281,6 +281,9 @@ def main(argv=None):
     if out.exists() and not args.force:
         print(f"skip (exists): {out}")
         return
+    if args.model == "hyde" and not args.no_tuned and not (ROOT / "configs" / "tuned" / f"{args.data}.yaml").exists():
+        print(f"refuse: configs/tuned/{args.data}.yaml missing — tune first (or pass --no-tuned)")
+        sys.exit(3)
     cfg = build_config(args.data, args.set + [f"seed={args.seed}"], args.config, use_tuned=not args.no_tuned)
     if args.threads:
         cfg["threads"] = args.threads
