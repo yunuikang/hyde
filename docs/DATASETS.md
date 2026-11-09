@@ -14,7 +14,7 @@
 | wustl-iiot-2021 | A | 955,571 | 238,893 | 40 | 1 (8) | 5 | 92.7 | 5,181 | 0 | 4 | 5 |
 | edge-iiot | A | 1,775,360 | 443,841 | 36 | 7 (49) | 15 | 72.8 | 1,585 | 0 | 9 | 6 |
 | cicids2018 | B | 11,294,033 | 4,843,150 | 68 | 1 (3) | 15 | 83.0 | 156,177 | 1 | 12 | 4 |
-| lspr23 | B | 12,268,365 | 3,066,360 | 77 | 5 (92) | 14 | 95.3 | 2,339,346 | 4 | 12 | 5 |
+| lspr23 | B | 12,268,365 | 3,066,360 | 75 | 3 (49) | 14 | 95.3 | 2,339,346 | 4 | 16 | 5 |
 | nf-ton-iot-v3 | B | 22,016,208 | 5,504,052 | 45 | 2 (138) | 10 | 61.0 | 4,203 | 0 | 4 | 6 |
 
 - 클래스 수는 benign 포함. 불균형 = train에서 가장 큰 클래스 ÷ 가장 작은 클래스.
@@ -247,12 +247,12 @@
 
 - 위치: `/home/work/yunuikang/multi-tester/data/lspr23/{training,test}-flow.csv` · Tier B · Step1 K(elbow) = 5
 - 행: train 12,268,365 / test 3,066,360
-- 사용 피처: 숫자 77개 + 범주 5개 (`protocol` 8종, `flag` 12종, `service` 29종, `Segment_src` 22종, `Segment_dst` 21종)
-- 드롭 — 누수(포트·날짜·난이도): `SrcPort`, `DstPort`
+- 사용 피처: 숫자 75개 + 범주 3개 (`protocol` 8종, `flag` 12종, `service` 29종)
+- 드롭 — 누수(포트·날짜·난이도): `SrcPort`, `DstPort`, `Label_src`, `Label_dst`, `Segment_src`, `Segment_dst`
 - 드롭 — 메타데이터(IP·시각·ID): `Int/Ext Dst IP`
 - 드롭 — 상수(train 고유값 1개): `Bwd PSH flags`, `Fwd URG flags`, `Bwd URG flags`, `URG Flag Cnt`, `Fwd Bytes/Bulk Avg`, `Fwd Packet/Bulk Avg`, `Fwd Bulk Rate Avg`
 - 드롭 — 다른 라벨 컬럼: `attack_flag`, `attack_step`
-- 숫자 피처 목록: `Flow Duration`, `Flow Bytes/s`, `Flow Packets/s`, `Tot Fwd Pkts`, `Tot Bwd Pkts`, `Total Length of Fwd Packet`, `Total Length of Bwd Packet`, `Fwd Packet Length Min`, `Fwd Packet Length Max`, `Fwd Packet Length Mean`, `Fwd Packet Length Std`, `Bwd Packet Length Min`, `Bwd Packet Length Max`, `Bwd Packet Length Mean`, `Bwd Packet Length Std`, `Flow IAT Mean`, `Flow IAT Min`, `Flow IAT Max`, `Flow IAT Stddev`, `Fwd IAT Min`, `Fwd IAT Max`, `Fwd IAT Mean`, `Fwd IAT Std`, `Fwd IAT Tot`, `Bwd IAT Min`, `Bwd IAT Max`, `Bwd IAT Mean`, `Bwd IAT Std`, `Bwd IAT Tot`, `Fwd PSH flags`, `Fwd Header Length`, `Bwd Header Length`, `Fwd Packets/s`, `Bwd Packets/s`, `Packet Length Min`, `Packet Length Max`, `Packet Length Mean`, `Packet Length Std`, `Packet Length Variance`, `FIN Flag Cnt`, `SYN Flag Cnt`, `RST Flag Cnt`, `PSH Flag Cnt`, `ACK Flag Cnt`, `CWR Flag Cnt`, `ECE Flag Cnt`, `Down/Up Ratio`, `Average Packet Size`, `Fwd Segment Size Avg`, `Bwd Segment Size Avg`, `Bwd Bytes/Bulk Avg`, `Bwd Packet/Bulk Avg`, `Bwd Bulk Rate Avg`, `Subflow Fwd Packets`, `Subflow Fwd Bytes`, `Subflow Bwd Packets`, `Subflow Bwd Bytes`, `FWD Init Win Bytes`, `Bwd Init Win Bytes`, `Fwd Act Data Pkts`, `Fwd Seg Size Min`, `Active Min`, `Active Mean`, `Active Max`, `Active Std`, `Idle Min`, `Idle Mean`, `Idle Max`, `Idle Std`, `SigID revision`, `Severity`, `Anomaly_event`, `L3/L4 Protocol`, `Label_src`, `Label_dst`, `External_src`, `External_dst`
+- 숫자 피처 목록: `Flow Duration`, `Flow Bytes/s`, `Flow Packets/s`, `Tot Fwd Pkts`, `Tot Bwd Pkts`, `Total Length of Fwd Packet`, `Total Length of Bwd Packet`, `Fwd Packet Length Min`, `Fwd Packet Length Max`, `Fwd Packet Length Mean`, `Fwd Packet Length Std`, `Bwd Packet Length Min`, `Bwd Packet Length Max`, `Bwd Packet Length Mean`, `Bwd Packet Length Std`, `Flow IAT Mean`, `Flow IAT Min`, `Flow IAT Max`, `Flow IAT Stddev`, `Fwd IAT Min`, `Fwd IAT Max`, `Fwd IAT Mean`, `Fwd IAT Std`, `Fwd IAT Tot`, `Bwd IAT Min`, `Bwd IAT Max`, `Bwd IAT Mean`, `Bwd IAT Std`, `Bwd IAT Tot`, `Fwd PSH flags`, `Fwd Header Length`, `Bwd Header Length`, `Fwd Packets/s`, `Bwd Packets/s`, `Packet Length Min`, `Packet Length Max`, `Packet Length Mean`, `Packet Length Std`, `Packet Length Variance`, `FIN Flag Cnt`, `SYN Flag Cnt`, `RST Flag Cnt`, `PSH Flag Cnt`, `ACK Flag Cnt`, `CWR Flag Cnt`, `ECE Flag Cnt`, `Down/Up Ratio`, `Average Packet Size`, `Fwd Segment Size Avg`, `Bwd Segment Size Avg`, `Bwd Bytes/Bulk Avg`, `Bwd Packet/Bulk Avg`, `Bwd Bulk Rate Avg`, `Subflow Fwd Packets`, `Subflow Fwd Bytes`, `Subflow Bwd Packets`, `Subflow Bwd Bytes`, `FWD Init Win Bytes`, `Bwd Init Win Bytes`, `Fwd Act Data Pkts`, `Fwd Seg Size Min`, `Active Min`, `Active Mean`, `Active Max`, `Active Std`, `Idle Min`, `Idle Mean`, `Idle Max`, `Idle Std`, `SigID revision`, `Severity`, `Anomaly_event`, `L3/L4 Protocol`, `External_src`, `External_dst`
 
 | # | 클래스 | train | train % | test |
 |---:|---|---:|---:|---:|
