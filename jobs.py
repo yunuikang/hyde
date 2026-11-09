@@ -12,7 +12,8 @@ Stages (EXPERIMENT_PLAN.md):
   E1  tuning                  tune.py per dataset                            -> configs/tuned/
   E2  final HyDE              tuned config x 3 seeds, model saved            -> results/final/, models/final/
   E3  ablation                one component changed per arm x 3 seeds        -> results/ablation/<arm>/
-  E4  unknown                 largest/median/smallest attack held out        -> results/unknown/<variant>/<scenario>/
+  E4  unknown                 largest/median/smallest attack held out; HyDE 2-step / 1-step / RF
+                                                                            -> results/unknown/<variant>/<scenario>/
   E5  dimension D             D in {1000, 2000, 5000} x 3 seeds              -> results/e5/D<d>/
   E6  cost benchmark          RUN ALONE at the very end, seed 0              -> results/cost/
 E2-E4 need configs/tuned/<dataset>.yaml (E1) to exist.
@@ -209,8 +210,9 @@ def e4(datasets):
             jobs.append(R(*base, "--seed", s, "--tag", f"unknown/2step/{sc['scenario']}", *s1))
             jobs.append(R(*base, "--seed", s, "--tag", f"unknown/1step/{sc['scenario']}",
                           "--set", "step1.enabled=false"))
-            for m in ("random_forest", "xgboost"):
-                jobs.append(R(*base, "--seed", s, "--model", m, "--tag", f"unknown/ml/{sc['scenario']}"))
+            # ML open-set baseline: RandomForest only, for every dataset (decided 2026-11-09 — xgboost on
+            # the large datasets would take hundreds of hours on an 8-core session).
+            jobs.append(R(*base, "--seed", s, "--model", "random_forest", "--tag", f"unknown/ml/{sc['scenario']}"))
     return jobs
 
 
