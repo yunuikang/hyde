@@ -254,13 +254,15 @@ def main():
     ap.add_argument("--datasets", nargs="+", default=DATASETS)
     ap.add_argument("--shard", default="0/1", help="i/n: run jobs i, i+n, i+2n, ...")
     ap.add_argument("--dry", action="store_true")
+    ap.add_argument("--reverse", action="store_true",
+                    help="run the list back-to-front (a helper session next to a running lane meets it in the middle)")
     ap.add_argument("--threads", type=int, default=None, help="CPU threads per job (passed to run.py / tune.py)")
     args = ap.parse_args()
     i, n = map(int, args.shard.split("/"))
     jobs = STAGES[args.stage](args.datasets)
     if args.threads and args.stage != "cache":
         jobs = [cmd + ["--threads", str(args.threads)] for cmd in jobs]
-    mine = jobs[i::n]
+    mine = jobs[i::n][::-1] if args.reverse else jobs[i::n]
     print(f"{args.stage}: {len(jobs)} jobs, this shard ({args.shard}) runs {len(mine)}", flush=True)
     failed = []
     for k, cmd in enumerate(mine, 1):
