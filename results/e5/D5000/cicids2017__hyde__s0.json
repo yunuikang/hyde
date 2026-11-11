@@ -1,0 +1,506 @@
+{
+ "history": {
+  "step2_epochs": [
+   {
+    "epoch": 1,
+    "val_macro_f1": 0.6614091956196005,
+    "val_weighted_f1": 0.9958869953899397,
+    "sec": 8.36
+   },
+   {
+    "epoch": 2,
+    "val_macro_f1": 0.6684246166805905,
+    "val_weighted_f1": 0.9963140872000688,
+    "sec": 7.6
+   },
+   {
+    "epoch": 3,
+    "val_macro_f1": 0.7815159790937332,
+    "val_weighted_f1": 0.9969877625641933,
+    "sec": 7.56
+   },
+   {
+    "epoch": 4,
+    "val_macro_f1": 0.7753529793182171,
+    "val_weighted_f1": 0.9969996367458309,
+    "sec": 7.6
+   },
+   {
+    "epoch": 5,
+    "val_macro_f1": 0.797541208008352,
+    "val_weighted_f1": 0.9970083113391724,
+    "sec": 7.55
+   },
+   {
+    "epoch": 6,
+    "val_macro_f1": 0.7869898122540833,
+    "val_weighted_f1": 0.9971024214792835,
+    "sec": 7.66
+   },
+   {
+    "epoch": 7,
+    "val_macro_f1": 0.8168238449976013,
+    "val_weighted_f1": 0.9971858275559852,
+    "sec": 7.64
+   },
+   {
+    "epoch": 8,
+    "val_macro_f1": 0.8232561989659818,
+    "val_weighted_f1": 0.9975740746261488,
+    "sec": 7.55
+   },
+   {
+    "epoch": 9,
+    "val_macro_f1": 0.8064591517688205,
+    "val_weighted_f1": 0.997322738958048,
+    "sec": 7.57
+   },
+   {
+    "epoch": 10,
+    "val_macro_f1": 0.8101016502606709,
+    "val_weighted_f1": 0.997127711054068,
+    "sec": 7.57
+   },
+   {
+    "epoch": 11,
+    "val_macro_f1": 0.8394279332792095,
+    "val_weighted_f1": 0.9976518654316305,
+    "sec": 7.57
+   },
+   {
+    "epoch": 12,
+    "val_macro_f1": 0.8250519045799788,
+    "val_weighted_f1": 0.9976904743759396,
+    "sec": 7.56
+   },
+   {
+    "epoch": 13,
+    "val_macro_f1": 0.8186925711793371,
+    "val_weighted_f1": 0.9975476601852891,
+    "sec": 7.81
+   },
+   {
+    "epoch": 14,
+    "val_macro_f1": 0.849037373307743,
+    "val_weighted_f1": 0.997727059858754,
+    "sec": 7.55
+   },
+   {
+    "epoch": 15,
+    "val_macro_f1": 0.849141581554105,
+    "val_weighted_f1": 0.9977651766647448,
+    "sec": 8.01
+   },
+   {
+    "epoch": 16,
+    "val_macro_f1": 0.8550763483525929,
+    "val_weighted_f1": 0.9977464661062376,
+    "sec": 7.52
+   },
+   {
+    "epoch": 17,
+    "val_macro_f1": 0.8223072466331367,
+    "val_weighted_f1": 0.9973015723432428,
+    "sec": 7.56
+   },
+   {
+    "epoch": 18,
+    "val_macro_f1": 0.8573264954968971,
+    "val_weighted_f1": 0.9977910260326309,
+    "sec": 7.58
+   },
+   {
+    "epoch": 19,
+    "val_macro_f1": 0.85290047861644,
+    "val_weighted_f1": 0.9977688232229154,
+    "sec": 7.79
+   },
+   {
+    "epoch": 20,
+    "val_macro_f1": 0.8570526446688318,
+    "val_weighted_f1": 0.9978704812069968,
+    "sec": 7.56
+   },
+   {
+    "epoch": 21,
+    "val_macro_f1": 0.8162090744751429,
+    "val_weighted_f1": 0.9974495048010795,
+    "sec": 7.57
+   },
+   {
+    "epoch": 22,
+    "val_macro_f1": 0.8584679924064557,
+    "val_weighted_f1": 0.9978049053287293,
+    "sec": 7.62
+   },
+   {
+    "epoch": 23,
+    "val_macro_f1": 0.846380047884075,
+    "val_weighted_f1": 0.9976945627172275,
+    "sec": 7.57
+   },
+   {
+    "epoch": 24,
+    "val_macro_f1": 0.8575451079660533,
+    "val_weighted_f1": 0.9978294051219938,
+    "sec": 7.7
+   },
+   {
+    "epoch": 25,
+    "val_macro_f1": 0.8097368300790796,
+    "val_weighted_f1": 0.9974881701311253,
+    "sec": 7.82
+   },
+   {
+    "epoch": 26,
+    "val_macro_f1": 0.8434499979311868,
+    "val_weighted_f1": 0.9975315494016646,
+    "sec": 7.58
+   },
+   {
+    "epoch": 27,
+    "val_macro_f1": 0.8180537990011367,
+    "val_weighted_f1": 0.9975035923561579,
+    "sec": 7.57
+   },
+   {
+    "epoch": 28,
+    "val_macro_f1": 0.8578545647806852,
+    "val_weighted_f1": 0.9977757323225908,
+    "sec": 7.55
+   },
+   {
+    "epoch": 29,
+    "val_macro_f1": 0.8589263031065814,
+    "val_weighted_f1": 0.9979983527870986,
+    "sec": 7.56
+   },
+   {
+    "epoch": 30,
+    "val_macro_f1": 0.8281833577609541,
+    "val_weighted_f1": 0.9976065063678831,
+    "sec": 7.55
+   },
+   {
+    "epoch": 31,
+    "val_macro_f1": 0.833796967111284,
+    "val_weighted_f1": 0.9978619620561577,
+    "sec": 7.92
+   },
+   {
+    "epoch": 32,
+    "val_macro_f1": 0.8463131609006734,
+    "val_weighted_f1": 0.9976933119608269,
+    "sec": 7.71
+   },
+   {
+    "epoch": 33,
+    "val_macro_f1": 0.8344170581900787,
+    "val_weighted_f1": 0.9978665918866435,
+    "sec": 7.57
+   },
+   {
+    "epoch": 34,
+    "val_macro_f1": 0.8243608538452477,
+    "val_weighted_f1": 0.9978024253431222,
+    "sec": 7.58
+   },
+   {
+    "epoch": 35,
+    "val_macro_f1": 0.8340254322413045,
+    "val_weighted_f1": 0.9978725300498719,
+    "sec": 7.55
+   },
+   {
+    "epoch": 36,
+    "val_macro_f1": 0.8242283365739534,
+    "val_weighted_f1": 0.9971477872928403,
+    "sec": 7.66
+   },
+   {
+    "epoch": 37,
+    "val_macro_f1": 0.8501725801813554,
+    "val_weighted_f1": 0.9977107494817912,
+    "sec": 7.62
+   }
+  ],
+  "selected_epoch": 29,
+  "step2_sec": 286.43
+ },
+ "train_sec": 309.31182312965393,
+ "encoder_sec": 22.87654733657837,
+ "model_path": "/home/work/yunuikang/hyde/models/e5/D5000/cicids2017__s0.npz",
+ "model_bytes": 703201,
+ "infer_agreement": 1.0,
+ "theta1": null,
+ "theta2": null,
+ "val": {
+  "macro_f1": 0.8543846097117157,
+  "macro_precision": 0.8447068271799287,
+  "macro_recall": 0.8708053046105896,
+  "weighted_f1": 0.9983030215784404,
+  "weighted_precision": 0.9984354412362416,
+  "weighted_recall": 0.9982417937745354,
+  "accuracy": 0.9982417937745354,
+  "macro_f1_attack_only": 0.8440471155447049,
+  "binary": {
+   "tp": 77766,
+   "fp": 442,
+   "tn": 317526,
+   "fn": 124,
+   "f1_attack": 0.9963740726979206,
+   "recall_attack": 0.9984080112979843,
+   "precision_attack": 0.9943484042553191,
+   "fpr": 0.001390076988879384,
+   "macro_f1": 0.9977418003738935
+  }
+ },
+ "test": {
+  "macro_f1": 0.855779246356492,
+  "macro_precision": 0.9120507915524698,
+  "macro_recall": 0.8564541495852127,
+  "weighted_f1": 0.9983704593540298,
+  "weighted_precision": 0.9984987526958675,
+  "weighted_recall": 0.9983160301205529,
+  "accuracy": 0.9983160301205529,
+  "macro_f1_attack_only": 0.845538321034489,
+  "per_class": {
+   "benign": {
+    "precision": 0.9995990429905224,
+    "recall": 0.9987057580559958,
+    "f1": 0.9991522008645349,
+    "support": 681480
+   },
+   "dos hulk": {
+    "precision": 0.9987102196974088,
+    "recall": 0.9978859269341597,
+    "f1": 0.9982979031615543,
+    "support": 69061
+   },
+   "portscan": {
+    "precision": 0.9940985664957622,
+    "recall": 0.9996422558922559,
+    "f1": 0.9968627039504748,
+    "support": 47520
+   },
+   "ddos": {
+    "precision": 0.9995598933388562,
+    "recall": 0.9998705166386119,
+    "f1": 0.9997151808601538,
+    "support": 38615
+   },
+   "dos goldeneye": {
+    "precision": 0.9844961240310077,
+    "recall": 0.997708674304419,
+    "f1": 0.9910583644935783,
+    "support": 3055
+   },
+   "ftp-patator": {
+    "precision": 0.9979381443298969,
+    "recall": 0.9861450692746536,
+    "f1": 0.9920065587210494,
+    "support": 2454
+   },
+   "ssh-patator": {
+    "precision": 0.9977591036414566,
+    "recall": 0.9938616071428571,
+    "f1": 0.9958065417948001,
+    "support": 1792
+   },
+   "dos slowloris": {
+    "precision": 0.9909655561829475,
+    "recall": 0.9982935153583617,
+    "f1": 0.9946160385378294,
+    "support": 1758
+   },
+   "dos slowhttptest": {
+    "precision": 0.9456849728424864,
+    "recall": 0.9873976055450535,
+    "f1": 0.9660912453760789,
+    "support": 1587
+   },
+   "bot": {
+    "precision": 0.5845665961945031,
+    "recall": 0.9341216216216216,
+    "f1": 0.7191157347204161,
+    "support": 592
+   },
+   "web attack brute force": {
+    "precision": 0.7930174563591023,
+    "recall": 0.673728813559322,
+    "f1": 0.7285223367697594,
+    "support": 472
+   },
+   "web attack xss": {
+    "precision": 0.39436619718309857,
+    "recall": 0.4540540540540541,
+    "f1": 0.4221105527638191,
+    "support": 185
+   },
+   "infiltration": {
+    "precision": 1.0,
+    "recall": 0.7142857142857143,
+    "f1": 0.8333333333333334,
+    "support": 7
+   },
+   "web attack sql injection": {
+    "precision": 1.0,
+    "recall": 0.1111111111111111,
+    "f1": 0.2,
+    "support": 9
+   },
+   "heartbleed": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 3
+   }
+  },
+  "binary": {
+   "tp": 166837,
+   "fp": 882,
+   "tn": 680598,
+   "fn": 273,
+   "f1_attack": 0.9965504780051907,
+   "recall_attack": 0.9983663455209144,
+   "precision_attack": 0.9947412040377059,
+   "fpr": 0.0012942419440042261,
+   "macro_f1": 0.9978513394348628
+  }
+ },
+ "infer_ms_per_sample": 0.002314264771316254,
+ "test_int8_proto": {
+  "macro_f1": 0.15917081877717373,
+  "weighted_f1": 0.8273266764592531,
+  "accuracy": 0.8675591274938427
+ },
+ "eval_sec": 8.448244333267212,
+ "dataset": "cicids2017",
+ "model": "hyde",
+ "seed": 0,
+ "tag": "e5/D5000",
+ "holdout": [],
+ "config": {
+  "seed": 0,
+  "threads": 6,
+  "device": "cuda",
+  "data": {
+   "val_frac": 0.2,
+   "tune_subsample": null
+  },
+  "encoder": {
+   "type": "pairbind",
+   "D": 5000,
+   "bins": 8,
+   "categorical_threshold": 32,
+   "tree_min_samples_leaf": 64,
+   "tree_min_fraction_leaf": 0.001,
+   "tree_fit_max": 100000
+  },
+  "step1": {
+   "enabled": false,
+   "K": null,
+   "kmeans_fit_max": 5000,
+   "theta1": 0.9,
+   "retrain": {
+    "enabled": true,
+    "epochs": 5,
+    "lr": 0.05,
+    "batch": 512
+   }
+  },
+  "step2": {
+   "readout": "adamw",
+   "mass": {
+    "lr": 0.035,
+    "batch": 8192
+   },
+   "adamw": {
+    "lr": 0.03,
+    "weight_decay": 0.0001,
+    "batch": 4096
+   },
+   "epochs": 60,
+   "patience": 8,
+   "select_metric": "macro_f1",
+   "val_select_max": 200000,
+   "benign_split": 0
+  },
+  "class_weight": {
+   "p": 0.0,
+   "cap": 100.0
+  },
+  "hard_negative": {
+   "beta": 0.0
+  },
+  "boosting": {
+   "T": 0,
+   "d_cap_mult": 100.0
+  },
+  "unknown": {
+   "enabled": false,
+   "reject_rate": 0.05
+  },
+  "eval": {
+   "int8_proto": false,
+   "infer_check_rows": 20000
+  },
+  "ml": {
+   "class_weight_p": [
+    0.0,
+    0.5
+   ],
+   "mlp": {
+    "hidden": 512,
+    "layers": 3,
+    "lr": 0.001,
+    "batch": 256,
+    "epochs": 50,
+    "patience": 8
+   }
+  }
+ },
+ "git": "4097139",
+ "finished": "2026-11-09 11:46:07",
+ "data": {
+  "n_fit": 1583428,
+  "n_val": 395858,
+  "n_test": 848590,
+  "n_numeric": 69,
+  "n_categorical": 0,
+  "classes": [
+   "benign",
+   "dos hulk",
+   "portscan",
+   "ddos",
+   "dos goldeneye",
+   "ftp-patator",
+   "ssh-patator",
+   "dos slowloris",
+   "dos slowhttptest",
+   "bot",
+   "web attack brute force",
+   "web attack xss",
+   "infiltration",
+   "web attack sql injection",
+   "heartbleed"
+  ],
+  "dropped_columns": {
+   "destination port": "leaky",
+   "bwd psh flags": "constant",
+   "bwd urg flags": "constant",
+   "fwd avg bytes/bulk": "constant",
+   "fwd avg packets/bulk": "constant",
+   "fwd avg bulk rate": "constant",
+   "bwd avg bytes/bulk": "constant",
+   "bwd avg packets/bulk": "constant",
+   "bwd avg bulk rate": "constant",
+   "attack_flag": "label",
+   "attack_step": "label"
+  },
+  "test_unknown_rows": 0
+ },
+ "wall_sec": 324.75122332572937,
+ "peak_rss_mb": 4431.8671875,
+ "peak_gpu_mb": 365.60009765625
+}

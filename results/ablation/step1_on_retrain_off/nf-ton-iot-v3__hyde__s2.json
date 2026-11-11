@@ -1,0 +1,369 @@
+{
+ "history": {
+  "hn_unique_fraction": [
+   0.6309166780881766,
+   0.6321183496294719,
+   0.6321321462835958,
+   0.6320460733302954,
+   0.6320993863270956,
+   0.6319428539179602,
+   0.6321684831504245,
+   0.6319988921797726,
+   0.632157184655895,
+   0.6319829380241806,
+   0.6322077156113286,
+   0.632126355095445,
+   0.6321361774047597,
+   0.6321318624018237,
+   0.6320507857677122,
+   0.6320104745560742,
+   0.6320058756713662,
+   0.6321323733890135
+  ],
+  "step2_epochs": [
+   {
+    "epoch": 1,
+    "val_macro_f1": 0.8692360656534348,
+    "val_weighted_f1": 0.9373740442932285,
+    "sec": 126.19
+   },
+   {
+    "epoch": 2,
+    "val_macro_f1": 0.875834912158336,
+    "val_weighted_f1": 0.9367083643659418,
+    "sec": 124.7
+   },
+   {
+    "epoch": 3,
+    "val_macro_f1": 0.8681754543998311,
+    "val_weighted_f1": 0.9371369029886747,
+    "sec": 124.57
+   },
+   {
+    "epoch": 4,
+    "val_macro_f1": 0.8652677102408199,
+    "val_weighted_f1": 0.9377802392059956,
+    "sec": 124.39
+   },
+   {
+    "epoch": 5,
+    "val_macro_f1": 0.8821497049603778,
+    "val_weighted_f1": 0.9378652410400711,
+    "sec": 124.0
+   },
+   {
+    "epoch": 6,
+    "val_macro_f1": 0.8829506533641276,
+    "val_weighted_f1": 0.9391587059558401,
+    "sec": 124.7
+   },
+   {
+    "epoch": 7,
+    "val_macro_f1": 0.8762645252490776,
+    "val_weighted_f1": 0.9380202938689127,
+    "sec": 123.8
+   },
+   {
+    "epoch": 8,
+    "val_macro_f1": 0.8830700424639382,
+    "val_weighted_f1": 0.9383407171345548,
+    "sec": 124.32
+   },
+   {
+    "epoch": 9,
+    "val_macro_f1": 0.8908163248959597,
+    "val_weighted_f1": 0.9390492429142703,
+    "sec": 123.97
+   },
+   {
+    "epoch": 10,
+    "val_macro_f1": 0.8923624017360025,
+    "val_weighted_f1": 0.9382085290863921,
+    "sec": 124.93
+   },
+   {
+    "epoch": 11,
+    "val_macro_f1": 0.8837012655091335,
+    "val_weighted_f1": 0.9379791703103605,
+    "sec": 125.03
+   },
+   {
+    "epoch": 12,
+    "val_macro_f1": 0.8718557249925869,
+    "val_weighted_f1": 0.9295193848719592,
+    "sec": 125.03
+   },
+   {
+    "epoch": 13,
+    "val_macro_f1": 0.8777257088270256,
+    "val_weighted_f1": 0.9390422322634336,
+    "sec": 124.22
+   },
+   {
+    "epoch": 14,
+    "val_macro_f1": 0.8788520427848067,
+    "val_weighted_f1": 0.9387078965993694,
+    "sec": 124.25
+   },
+   {
+    "epoch": 15,
+    "val_macro_f1": 0.8710825013865845,
+    "val_weighted_f1": 0.9286637717040835,
+    "sec": 124.63
+   },
+   {
+    "epoch": 16,
+    "val_macro_f1": 0.8695375369566738,
+    "val_weighted_f1": 0.9377962099079206,
+    "sec": 125.11
+   },
+   {
+    "epoch": 17,
+    "val_macro_f1": 0.890464850083265,
+    "val_weighted_f1": 0.9389463061726913,
+    "sec": 124.35
+   },
+   {
+    "epoch": 18,
+    "val_macro_f1": 0.8874699286256751,
+    "val_weighted_f1": 0.9388361456587483,
+    "sec": 124.92
+   }
+  ],
+  "selected_epoch": 10,
+  "step2_sec": 2284.43,
+  "step1_K": 6,
+  "step1_sec": 56.95
+ },
+ "train_sec": 2478.730251789093,
+ "encoder_sec": 137.33618116378784,
+ "theta1": 0.97,
+ "theta2": null,
+ "val": {
+  "macro_f1": 0.876537737393847,
+  "macro_precision": 0.9109575659632114,
+  "macro_recall": 0.864884285533404,
+  "weighted_f1": 0.938751405872084,
+  "weighted_precision": 0.9398941730394503,
+  "weighted_recall": 0.9446501009937678,
+  "accuracy": 0.9446501009937678,
+  "macro_f1_attack_only": 0.8675022450617464,
+  "binary": {
+   "tp": 1559909,
+   "fp": 73382,
+   "tn": 2613372,
+   "fn": 156579,
+   "f1_attack": 0.9313503965485485,
+   "recall_attack": 0.9087794380152964,
+   "precision_attack": 0.9550710804137168,
+   "fpr": 0.027312511677660106,
+   "macro_f1": 0.9446037824656498
+  }
+ },
+ "test": {
+  "macro_f1": 0.8713152639048449,
+  "macro_precision": 0.9060918685065676,
+  "macro_recall": 0.8612406608518652,
+  "weighted_f1": 0.9385569032689289,
+  "weighted_precision": 0.939699048316695,
+  "weighted_recall": 0.9444910767558156,
+  "accuracy": 0.9444910767558156,
+  "macro_f1_attack_only": 0.861711199569102,
+  "per_class": {
+   "benign": {
+    "precision": 0.9432691918987751,
+    "recall": 0.9726861524819685,
+    "f1": 0.9577518429265294,
+    "support": 3358443
+   },
+   "ddos": {
+    "precision": 0.9924147361745835,
+    "recall": 0.9780831933746453,
+    "f1": 0.9851968477142647,
+    "support": 828816
+   },
+   "xss": {
+    "precision": 0.933402300108258,
+    "recall": 0.9933852888400347,
+    "f1": 0.9624601267056196,
+    "support": 566767
+   },
+   "password": {
+    "precision": 0.9297719369234648,
+    "recall": 0.9969440400921818,
+    "f1": 0.9621870604888692,
+    "support": 318067
+   },
+   "scanning": {
+    "precision": 0.7381295176497515,
+    "recall": 0.36751401525595073,
+    "f1": 0.4907059730136993,
+    "support": 272025
+   },
+   "injection": {
+    "precision": 0.9807379120570562,
+    "recall": 0.9167213458964332,
+    "f1": 0.9476497320762396,
+    "support": 76202
+   },
+   "Backdoor": {
+    "precision": 0.9995822993193936,
+    "recall": 0.9982088087351245,
+    "f1": 0.9988950818867091,
+    "support": 40755
+   },
+   "dos": {
+    "precision": 0.9527761311993677,
+    "recall": 0.7055380788645841,
+    "f1": 0.8107267454079273,
+    "support": 41007
+   },
+   "mitm": {
+    "precision": 0.930406852248394,
+    "recall": 0.7271966527196653,
+    "f1": 0.8163457022076092,
+    "support": 1195
+   },
+   "ransomware": {
+    "precision": 0.660427807486631,
+    "recall": 0.9561290322580646,
+    "f1": 0.7812335266209804,
+    "support": 775
+   }
+  },
+  "binary": {
+   "tp": 1949140,
+   "fp": 91732,
+   "tn": 3266711,
+   "fn": 196469,
+   "f1_attack": 0.931159128633332,
+   "recall_attack": 0.9084320582175037,
+   "precision_attack": 0.9550525461665406,
+   "fpr": 0.027313847518031422,
+   "macro_f1": 0.9444554857799307
+  }
+ },
+ "infer_ms_per_sample": 0.0024708412457740644,
+ "test_int8_proto": {
+  "macro_f1": 0.11937087713551235,
+  "weighted_f1": 0.4660039809257344,
+  "accuracy": 0.6120581709620476
+ },
+ "eval_sec": 56.064497232437134,
+ "dataset": "nf-ton-iot-v3",
+ "model": "hyde",
+ "seed": 2,
+ "tag": "ablation/step1_on_retrain_off",
+ "holdout": [],
+ "config": {
+  "seed": 2,
+  "threads": 6,
+  "device": "cuda",
+  "data": {
+   "val_frac": 0.2,
+   "tune_subsample": null
+  },
+  "encoder": {
+   "type": "pairbind",
+   "D": 10000,
+   "bins": 32,
+   "categorical_threshold": 32,
+   "tree_min_samples_leaf": 64,
+   "tree_min_fraction_leaf": 0.001,
+   "tree_fit_max": 100000
+  },
+  "step1": {
+   "enabled": true,
+   "K": 6,
+   "kmeans_fit_max": 5000,
+   "theta1": 0.97,
+   "retrain": {
+    "enabled": false,
+    "epochs": 5,
+    "lr": 0.01,
+    "batch": 512
+   }
+  },
+  "step2": {
+   "readout": "adamw",
+   "mass": {
+    "lr": 0.035,
+    "batch": 8192
+   },
+   "adamw": {
+    "lr": 0.01,
+    "weight_decay": 0.0001,
+    "batch": 4096
+   },
+   "epochs": 60,
+   "patience": 8,
+   "select_metric": "macro_f1",
+   "val_select_max": 200000,
+   "benign_split": 0
+  },
+  "class_weight": {
+   "p": 0.0,
+   "cap": 100.0
+  },
+  "hard_negative": {
+   "beta": 0.5
+  },
+  "boosting": {
+   "T": 0,
+   "d_cap_mult": 100.0
+  },
+  "unknown": {
+   "enabled": false,
+   "reject_rate": 0.05
+  },
+  "eval": {
+   "int8_proto": false,
+   "infer_check_rows": 20000
+  },
+  "ml": {
+   "class_weight_p": [
+    0.0,
+    0.5
+   ],
+   "mlp": {
+    "hidden": 512,
+    "layers": 3,
+    "lr": 0.001,
+    "batch": 256,
+    "epochs": 50,
+    "patience": 8
+   }
+  }
+ },
+ "git": "4097139",
+ "finished": "2026-11-09 13:51:13",
+ "data": {
+  "n_fit": 17612966,
+  "n_val": 4403242,
+  "n_test": 5504052,
+  "n_numeric": 45,
+  "n_categorical": 2,
+  "classes": [
+   "benign",
+   "ddos",
+   "xss",
+   "password",
+   "scanning",
+   "injection",
+   "Backdoor",
+   "dos",
+   "mitm",
+   "ransomware"
+  ],
+  "dropped_columns": {
+   "L4_SRC_PORT": "leaky",
+   "L4_DST_PORT": "leaky",
+   "attack_flag": "label",
+   "attack_step": "label"
+  },
+  "test_unknown_rows": 0
+ },
+ "wall_sec": 2544.334419965744,
+ "peak_rss_mb": 15782.36328125,
+ "peak_gpu_mb": 843.80419921875
+}

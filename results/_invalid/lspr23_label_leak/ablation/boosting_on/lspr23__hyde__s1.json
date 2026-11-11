@@ -1,0 +1,294 @@
+{
+ "history": {
+  "samme": [
+   {
+    "t": 1,
+    "eps": 0.29014772176742554
+   },
+   {
+    "t": 2,
+    "eps": 0.5657128095626831
+   },
+   {
+    "t": 3,
+    "eps": 0.783826470375061
+   },
+   {
+    "t": 4,
+    "eps": 0.5608789920806885
+   },
+   {
+    "t": 5,
+    "eps": 0.4992102384567261
+   }
+  ],
+  "step2_sec": 273.97
+ },
+ "train_sec": 395.0798783302307,
+ "encoder_sec": 121.09885454177856,
+ "theta1": null,
+ "theta2": null,
+ "val": {
+  "macro_f1": 0.16060235489541314,
+  "macro_precision": 0.14517062926810145,
+  "macro_recall": 0.6411760921166009,
+  "weighted_f1": 0.9042075557247408,
+  "weighted_precision": 0.9838253802645112,
+  "weighted_recall": 0.8416687315990076,
+  "accuracy": 0.8416687315990076,
+  "macro_f1_attack_only": 0.10290616938372733,
+  "binary": {
+   "tp": 114234,
+   "fp": 383665,
+   "tn": 1955681,
+   "fn": 92,
+   "f1_attack": 0.3731765282371677,
+   "recall_attack": 0.999195283662509,
+   "precision_attack": 0.2294320735731544,
+   "fpr": 0.1640052390710908,
+   "macro_f1": 0.6419146473922487
+  }
+ },
+ "test": {
+  "macro_f1": 0.1606815325103401,
+  "macro_precision": 0.14512270657663648,
+  "macro_recall": 0.7085808646714528,
+  "weighted_f1": 0.9042741730599992,
+  "weighted_precision": 0.9838153926142281,
+  "weighted_recall": 0.8418098331572288,
+  "accuracy": 0.8418098331572288,
+  "macro_f1_attack_only": 0.10298455393147701,
+  "per_class": {
+   "benign": {
+    "precision": 0.9999570547404818,
+    "recall": 0.8361427422311476,
+    "f1": 0.9107422540355603,
+    "support": 2923984
+   },
+   "generic protocol command decode": {
+    "precision": 0.6881932223639388,
+    "recall": 0.9760487268730537,
+    "f1": 0.8072265199647763,
+    "support": 131016
+   },
+   "misc activity": {
+    "precision": 0.2896443589195353,
+    "recall": 0.8747309513560052,
+    "f1": 0.4351876639717299,
+    "support": 9292
+   },
+   "attempted information leak": {
+    "precision": 0.0009242144177449168,
+    "recall": 0.002680965147453083,
+    "f1": 0.0013745704467353953,
+    "support": 1119
+   },
+   "potentially bad traffic": {
+    "precision": 0.03412073490813648,
+    "recall": 0.18527315914489312,
+    "f1": 0.05762837089028445,
+    "support": 421
+   },
+   "potential corporate privacy violation": {
+    "precision": 0.00814931650893796,
+    "recall": 0.7013574660633484,
+    "f1": 0.016111428719921002,
+    "support": 221
+   },
+   "network trojan detected": {
+    "precision": 0.0046423044875610045,
+    "recall": 0.31451612903225806,
+    "f1": 0.009149560117302053,
+    "support": 124
+   },
+   "network scan": {
+    "precision": 0.00425428467242008,
+    "recall": 0.7142857142857143,
+    "f1": 0.008458192363460609,
+    "support": 49
+   },
+   "unwanted program detected": {
+    "precision": 0.0004320300427045081,
+    "recall": 0.5531914893617021,
+    "f1": 0.0008633858006242943,
+    "support": 47
+   },
+   "attempted denial of service": {
+    "precision": 0.0006787829421846629,
+    "recall": 1.0,
+    "f1": 0.0013566450168732724,
+    "support": 40
+   },
+   "device retrieving external ip": {
+    "precision": 0.00017890087773243137,
+    "recall": 0.7619047619047619,
+    "f1": 0.0003577177606868181,
+    "support": 21
+   },
+   "not suspicious traffic": {
+    "precision": 0.00016852039096730705,
+    "recall": 1.0,
+    "f1": 0.00033698399326032014,
+    "support": 19
+   },
+   "web application attack": {
+    "precision": 0.0002759381898454746,
+    "recall": 1.0,
+    "f1": 0.0005517241379310345,
+    "support": 4
+   },
+   "attempted user privilege gain": {
+    "precision": 9.822861072001572e-05,
+    "recall": 1.0,
+    "f1": 0.0001964379256155055,
+    "support": 3
+   }
+  },
+  "binary": {
+   "tp": 142271,
+   "fp": 479116,
+   "tn": 2444868,
+   "fn": 105,
+   "f1_attack": 0.3725527421464512,
+   "recall_attack": 0.9992625161544081,
+   "precision_attack": 0.22895715552465692,
+   "fpr": 0.16385725776885235,
+   "macro_f1": 0.6416474980910057
+  }
+ },
+ "infer_ms_per_sample": 0.0033883501609766717,
+ "test_int8_proto": {
+  "macro_f1": 0.15554691355652936,
+  "weighted_f1": 0.8466553052105434,
+  "accuracy": 0.7462183174839223
+ },
+ "eval_sec": 42.92104434967041,
+ "dataset": "lspr23",
+ "model": "hyde",
+ "seed": 1,
+ "tag": "ablation/boosting_on",
+ "holdout": [],
+ "config": {
+  "seed": 1,
+  "threads": 8,
+  "device": "cuda",
+  "data": {
+   "val_frac": 0.2,
+   "tune_subsample": null
+  },
+  "encoder": {
+   "type": "pairbind",
+   "D": 10000,
+   "bins": 16,
+   "categorical_threshold": 32,
+   "tree_min_samples_leaf": 64,
+   "tree_min_fraction_leaf": 0.001,
+   "tree_fit_max": 100000
+  },
+  "step1": {
+   "enabled": false,
+   "K": null,
+   "kmeans_fit_max": 5000,
+   "theta1": 0.9,
+   "retrain": {
+    "enabled": true,
+    "epochs": 5,
+    "lr": 0.05,
+    "batch": 512
+   }
+  },
+  "step2": {
+   "readout": "adamw",
+   "mass": {
+    "lr": 0.035,
+    "batch": 8192
+   },
+   "adamw": {
+    "lr": 0.01,
+    "weight_decay": 0.0001,
+    "batch": 4096
+   },
+   "epochs": 60,
+   "patience": 8,
+   "select_metric": "macro_f1",
+   "val_select_max": 200000,
+   "benign_split": 0
+  },
+  "class_weight": {
+   "p": 0.0,
+   "cap": 100.0
+  },
+  "hard_negative": {
+   "beta": 0.0
+  },
+  "boosting": {
+   "T": 5,
+   "d_cap_mult": 100.0
+  },
+  "unknown": {
+   "enabled": false,
+   "reject_rate": 0.05
+  },
+  "eval": {
+   "int8_proto": false,
+   "infer_check_rows": 20000
+  },
+  "ml": {
+   "class_weight_p": [
+    0.0,
+    0.5
+   ],
+   "mlp": {
+    "hidden": 512,
+    "layers": 3,
+    "lr": 0.001,
+    "batch": 256,
+    "epochs": 50,
+    "patience": 8
+   }
+  }
+ },
+ "git": "4097139",
+ "finished": "2026-11-09 17:28:26",
+ "data": {
+  "n_fit": 9814693,
+  "n_val": 2453672,
+  "n_test": 3066360,
+  "n_numeric": 77,
+  "n_categorical": 5,
+  "classes": [
+   "benign",
+   "generic protocol command decode",
+   "misc activity",
+   "attempted information leak",
+   "potentially bad traffic",
+   "potential corporate privacy violation",
+   "network trojan detected",
+   "network scan",
+   "unwanted program detected",
+   "attempted denial of service",
+   "device retrieving external ip",
+   "not suspicious traffic",
+   "web application attack",
+   "attempted user privilege gain"
+  ],
+  "dropped_columns": {
+   "SrcPort": "leaky",
+   "DstPort": "leaky",
+   "Bwd PSH flags": "constant",
+   "Fwd URG flags": "constant",
+   "Bwd URG flags": "constant",
+   "URG Flag Cnt": "constant",
+   "Fwd Bytes/Bulk Avg": "constant",
+   "Fwd Packet/Bulk Avg": "constant",
+   "Fwd Bulk Rate Avg": "constant",
+   "Int/Ext Dst IP": "metadata",
+   "attack_flag": "label",
+   "attack_step": "label"
+  },
+  "test_unknown_rows": 0
+ },
+ "wall_sec": 444.1832523345947,
+ "peak_rss_mb": 14460.21484375,
+ "peak_gpu_mb": 858.4375
+}

@@ -1,0 +1,35 @@
+dataset,scenario,holdout,train_rows
+mirai,large,port scanning (reconnaissance),1617
+mirai,median,udp flooding (action),581
+mirai,small,bruteforce (infection),109
+nsl-kdd,large,neptune,41214
+nsl-kdd,median,nmap,1493
+nsl-kdd,small,warezmaster,20
+nsl-kdd,natural,,0
+unsw-nb15,large,Generic,40000
+unsw-nb15,median,Reconnaissance,10491
+unsw-nb15,small,Worms,130
+ton-iot,large,injection,322596
+ton-iot,median,scanning,14491
+ton-iot,small,ransomware,106
+cicids2017,large,dos hulk,161063
+cicids2017,median,ssh-patator,4105
+cicids2017,small,web attack xss,467
+xiiotid,large,RDOS,113233
+xiiotid,median,Exfiltration,17706
+xiiotid,small,crypto-ransomware,372
+wustl-iiot-2021,large,DoS,62632
+wustl-iiot-2021,median,CommInj,209
+wustl-iiot-2021,small,Backdoor,171
+edge-iiot,large,DDoS_UDP,96982
+edge-iiot,median,Uploading,30066
+edge-iiot,small,Fingerprinting,815
+cicids2018,large,ddos hoic,480527
+cicids2018,median,infilteration,112518
+cicids2018,small,xss,162
+lspr23,large,generic protocol command decode,526228
+lspr23,median,potential corporate privacy violation,885
+lspr23,small,attempted denial of service,187
+nf-ton-iot-v3,large,ddos,3312440
+nf-ton-iot-v3,median,injection,305575
+nf-ton-iot-v3,small,ransomware,3196

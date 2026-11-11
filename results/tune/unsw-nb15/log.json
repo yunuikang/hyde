@@ -1,0 +1,1622 @@
+[
+ {
+  "axis": "readout",
+  "value": "mass",
+  "macro_f1": 0.45173262573244977,
+  "weighted_f1": 0.7593445655285511,
+  "sec": 11.0,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.0}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"mass\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "readout",
+  "value": "adamw",
+  "macro_f1": 0.5659132130766591,
+  "weighted_f1": 0.8050192894451049,
+  "sec": 22.2,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.0}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "lr",
+  "value": 0.01,
+  "macro_f1": 0.5659132130766591,
+  "weighted_f1": 0.8050192894451049,
+  "sec": 20.8,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.0}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "lr",
+  "value": 0.003,
+  "macro_f1": 0.5231915292125153,
+  "weighted_f1": 0.7973490532343739,
+  "sec": 25.2,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.0}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.003, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "lr",
+  "value": 0.03,
+  "macro_f1": 0.548253477864532,
+  "weighted_f1": 0.7915191300194729,
+  "sec": 8.7,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.0}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.03, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "class_weight.p",
+  "value": 0.0,
+  "macro_f1": 0.5659132130766591,
+  "weighted_f1": 0.8050192894451049,
+  "sec": 20.7,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.0}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "class_weight.p",
+  "value": 0.25,
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 14.2,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.25}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "class_weight.p",
+  "value": 0.5,
+  "macro_f1": 0.5840360947108023,
+  "weighted_f1": 0.7923322806925409,
+  "sec": 7.6,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.5}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "class_weight.p",
+  "value": 0.75,
+  "macro_f1": 0.5643668455475128,
+  "weighted_f1": 0.7958551044341569,
+  "sec": 20.8,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.75}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "class_weight.p",
+  "value": 1.0,
+  "macro_f1": 0.5275295705128977,
+  "weighted_f1": 0.7801753845964865,
+  "sec": 17.2,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 1.0}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "hard_negative.beta",
+  "value": 0.0,
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 14.9,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.25}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "hard_negative.beta",
+  "value": 0.5,
+  "macro_f1": 0.5980127893412034,
+  "weighted_f1": 0.8043456235340747,
+  "sec": 36.6,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.25}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.5}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "hard_negative.beta",
+  "value": 1.0,
+  "macro_f1": 0.5890484192368155,
+  "weighted_f1": 0.802866197338958,
+  "sec": 25.3,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.25}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 1.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "hard_negative.beta",
+  "value": 2.0,
+  "macro_f1": 0.579941144824341,
+  "weighted_f1": 0.7997761747732958,
+  "sec": 17.7,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.25}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 2.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "hard_negative.beta",
+  "value": 4.0,
+  "macro_f1": 0.5908600161972571,
+  "weighted_f1": 0.8038086328236618,
+  "sec": 27.3,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.25}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 4.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "boosting.T",
+  "value": 0,
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 13.8,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.25}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "boosting.T",
+  "value": 5,
+  "macro_f1": 0.3179451320909585,
+  "weighted_f1": 0.619738938748532,
+  "sec": 3.1,
+  "key": "{\"boosting\": {\"T\": 5, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.25}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "boosting.T",
+  "value": 10,
+  "macro_f1": 0.26864291892604236,
+  "weighted_f1": 0.5825174695560389,
+  "sec": 6.6,
+  "key": "{\"boosting\": {\"T\": 10, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.25}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "boosting.T",
+  "value": 20,
+  "macro_f1": 0.28745866461735703,
+  "weighted_f1": 0.5858685305974912,
+  "sec": 8.0,
+  "key": "{\"boosting\": {\"T\": 20, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.25}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "step1",
+  "value": "off",
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 0,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.7
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 0.2,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.8
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 0.3,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.85
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 0.3,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.9
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 0.3,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.95
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 0.3,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.97
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 0.4,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.7
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.8
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.85
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.9
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.95
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.9,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.97
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.9,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.7
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.8
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.85
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.9
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.95
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.9,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.97
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.9,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.7
+  },
+  "macro_f1": 0.36601369891514784,
+  "weighted_f1": 0.5819815024917998,
+  "sec": 10.1,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.8
+  },
+  "macro_f1": 0.5401322528927494,
+  "weighted_f1": 0.7599627142810886,
+  "sec": 10.1,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.85
+  },
+  "macro_f1": 0.5972038974641365,
+  "weighted_f1": 0.8014671679000748,
+  "sec": 10.2,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.9
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 10.2,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.95
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 10.2,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.97
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 10.2,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.7
+  },
+  "macro_f1": 0.5309088144922163,
+  "weighted_f1": 0.7374649443463829,
+  "sec": 13.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.8
+  },
+  "macro_f1": 0.5889955578873389,
+  "weighted_f1": 0.7933589267141228,
+  "sec": 13.9,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.85
+  },
+  "macro_f1": 0.5974381018733228,
+  "weighted_f1": 0.8017637273132947,
+  "sec": 13.9,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.9
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 13.9,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.95
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 14.0,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.97
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 14.0,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.7
+  },
+  "macro_f1": 0.5618310229223366,
+  "weighted_f1": 0.7668288437220704,
+  "sec": 13.5,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.8
+  },
+  "macro_f1": 0.5960749320549249,
+  "weighted_f1": 0.8000368878697307,
+  "sec": 13.5,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.85
+  },
+  "macro_f1": 0.5979935776834289,
+  "weighted_f1": 0.8025578080563797,
+  "sec": 13.5,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.9
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 13.6,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.95
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 13.6,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.97
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 13.6,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.7
+  },
+  "macro_f1": 0.2629896230547442,
+  "weighted_f1": 0.3402626873935275,
+  "sec": 21.1,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.8
+  },
+  "macro_f1": 0.45360550623371376,
+  "weighted_f1": 0.6721504569045084,
+  "sec": 21.1,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.85
+  },
+  "macro_f1": 0.5119987619124805,
+  "weighted_f1": 0.7389914956248539,
+  "sec": 21.2,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.9
+  },
+  "macro_f1": 0.540051436502886,
+  "weighted_f1": 0.7707508313188787,
+  "sec": 21.2,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.95
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 21.2,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.97
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 21.2,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.7
+  },
+  "macro_f1": 0.5294865703650095,
+  "weighted_f1": 0.7350363938990282,
+  "sec": 28.9,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.8
+  },
+  "macro_f1": 0.5888115727877787,
+  "weighted_f1": 0.7932618407566265,
+  "sec": 28.9,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.85
+  },
+  "macro_f1": 0.5973966340509976,
+  "weighted_f1": 0.8017027104886538,
+  "sec": 28.9,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.9
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 29.0,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.95
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 29.0,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.97
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 29.0,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.7
+  },
+  "macro_f1": 0.5978319235207394,
+  "weighted_f1": 0.8023757953076645,
+  "sec": 25.1,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.8
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 25.1,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.85
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 25.1,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.9
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 25.1,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.95
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 25.2,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.97
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 25.2,
+  "key": null
+ },
+ {
+  "axis": "encoder.bins",
+  "value": 16,
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 14.4,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.25}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "encoder.bins",
+  "value": 8,
+  "macro_f1": 0.5972408071760473,
+  "weighted_f1": 0.8075301873717949,
+  "sec": 26.5,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.25}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 8, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "encoder.bins",
+  "value": 32,
+  "macro_f1": 0.5867212528861727,
+  "weighted_f1": 0.8046133120762975,
+  "sec": 17.2,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.25}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 32, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 2, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "step2.benign_split",
+  "value": 0,
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 16.5,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.25}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"benign_split\": 0, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 6, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "step2.benign_split",
+  "value": 6,
+  "macro_f1": 0.592368783389575,
+  "weighted_f1": 0.8040343805962498,
+  "sec": 20.4,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.25}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"benign_split\": 6, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 6, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "step2.benign_split",
+  "value": 12,
+  "macro_f1": 0.5926627796018298,
+  "weighted_f1": 0.8037428732893899,
+  "sec": 27.8,
+  "key": "{\"boosting\": {\"T\": 0, \"d_cap_mult\": 100.0}, \"class_weight\": {\"cap\": 100.0, \"p\": 0.25}, \"data\": {\"tune_subsample\": null, \"val_frac\": 0.2}, \"device\": \"cuda\", \"encoder\": {\"D\": 10000, \"bins\": 16, \"categorical_threshold\": 32, \"tree_fit_max\": 100000, \"tree_min_fraction_leaf\": 0.001, \"tree_min_samples_leaf\": 64, \"type\": \"pairbind\"}, \"eval\": {\"infer_check_rows\": 20000, \"int8_proto\": false}, \"hard_negative\": {\"beta\": 0.0}, \"ml\": {\"class_weight_p\": [0.0, 0.5], \"mlp\": {\"batch\": 256, \"epochs\": 50, \"hidden\": 512, \"layers\": 3, \"lr\": 0.001, \"patience\": 8}}, \"seed\": 0, \"step1\": {\"K\": null, \"enabled\": false, \"kmeans_fit_max\": 5000, \"retrain\": {\"batch\": 512, \"enabled\": true, \"epochs\": 5, \"lr\": 0.05}, \"theta1\": 0.9}, \"step2\": {\"adamw\": {\"batch\": 4096, \"lr\": 0.01, \"weight_decay\": 0.0001}, \"benign_split\": 12, \"epochs\": 60, \"mass\": {\"batch\": 8192, \"lr\": 0.035}, \"patience\": 8, \"readout\": \"adamw\", \"select_metric\": \"macro_f1\", \"val_select_max\": 200000}, \"threads\": 6, \"unknown\": {\"enabled\": false, \"reject_rate\": 0.05}}"
+ },
+ {
+  "axis": "step1",
+  "value": "off",
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 0,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.7
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 0.2,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.8
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 0.2,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.85
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 0.3,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.9
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 0.3,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.95
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 0.3,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.97
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 0.4,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.7
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.7,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.8
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.85
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.9
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.95
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.97
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.9,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.7
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.7,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.8
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.85
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.9
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.95
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 1,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.97
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 2.9,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.7
+  },
+  "macro_f1": 0.36601369891514784,
+  "weighted_f1": 0.5819815024917998,
+  "sec": 8.5,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.8
+  },
+  "macro_f1": 0.5401322528927494,
+  "weighted_f1": 0.7599627142810886,
+  "sec": 8.6,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.85
+  },
+  "macro_f1": 0.5972038974641365,
+  "weighted_f1": 0.8014671679000748,
+  "sec": 8.6,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.9
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 8.6,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.95
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 8.6,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.97
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 8.7,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.7
+  },
+  "macro_f1": 0.5309395409146345,
+  "weighted_f1": 0.7375039973502346,
+  "sec": 10.6,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.8
+  },
+  "macro_f1": 0.5890293231929633,
+  "weighted_f1": 0.7934064910646411,
+  "sec": 10.7,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.85
+  },
+  "macro_f1": 0.5974173698810012,
+  "weighted_f1": 0.8017332204767162,
+  "sec": 10.7,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.9
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 10.7,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.95
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 10.7,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.97
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 10.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.7
+  },
+  "macro_f1": 0.5618310229223366,
+  "weighted_f1": 0.7668288437220704,
+  "sec": 11.0,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.8
+  },
+  "macro_f1": 0.5960749320549249,
+  "weighted_f1": 0.8000368878697307,
+  "sec": 11.1,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.85
+  },
+  "macro_f1": 0.5979935776834289,
+  "weighted_f1": 0.8025578080563797,
+  "sec": 11.1,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.9
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 11.1,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.95
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 11.1,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 6,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.97
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 11.2,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.7
+  },
+  "macro_f1": 0.2629896230547442,
+  "weighted_f1": 0.3402626873935275,
+  "sec": 15.7,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.8
+  },
+  "macro_f1": 0.45360550623371376,
+  "weighted_f1": 0.6721504569045084,
+  "sec": 15.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.85
+  },
+  "macro_f1": 0.5119987619124805,
+  "weighted_f1": 0.7389914956248539,
+  "sec": 15.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.9
+  },
+  "macro_f1": 0.540051436502886,
+  "weighted_f1": 0.7707508313188787,
+  "sec": 15.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.95
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 15.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": false,
+   "lr": null,
+   "theta1": 0.97
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 15.9,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.7
+  },
+  "macro_f1": 0.5294865703650095,
+  "weighted_f1": 0.7350363938990282,
+  "sec": 18.7,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.8
+  },
+  "macro_f1": 0.5888115727877787,
+  "weighted_f1": 0.7932618407566265,
+  "sec": 18.7,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.85
+  },
+  "macro_f1": 0.5973966340509976,
+  "weighted_f1": 0.8017027104886538,
+  "sec": 18.7,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.9
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 18.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.95
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 18.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.01,
+   "theta1": 0.97
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 18.8,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.7
+  },
+  "macro_f1": 0.5978319235207394,
+  "weighted_f1": 0.8023757953076645,
+  "sec": 18.4,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.8
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 18.4,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.85
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 18.4,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.9
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 18.4,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.95
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 18.5,
+  "key": null
+ },
+ {
+  "axis": "step1",
+  "value": {
+   "K": 12,
+   "retrain": true,
+   "lr": 0.05,
+   "theta1": 0.97
+  },
+  "macro_f1": 0.5980637536920289,
+  "weighted_f1": 0.8026413829861357,
+  "sec": 18.5,
+  "key": null
+ }
+]

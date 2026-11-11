@@ -1,0 +1,208 @@
+{
+ "ml": {
+  "candidates": [
+   {
+    "p": 0.0,
+    "val_macro_f1": 0.9750654718846535,
+    "val_weighted_f1": 0.9999465361630353,
+    "train_sec": 56.7
+   },
+   {
+    "p": 0.5,
+    "val_macro_f1": 0.9750654718846535,
+    "val_weighted_f1": 0.9999465361630353,
+    "train_sec": 33.34
+   }
+  ],
+  "class_weight_p": 0.0,
+  "train_sec": 56.7
+ },
+ "train_sec": 56.7,
+ "infer_ms_per_sample": 0.0030935642233665085,
+ "val": {
+  "macro_f1": 0.9750654718846535,
+  "macro_precision": 0.9948616369155758,
+  "macro_recall": 0.9572554872470812,
+  "weighted_f1": 0.9999465361630353,
+  "weighted_precision": 0.9999472751029809,
+  "weighted_recall": 0.9999476752095607,
+  "accuracy": 0.9999476752095607,
+  "macro_f1_attack_only": 0.9688381887396831,
+  "binary": {
+   "tp": 13913,
+   "fp": 0,
+   "tn": 177192,
+   "fn": 9,
+   "f1_attack": 0.9996766660679002,
+   "recall_attack": 0.9993535411578797,
+   "precision_attack": 1.0,
+   "fpr": 0.0,
+   "macro_f1": 0.9998256352662176
+  }
+ },
+ "test": {
+  "macro_f1": 0.97547673554121,
+  "macro_precision": 0.9851828685047493,
+  "macro_recall": 0.9667171405676399,
+  "weighted_f1": 0.9999572817396707,
+  "weighted_precision": 0.9999572358411545,
+  "weighted_recall": 0.9999581402552608,
+  "accuracy": 0.9999581402552608,
+  "macro_f1_attack_only": 0.9693509986052656,
+  "per_class": {
+   "benign": {
+    "precision": 0.9999683965778009,
+    "recall": 0.9999909702469637,
+    "f1": 0.9999796832849871,
+    "support": 221490
+   },
+   "DoS": {
+    "precision": 1.0,
+    "recall": 0.9999361960058699,
+    "f1": 0.9999680969851651,
+    "support": 15673
+   },
+   "Reconn": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 1639
+   },
+   "CommInj": {
+    "precision": 0.98,
+    "recall": 0.98,
+    "f1": 0.98,
+    "support": 50
+   },
+   "Backdoor": {
+    "precision": 0.9459459459459459,
+    "recall": 0.8536585365853658,
+    "f1": 0.8974358974358975,
+    "support": 41
+   }
+  },
+  "binary": {
+   "tp": 17396,
+   "fp": 2,
+   "tn": 221488,
+   "fn": 7,
+   "f1_attack": 0.9997413867417603,
+   "recall_attack": 0.9995977704993392,
+   "precision_attack": 0.9998850442579607,
+   "fpr": 9.029753036254458e-06,
+   "macro_f1": 0.9998605350133737
+  }
+ },
+ "model_bytes": 2175820,
+ "dataset": "wustl-iiot-2021",
+ "model": "random_forest",
+ "seed": 2,
+ "tag": "ml",
+ "holdout": [],
+ "config": {
+  "seed": 2,
+  "threads": 4,
+  "device": "cuda",
+  "data": {
+   "val_frac": 0.2,
+   "tune_subsample": null
+  },
+  "encoder": {
+   "type": "pairbind",
+   "D": 10000,
+   "bins": 8,
+   "categorical_threshold": 32,
+   "tree_min_samples_leaf": 64,
+   "tree_min_fraction_leaf": 0.001,
+   "tree_fit_max": 100000
+  },
+  "step1": {
+   "enabled": false,
+   "K": null,
+   "kmeans_fit_max": 5000,
+   "theta1": 0.9,
+   "retrain": {
+    "enabled": true,
+    "epochs": 5,
+    "lr": 0.05,
+    "batch": 512
+   }
+  },
+  "step2": {
+   "readout": "adamw",
+   "mass": {
+    "lr": 0.035,
+    "batch": 8192
+   },
+   "adamw": {
+    "lr": 0.003,
+    "weight_decay": 0.0001,
+    "batch": 4096
+   },
+   "epochs": 60,
+   "patience": 8,
+   "select_metric": "macro_f1",
+   "val_select_max": 200000,
+   "benign_split": 0
+  },
+  "class_weight": {
+   "p": 0.25,
+   "cap": 100.0
+  },
+  "hard_negative": {
+   "beta": 0.0
+  },
+  "boosting": {
+   "T": 0,
+   "d_cap_mult": 100.0
+  },
+  "unknown": {
+   "enabled": false,
+   "reject_rate": 0.05
+  },
+  "eval": {
+   "int8_proto": false,
+   "infer_check_rows": 20000
+  },
+  "ml": {
+   "class_weight_p": [
+    0.0,
+    0.5
+   ],
+   "mlp": {
+    "hidden": 512,
+    "layers": 3,
+    "lr": 0.001,
+    "batch": 256,
+    "epochs": 50,
+    "patience": 8
+   }
+  }
+ },
+ "git": "9a31c77",
+ "finished": "2026-11-08 06:40:33",
+ "data": {
+  "n_fit": 764457,
+  "n_val": 191114,
+  "n_test": 238893,
+  "n_numeric": 40,
+  "n_categorical": 1,
+  "classes": [
+   "benign",
+   "DoS",
+   "Reconn",
+   "CommInj",
+   "Backdoor"
+  ],
+  "dropped_columns": {
+   "Sport": "leaky",
+   "Dport": "leaky",
+   "attack_flag": "label",
+   "attack_step": "label"
+  },
+  "test_unknown_rows": 0
+ },
+ "wall_sec": 94.71790266036987,
+ "peak_rss_mb": 1165.53125,
+ "peak_gpu_mb": 0.0
+}

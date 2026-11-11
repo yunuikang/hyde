@@ -1,0 +1,202 @@
+{
+ "ml": {
+  "candidates": [
+   {
+    "p": 0.0,
+    "val_macro_f1": 0.6181796813527012,
+    "val_weighted_f1": 0.9838972907586482,
+    "train_sec": 0.49
+   }
+  ],
+  "class_weight_p": 0.0,
+  "train_sec": 0.49
+ },
+ "train_sec": 0.49,
+ "infer_ms_per_sample": 0.0009171689571601568,
+ "val": {
+  "macro_f1": 0.6181796813527012,
+  "macro_precision": 0.5899890611816085,
+  "macro_recall": 0.9141180461201017,
+  "weighted_f1": 0.9838972907586482,
+  "weighted_precision": 0.9899904809110898,
+  "weighted_recall": 0.9790700838243143,
+  "accuracy": 0.9790700838243143,
+  "macro_f1_attack_only": 0.5255684943849405,
+  "binary": {
+   "tp": 13921,
+   "fp": 3985,
+   "tn": 173207,
+   "fn": 1,
+   "f1_attack": 0.8747643584265427,
+   "recall_attack": 0.9999281712397644,
+   "precision_attack": 0.7774488998101196,
+   "fpr": 0.022489728655921262,
+   "macro_f1": 0.9316943938251434
+  }
+ },
+ "test": {
+  "macro_f1": 0.619453508860863,
+  "macro_precision": 0.591785817942654,
+  "macro_recall": 0.9274046397513954,
+  "weighted_f1": 0.984733188083113,
+  "weighted_precision": 0.9906198585220396,
+  "weighted_recall": 0.9799952279890998,
+  "accuracy": 0.9799952279890998,
+  "macro_f1_attack_only": 0.5270353005529906,
+  "per_class": {
+   "benign": {
+    "precision": 1.0,
+    "recall": 0.9784866133911237,
+    "f1": 0.989126342092352,
+    "support": 221490
+   },
+   "DoS": {
+    "precision": 0.8627181152639402,
+    "recall": 1.0,
+    "f1": 0.9263002364066194,
+    "support": 15673
+   },
+   "Reconn": {
+    "precision": 0.9981729598051157,
+    "recall": 1.0,
+    "f1": 0.9990856446205425,
+    "support": 1639
+   },
+   "CommInj": {
+    "precision": 0.08264462809917356,
+    "recall": 1.0,
+    "f1": 0.15267175572519084,
+    "support": 50
+   },
+   "Backdoor": {
+    "precision": 0.01539338654503991,
+    "recall": 0.6585365853658537,
+    "f1": 0.030083565459610027,
+    "support": 41
+   }
+  },
+  "binary": {
+   "tp": 17403,
+   "fp": 4765,
+   "tn": 216725,
+   "fn": 0,
+   "f1_attack": 0.8795835333956685,
+   "recall_attack": 1.0,
+   "precision_attack": 0.7850505232767954,
+   "fpr": 0.021513386608876247,
+   "macro_f1": 0.9343549377440102
+  }
+ },
+ "model_bytes": 4575,
+ "dataset": "wustl-iiot-2021",
+ "model": "naive_bayes",
+ "seed": 1,
+ "tag": "ml",
+ "holdout": [],
+ "config": {
+  "seed": 1,
+  "threads": 4,
+  "device": "cuda",
+  "data": {
+   "val_frac": 0.2,
+   "tune_subsample": null
+  },
+  "encoder": {
+   "type": "pairbind",
+   "D": 10000,
+   "bins": 8,
+   "categorical_threshold": 32,
+   "tree_min_samples_leaf": 64,
+   "tree_min_fraction_leaf": 0.001,
+   "tree_fit_max": 100000
+  },
+  "step1": {
+   "enabled": false,
+   "K": null,
+   "kmeans_fit_max": 5000,
+   "theta1": 0.9,
+   "retrain": {
+    "enabled": true,
+    "epochs": 5,
+    "lr": 0.05,
+    "batch": 512
+   }
+  },
+  "step2": {
+   "readout": "adamw",
+   "mass": {
+    "lr": 0.035,
+    "batch": 8192
+   },
+   "adamw": {
+    "lr": 0.003,
+    "weight_decay": 0.0001,
+    "batch": 4096
+   },
+   "epochs": 60,
+   "patience": 8,
+   "select_metric": "macro_f1",
+   "val_select_max": 200000,
+   "benign_split": 0
+  },
+  "class_weight": {
+   "p": 0.25,
+   "cap": 100.0
+  },
+  "hard_negative": {
+   "beta": 0.0
+  },
+  "boosting": {
+   "T": 0,
+   "d_cap_mult": 100.0
+  },
+  "unknown": {
+   "enabled": false,
+   "reject_rate": 0.05
+  },
+  "eval": {
+   "int8_proto": false,
+   "infer_check_rows": 20000
+  },
+  "ml": {
+   "class_weight_p": [
+    0.0,
+    0.5
+   ],
+   "mlp": {
+    "hidden": 512,
+    "layers": 3,
+    "lr": 0.001,
+    "batch": 256,
+    "epochs": 50,
+    "patience": 8
+   }
+  }
+ },
+ "git": "9a31c77",
+ "finished": "2026-11-08 06:41:33",
+ "data": {
+  "n_fit": 764457,
+  "n_val": 191114,
+  "n_test": 238893,
+  "n_numeric": 40,
+  "n_categorical": 1,
+  "classes": [
+   "benign",
+   "DoS",
+   "Reconn",
+   "CommInj",
+   "Backdoor"
+  ],
+  "dropped_columns": {
+   "Sport": "leaky",
+   "Dport": "leaky",
+   "attack_flag": "label",
+   "attack_step": "label"
+  },
+  "test_unknown_rows": 0
+ },
+ "wall_sec": 2.565960645675659,
+ "peak_rss_mb": 1073.9375,
+ "peak_gpu_mb": 0.0
+}

@@ -1,0 +1,327 @@
+{
+ "ml": {
+  "candidates": [
+   {
+    "p": 0.0,
+    "val_macro_f1": 0.18794328196857799,
+    "val_weighted_f1": 0.28981891964765577,
+    "train_sec": 8.55
+   },
+   {
+    "p": 0.5,
+    "val_macro_f1": 0.10611905338643822,
+    "val_weighted_f1": 0.72969322564823,
+    "train_sec": 10.17
+   }
+  ],
+  "class_weight_p": 0.0,
+  "train_sec": 8.55
+ },
+ "train_sec": 8.55,
+ "infer_ms_per_sample": 0.012210576224614746,
+ "val": {
+  "macro_f1": 0.18794328196857799,
+  "macro_precision": 0.2077192912417214,
+  "macro_recall": 0.22120988719002543,
+  "weighted_f1": 0.28981891964765577,
+  "weighted_precision": 0.5165788073481412,
+  "weighted_recall": 0.3707981108862166,
+  "accuracy": 0.3707981108862166,
+  "macro_f1_attack_only": 0.1933515809868455,
+  "binary": {
+   "tp": 11364,
+   "fp": 12975,
+   "tn": 494,
+   "fn": 364,
+   "f1_attack": 0.6301605345606788,
+   "recall_attack": 0.9689631650750341,
+   "precision_attack": 0.4669049673363737,
+   "fpr": 0.9633231865765832,
+   "macro_f1": 0.3495606190636855
+  }
+ },
+ "test": {
+  "macro_f1": 0.06808593257210517,
+  "macro_precision": 0.09036723956203331,
+  "macro_recall": 0.14587827402974185,
+  "weighted_f1": 0.12310448692130636,
+  "weighted_precision": 0.15911014108059718,
+  "weighted_recall": 0.21207416607523066,
+  "accuracy": 0.21207416607523066,
+  "macro_f1_attack_only": 0.07033521774564033,
+  "per_class": {
+   "unknown": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 3750
+   },
+   "benign": {
+    "precision": 0.11858974358974358,
+    "recall": 0.01143033673154155,
+    "f1": 0.020850943927867006,
+    "support": 9711
+   },
+   "neptune": {
+    "precision": 0.31672544458617846,
+    "recall": 0.906377496242216,
+    "f1": 0.46941725978647686,
+    "support": 4657
+   },
+   "satan": {
+    "precision": 0.009966777408637873,
+    "recall": 0.00816326530612245,
+    "f1": 0.008975317875841436,
+    "support": 735
+   },
+   "ipsweep": {
+    "precision": 0.06205381658429435,
+    "recall": 0.8014184397163121,
+    "f1": 0.11518858307849134,
+    "support": 141
+   },
+   "portsweep": {
+    "precision": 0.1891891891891892,
+    "recall": 0.6242038216560509,
+    "f1": 0.2903703703703704,
+    "support": 157
+   },
+   "smurf": {
+    "precision": 0.8306451612903226,
+    "recall": 0.3097744360902256,
+    "f1": 0.45125958378970427,
+    "support": 665
+   },
+   "nmap": {
+    "precision": 0.030120481927710843,
+    "recall": 0.2054794520547945,
+    "f1": 0.05253940455341506,
+    "support": 73
+   },
+   "back": {
+    "precision": 0.015384615384615385,
+    "recall": 0.002785515320334262,
+    "f1": 0.0047169811320754715,
+    "support": 359
+   },
+   "teardrop": {
+    "precision": 0.04040404040404041,
+    "recall": 0.3333333333333333,
+    "f1": 0.07207207207207207,
+    "support": 12
+   },
+   "pod": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 41
+   },
+   "guess_passwd": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 1231
+   },
+   "buffer_overflow": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 20
+   },
+   "warezmaster": {
+    "precision": 0.375,
+    "recall": 0.006355932203389831,
+    "f1": 0.0125,
+    "support": 944
+   },
+   "land": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 7
+   },
+   "imap": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 1
+   },
+   "rootkit": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 13
+   },
+   "loadmodule": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 2
+   },
+   "ftp_write": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 3
+   },
+   "multihop": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 18
+   },
+   "phf": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 2
+   },
+   "perl": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 2
+   }
+  },
+  "binary": {
+   "tp": 12008,
+   "fp": 9600,
+   "tn": 111,
+   "fn": 825,
+   "f1_attack": 0.6973084405214715,
+   "recall_attack": 0.9357126159121016,
+   "precision_attack": 0.5557201036653091,
+   "fpr": 0.9885696632684584,
+   "macro_f1": 0.35907969222466923
+  }
+ },
+ "model_bytes": 2484580,
+ "dataset": "nsl-kdd",
+ "model": "lightgbm",
+ "seed": 2,
+ "tag": "ml",
+ "holdout": [],
+ "config": {
+  "seed": 2,
+  "threads": 4,
+  "device": "cuda",
+  "data": {
+   "val_frac": 0.2,
+   "tune_subsample": null
+  },
+  "encoder": {
+   "type": "pairbind",
+   "D": 10000,
+   "bins": 16,
+   "categorical_threshold": 32,
+   "tree_min_samples_leaf": 64,
+   "tree_min_fraction_leaf": 0.001,
+   "tree_fit_max": 100000
+  },
+  "step1": {
+   "enabled": false,
+   "K": null,
+   "kmeans_fit_max": 5000,
+   "theta1": 0.9,
+   "retrain": {
+    "enabled": true,
+    "epochs": 5,
+    "lr": 0.05,
+    "batch": 512
+   }
+  },
+  "step2": {
+   "readout": "adamw",
+   "mass": {
+    "lr": 0.035,
+    "batch": 8192
+   },
+   "adamw": {
+    "lr": 0.03,
+    "weight_decay": 0.0001,
+    "batch": 4096
+   },
+   "epochs": 60,
+   "patience": 8,
+   "select_metric": "macro_f1",
+   "val_select_max": 200000
+  },
+  "class_weight": {
+   "p": 0.5,
+   "cap": 100.0
+  },
+  "hard_negative": {
+   "beta": 0.0
+  },
+  "boosting": {
+   "T": 0,
+   "d_cap_mult": 100.0
+  },
+  "unknown": {
+   "enabled": false,
+   "reject_rate": 0.05
+  },
+  "eval": {
+   "int8_proto": false,
+   "infer_check_rows": 20000
+  },
+  "ml": {
+   "class_weight_p": [
+    0.0,
+    0.5
+   ],
+   "mlp": {
+    "hidden": 512,
+    "layers": 3,
+    "lr": 0.001,
+    "batch": 256,
+    "epochs": 50,
+    "patience": 8
+   }
+  }
+ },
+ "git": "c2610f8",
+ "finished": "2026-11-08 00:50:46",
+ "data": {
+  "n_fit": 100776,
+  "n_val": 25197,
+  "n_test": 22544,
+  "n_numeric": 37,
+  "n_categorical": 3,
+  "classes": [
+   "benign",
+   "neptune",
+   "satan",
+   "ipsweep",
+   "portsweep",
+   "smurf",
+   "nmap",
+   "back",
+   "teardrop",
+   "warezclient",
+   "pod",
+   "guess_passwd",
+   "buffer_overflow",
+   "warezmaster",
+   "land",
+   "imap",
+   "rootkit",
+   "loadmodule",
+   "ftp_write",
+   "multihop",
+   "phf",
+   "perl",
+   "spy"
+  ],
+  "dropped_columns": {
+   "num_outbound_cmds": "constant",
+   "unknown": "leaky",
+   "attack_flag": "label",
+   "attack_step": "label"
+  },
+  "test_unknown_rows": 3750
+ },
+ "wall_sec": 20.366981744766235,
+ "peak_rss_mb": 539.16796875,
+ "peak_gpu_mb": 0.0
+}

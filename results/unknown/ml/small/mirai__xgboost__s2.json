@@ -1,0 +1,269 @@
+{
+ "ml": {
+  "candidates": [
+   {
+    "p": 0.0,
+    "val_macro_f1": 1.0,
+    "val_weighted_f1": 1.0,
+    "train_sec": 2.61
+   },
+   {
+    "p": 0.5,
+    "val_macro_f1": 1.0,
+    "val_weighted_f1": 1.0,
+    "train_sec": 3.44
+   }
+  ],
+  "class_weight_p": 0.0,
+  "train_sec": 2.61
+ },
+ "train_sec": 2.61,
+ "infer_ms_per_sample": 0.0013863523183944204,
+ "unknown_by_rate": {
+  "0.01": {
+   "theta2": 0.9915688097476959,
+   "unknown_recall": 0.0,
+   "unknown_precision": 0.0,
+   "unknown_f1": 0.0,
+   "auroc": 0.00752395859076805,
+   "known_macro_f1": 0.8566848652249345,
+   "known_weighted_f1": 0.983341777696412,
+   "benign_to_unknown_rate": 0.0008151857458949575,
+   "n_unknown": 199,
+   "test_macro_f1": 0.639684212237799
+  },
+  "0.05": {
+   "theta2": 0.9991443157196045,
+   "unknown_recall": 0.0,
+   "unknown_precision": 0.0,
+   "unknown_f1": 0.0,
+   "auroc": 0.00752395859076805,
+   "known_macro_f1": 0.6587681985582677,
+   "known_weighted_f1": 0.9687189942025415,
+   "benign_to_unknown_rate": 0.0008151857458949575,
+   "n_unknown": 199,
+   "test_macro_f1": 0.49124671223779903
+  },
+  "0.1": {
+   "theta2": 0.9992617964744568,
+   "unknown_recall": 0.0,
+   "unknown_precision": 0.0,
+   "unknown_f1": 0.0,
+   "auroc": 0.00752395859076805,
+   "known_macro_f1": 0.6587681985582677,
+   "known_weighted_f1": 0.9687189942025415,
+   "benign_to_unknown_rate": 0.0008151857458949575,
+   "n_unknown": 199,
+   "test_macro_f1": 0.49124671223779903
+  }
+ },
+ "theta2": 0.9991443157196045,
+ "unknown": {
+  "unknown_recall": 0.0,
+  "unknown_precision": 0.0,
+  "unknown_f1": 0.0,
+  "auroc": 0.00752395859076805,
+  "known_macro_f1": 0.6587681985582677,
+  "known_weighted_f1": 0.9687189942025415,
+  "benign_to_unknown_rate": 0.0008151857458949575,
+  "n_unknown": 199
+ },
+ "val": {
+  "macro_f1": 0.9650793650793651,
+  "macro_precision": 1.0,
+  "macro_recall": 0.9367816091954023,
+  "weighted_f1": 0.9985100072397768,
+  "weighted_precision": 1.0,
+  "weighted_recall": 0.9973025993133889,
+  "accuracy": 0.9973025993133889,
+  "macro_f1_attack_only": 0.9476190476190476,
+  "binary": {
+   "tp": 439,
+   "fp": 0,
+   "tn": 7717,
+   "fn": 0,
+   "f1_attack": 1.0,
+   "recall_attack": 1.0,
+   "precision_attack": 1.0,
+   "fpr": 0.0,
+   "macro_f1": 1.0
+  }
+ },
+ "test": {
+  "macro_f1": 0.49124671223779903,
+  "macro_precision": 0.4914724755150287,
+  "macro_recall": 0.4913085492425386,
+  "weighted_f1": 0.9376573368954261,
+  "weighted_precision": 0.9232026340642963,
+  "weighted_recall": 0.9526513122656668,
+  "accuracy": 0.9526513122656668,
+  "macro_f1_attack_only": 0.3275771847200419,
+  "per_class": {
+   "unknown": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 199
+   },
+   "benign": {
+    "precision": 0.9658899020601148,
+    "recall": 0.999184814254105,
+    "f1": 0.9822552947910704,
+    "support": 8587
+   },
+   "port scanning (reconnaissance)": {
+    "precision": 1.0,
+    "recall": 0.9660493827160493,
+    "f1": 0.9827315541601256,
+    "support": 324
+   },
+   "udp flooding (action)": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 225
+   }
+  },
+  "binary": {
+   "tp": 445,
+   "fp": 7,
+   "tn": 8580,
+   "fn": 303,
+   "f1_attack": 0.7416666666666667,
+   "recall_attack": 0.5949197860962567,
+   "precision_attack": 0.9845132743362832,
+   "fpr": 0.0008151857458949575,
+   "macro_f1": 0.8619609807288686
+  }
+ },
+ "dataset": "mirai",
+ "model": "xgboost",
+ "seed": 2,
+ "tag": "unknown/ml/small",
+ "holdout": [
+  "bruteforce (infection)"
+ ],
+ "config": {
+  "seed": 2,
+  "threads": 6,
+  "device": "cuda",
+  "data": {
+   "val_frac": 0.2,
+   "tune_subsample": null
+  },
+  "encoder": {
+   "type": "pairbind",
+   "D": 10000,
+   "bins": 16,
+   "categorical_threshold": 32,
+   "tree_min_samples_leaf": 64,
+   "tree_min_fraction_leaf": 0.001,
+   "tree_fit_max": 100000
+  },
+  "step1": {
+   "enabled": false,
+   "K": null,
+   "kmeans_fit_max": 5000,
+   "theta1": 0.9,
+   "retrain": {
+    "enabled": true,
+    "epochs": 5,
+    "lr": 0.05,
+    "batch": 512
+   }
+  },
+  "step2": {
+   "readout": "adamw",
+   "mass": {
+    "lr": 0.035,
+    "batch": 8192
+   },
+   "adamw": {
+    "lr": 0.03,
+    "weight_decay": 0.0001,
+    "batch": 4096
+   },
+   "epochs": 60,
+   "patience": 8,
+   "select_metric": "macro_f1",
+   "val_select_max": 200000,
+   "benign_split": 0
+  },
+  "class_weight": {
+   "p": 0.25,
+   "cap": 100.0
+  },
+  "hard_negative": {
+   "beta": 2.0
+  },
+  "boosting": {
+   "T": 0,
+   "d_cap_mult": 100.0
+  },
+  "unknown": {
+   "enabled": true,
+   "reject_rate": 0.05
+  },
+  "eval": {
+   "int8_proto": false,
+   "infer_check_rows": 20000
+  },
+  "ml": {
+   "class_weight_p": [
+    0.0,
+    0.5
+   ],
+   "mlp": {
+    "hidden": 512,
+    "layers": 3,
+    "lr": 0.001,
+    "batch": 256,
+    "epochs": 50,
+    "patience": 8
+   }
+  }
+ },
+ "git": "87c6fb3",
+ "finished": "2026-11-09 00:46:11",
+ "data": {
+  "n_fit": 32628,
+  "n_val": 8156,
+  "n_test": 9335,
+  "n_numeric": 26,
+  "n_categorical": 1,
+  "classes": [
+   "benign",
+   "port scanning (reconnaissance)",
+   "udp flooding (action)"
+  ],
+  "dropped_columns": {
+   "window_start": "metadata",
+   "window_end": "metadata",
+   "src_ip_addr": "metadata",
+   "src_port": "leaky",
+   "dst_ip_addr": "metadata",
+   "dst_port": "leaky",
+   "bpkts_per_second": "constant",
+   "total_fhlen": "constant",
+   "backward_iat_std": "constant",
+   "backward_packet_length_mean": "constant",
+   "backward_iat_total": "constant",
+   "backward_packet_length_std": "constant",
+   "backward_packet_length_min": "constant",
+   "flow_cwr": "constant",
+   "flow_rst": "constant",
+   "backward_iat_mean": "constant",
+   "backward_packet_length_max": "constant",
+   "total_length_of_backward_packets": "constant",
+   "total_backward_packets": "constant",
+   "backward_iat_min": "constant",
+   "backward_iat_max": "constant",
+   "attack_flag": "label",
+   "attack_step": "label"
+  },
+  "test_unknown_rows": 199
+ },
+ "wall_sec": 6.266516447067261,
+ "peak_rss_mb": 503.65234375,
+ "peak_gpu_mb": 0.0
+}

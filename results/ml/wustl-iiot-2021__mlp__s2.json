@@ -1,0 +1,208 @@
+{
+ "ml": {
+  "candidates": [
+   {
+    "p": 0.0,
+    "val_macro_f1": 0.9461730237931552,
+    "val_weighted_f1": 0.9996979839525254,
+    "train_sec": 567.86
+   },
+   {
+    "p": 0.5,
+    "val_macro_f1": 0.9436905248789118,
+    "val_weighted_f1": 0.9996912180513196,
+    "train_sec": 228.13
+   }
+  ],
+  "class_weight_p": 0.0,
+  "train_sec": 567.86
+ },
+ "train_sec": 567.86,
+ "infer_ms_per_sample": 0.00041352414258682805,
+ "val": {
+  "macro_f1": 0.9461730237931552,
+  "macro_precision": 0.9779440248710515,
+  "macro_recall": 0.9199814900925807,
+  "weighted_f1": 0.9996979839525254,
+  "weighted_precision": 0.9996996732533394,
+  "weighted_recall": 0.9997017486944965,
+  "accuracy": 0.9997017486944965,
+  "macro_f1_attack_only": 0.9327501374937406,
+  "binary": {
+   "tp": 13878,
+   "fp": 4,
+   "tn": 177188,
+   "fn": 44,
+   "f1_attack": 0.9982736296935693,
+   "recall_attack": 0.9968395345496337,
+   "precision_attack": 0.9997118570811122,
+   "fpr": 2.2574382590636145e-05,
+   "macro_f1": 0.9990690993421912
+  }
+ },
+ "test": {
+  "macro_f1": 0.954184921688884,
+  "macro_precision": 0.9768017494089776,
+  "macro_recall": 0.9386544251455632,
+  "weighted_f1": 0.9997421895748317,
+  "weighted_precision": 0.9997461371420229,
+  "weighted_recall": 0.9997446555570905,
+  "accuracy": 0.9997446555570905,
+  "macro_f1_attack_only": 0.9427610601298398,
+  "per_class": {
+   "benign": {
+    "precision": 0.9997788159884443,
+    "recall": 0.9999819404939275,
+    "f1": 0.9998803679250606,
+    "support": 221490
+   },
+   "DoS": {
+    "precision": 0.9998720491331329,
+    "recall": 0.9971926242582786,
+    "f1": 0.9985305392282137,
+    "support": 15673
+   },
+   "Reconn": {
+    "precision": 0.9975654290931223,
+    "recall": 1.0,
+    "f1": 0.9987812309567337,
+    "support": 1639
+   },
+   "CommInj": {
+    "precision": 0.8867924528301887,
+    "recall": 0.94,
+    "f1": 0.912621359223301,
+    "support": 50
+   },
+   "Backdoor": {
+    "precision": 1.0,
+    "recall": 0.7560975609756098,
+    "f1": 0.8611111111111112,
+    "support": 41
+   }
+  },
+  "binary": {
+   "tp": 17354,
+   "fp": 4,
+   "tn": 221486,
+   "fn": 49,
+   "f1_attack": 0.9984753027818533,
+   "recall_attack": 0.9971843934953744,
+   "precision_attack": 0.9997695587049199,
+   "fpr": 1.8059506072508916e-05,
+   "macro_f1": 0.999177835353457
+  }
+ },
+ "model_bytes": 2216602,
+ "dataset": "wustl-iiot-2021",
+ "model": "mlp",
+ "seed": 2,
+ "tag": "ml",
+ "holdout": [],
+ "config": {
+  "seed": 2,
+  "threads": 30,
+  "device": "cuda",
+  "data": {
+   "val_frac": 0.2,
+   "tune_subsample": null
+  },
+  "encoder": {
+   "type": "pairbind",
+   "D": 10000,
+   "bins": 8,
+   "categorical_threshold": 32,
+   "tree_min_samples_leaf": 64,
+   "tree_min_fraction_leaf": 0.001,
+   "tree_fit_max": 100000
+  },
+  "step1": {
+   "enabled": false,
+   "K": null,
+   "kmeans_fit_max": 5000,
+   "theta1": 0.9,
+   "retrain": {
+    "enabled": true,
+    "epochs": 5,
+    "lr": 0.05,
+    "batch": 512
+   }
+  },
+  "step2": {
+   "readout": "adamw",
+   "mass": {
+    "lr": 0.035,
+    "batch": 8192
+   },
+   "adamw": {
+    "lr": 0.003,
+    "weight_decay": 0.0001,
+    "batch": 4096
+   },
+   "epochs": 60,
+   "patience": 8,
+   "select_metric": "macro_f1",
+   "val_select_max": 200000,
+   "benign_split": 0
+  },
+  "class_weight": {
+   "p": 0.25,
+   "cap": 100.0
+  },
+  "hard_negative": {
+   "beta": 0.0
+  },
+  "boosting": {
+   "T": 0,
+   "d_cap_mult": 100.0
+  },
+  "unknown": {
+   "enabled": false,
+   "reject_rate": 0.05
+  },
+  "eval": {
+   "int8_proto": false,
+   "infer_check_rows": 20000
+  },
+  "ml": {
+   "class_weight_p": [
+    0.0,
+    0.5
+   ],
+   "mlp": {
+    "hidden": 512,
+    "layers": 3,
+    "lr": 0.001,
+    "batch": 256,
+    "epochs": 50,
+    "patience": 8
+   }
+  }
+ },
+ "git": "87c6fb3",
+ "finished": "2026-11-08 22:04:51",
+ "data": {
+  "n_fit": 764457,
+  "n_val": 191114,
+  "n_test": 238893,
+  "n_numeric": 40,
+  "n_categorical": 1,
+  "classes": [
+   "benign",
+   "DoS",
+   "Reconn",
+   "CommInj",
+   "Backdoor"
+  ],
+  "dropped_columns": {
+   "Sport": "leaky",
+   "Dport": "leaky",
+   "attack_flag": "label",
+   "attack_step": "label"
+  },
+  "test_unknown_rows": 0
+ },
+ "wall_sec": 798.0078563690186,
+ "peak_rss_mb": 2859.53125,
+ "peak_gpu_mb": 48.32275390625
+}

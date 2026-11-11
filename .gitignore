@@ -1,5 +1,6 @@
 cache/
-results/
+# results/ is tracked (JSON evidence for the thesis); temp files from atomic writes are not
+results/**/.*.tmp*
 models/
 __pycache__/
 *.pyc

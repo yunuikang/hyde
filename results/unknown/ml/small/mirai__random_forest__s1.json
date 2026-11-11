@@ -1,0 +1,269 @@
+{
+ "ml": {
+  "candidates": [
+   {
+    "p": 0.0,
+    "val_macro_f1": 1.0,
+    "val_weighted_f1": 1.0,
+    "train_sec": 0.39
+   },
+   {
+    "p": 0.5,
+    "val_macro_f1": 1.0,
+    "val_weighted_f1": 1.0,
+    "train_sec": 0.36
+   }
+  ],
+  "class_weight_p": 0.0,
+  "train_sec": 0.39
+ },
+ "train_sec": 0.39,
+ "infer_ms_per_sample": 0.007977610804144558,
+ "unknown_by_rate": {
+  "0.01": {
+   "theta2": 1.0,
+   "unknown_recall": 0.0,
+   "unknown_precision": 0.0,
+   "unknown_f1": 0.0,
+   "auroc": 0.6501999981693531,
+   "known_macro_f1": 0.6522481999525372,
+   "known_weighted_f1": 0.9725223941335023,
+   "benign_to_unknown_rate": 0.0008151857458949575,
+   "n_unknown": 199,
+   "test_macro_f1": 0.48632848626004915
+  },
+  "0.05": {
+   "theta2": 1.0,
+   "unknown_recall": 0.0,
+   "unknown_precision": 0.0,
+   "unknown_f1": 0.0,
+   "auroc": 0.6501999981693531,
+   "known_macro_f1": 0.6522481999525372,
+   "known_weighted_f1": 0.9725223941335023,
+   "benign_to_unknown_rate": 0.0008151857458949575,
+   "n_unknown": 199,
+   "test_macro_f1": 0.48632848626004915
+  },
+  "0.1": {
+   "theta2": 1.0,
+   "unknown_recall": 0.0,
+   "unknown_precision": 0.0,
+   "unknown_f1": 0.0,
+   "auroc": 0.6501999981693531,
+   "known_macro_f1": 0.6522481999525372,
+   "known_weighted_f1": 0.9725223941335023,
+   "benign_to_unknown_rate": 0.0008151857458949575,
+   "n_unknown": 199,
+   "test_macro_f1": 0.48632848626004915
+  }
+ },
+ "theta2": 1.0,
+ "unknown": {
+  "unknown_recall": 0.0,
+  "unknown_precision": 0.0,
+  "unknown_f1": 0.0,
+  "auroc": 0.6501999981693531,
+  "known_macro_f1": 0.6522481999525372,
+  "known_weighted_f1": 0.9725223941335023,
+  "benign_to_unknown_rate": 0.0008151857458949575,
+  "n_unknown": 199
+ },
+ "val": {
+  "macro_f1": 0.9956331877729258,
+  "macro_precision": 1.0,
+  "macro_recall": 0.9913793103448275,
+  "weighted_f1": 0.9998136769672606,
+  "weighted_precision": 1.0,
+  "weighted_recall": 0.9996321726336439,
+  "accuracy": 0.9996321726336439,
+  "macro_f1_attack_only": 0.9934497816593886,
+  "binary": {
+   "tp": 439,
+   "fp": 0,
+   "tn": 7717,
+   "fn": 0,
+   "f1_attack": 1.0,
+   "recall_attack": 1.0,
+   "precision_attack": 1.0,
+   "fpr": 0.0,
+   "macro_f1": 1.0
+  }
+ },
+ "test": {
+  "macro_f1": 0.48632848626004915,
+  "macro_precision": 0.49383312492895304,
+  "macro_recall": 0.4797344751684645,
+  "weighted_f1": 0.9412757964527622,
+  "weighted_precision": 0.9318886100760236,
+  "weighted_recall": 0.9510444563470809,
+  "accuracy": 0.9510444563470809,
+  "macro_f1_attack_only": 0.31939978563772775,
+  "per_class": {
+   "unknown": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 199
+   },
+   "benign": {
+    "precision": 0.9753324997158123,
+    "recall": 0.999184814254105,
+    "f1": 0.9871145881270134,
+    "support": 8587
+   },
+   "port scanning (reconnaissance)": {
+    "precision": 1.0,
+    "recall": 0.9197530864197531,
+    "f1": 0.9581993569131833,
+    "support": 324
+   },
+   "udp flooding (action)": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 225
+   }
+  },
+  "binary": {
+   "tp": 531,
+   "fp": 7,
+   "tn": 8580,
+   "fn": 217,
+   "f1_attack": 0.8258164852255054,
+   "recall_attack": 0.7098930481283422,
+   "precision_attack": 0.9869888475836431,
+   "fpr": 0.0008151857458949575,
+   "macro_f1": 0.9064655366762594
+  }
+ },
+ "dataset": "mirai",
+ "model": "random_forest",
+ "seed": 1,
+ "tag": "unknown/ml/small",
+ "holdout": [
+  "bruteforce (infection)"
+ ],
+ "config": {
+  "seed": 1,
+  "threads": 6,
+  "device": "cuda",
+  "data": {
+   "val_frac": 0.2,
+   "tune_subsample": null
+  },
+  "encoder": {
+   "type": "pairbind",
+   "D": 10000,
+   "bins": 16,
+   "categorical_threshold": 32,
+   "tree_min_samples_leaf": 64,
+   "tree_min_fraction_leaf": 0.001,
+   "tree_fit_max": 100000
+  },
+  "step1": {
+   "enabled": false,
+   "K": null,
+   "kmeans_fit_max": 5000,
+   "theta1": 0.9,
+   "retrain": {
+    "enabled": true,
+    "epochs": 5,
+    "lr": 0.05,
+    "batch": 512
+   }
+  },
+  "step2": {
+   "readout": "adamw",
+   "mass": {
+    "lr": 0.035,
+    "batch": 8192
+   },
+   "adamw": {
+    "lr": 0.03,
+    "weight_decay": 0.0001,
+    "batch": 4096
+   },
+   "epochs": 60,
+   "patience": 8,
+   "select_metric": "macro_f1",
+   "val_select_max": 200000,
+   "benign_split": 0
+  },
+  "class_weight": {
+   "p": 0.25,
+   "cap": 100.0
+  },
+  "hard_negative": {
+   "beta": 2.0
+  },
+  "boosting": {
+   "T": 0,
+   "d_cap_mult": 100.0
+  },
+  "unknown": {
+   "enabled": true,
+   "reject_rate": 0.05
+  },
+  "eval": {
+   "int8_proto": false,
+   "infer_check_rows": 20000
+  },
+  "ml": {
+   "class_weight_p": [
+    0.0,
+    0.5
+   ],
+   "mlp": {
+    "hidden": 512,
+    "layers": 3,
+    "lr": 0.001,
+    "batch": 256,
+    "epochs": 50,
+    "patience": 8
+   }
+  }
+ },
+ "git": "87c6fb3",
+ "finished": "2026-11-09 00:45:17",
+ "data": {
+  "n_fit": 32628,
+  "n_val": 8156,
+  "n_test": 9335,
+  "n_numeric": 26,
+  "n_categorical": 1,
+  "classes": [
+   "benign",
+   "port scanning (reconnaissance)",
+   "udp flooding (action)"
+  ],
+  "dropped_columns": {
+   "window_start": "metadata",
+   "window_end": "metadata",
+   "src_ip_addr": "metadata",
+   "src_port": "leaky",
+   "dst_ip_addr": "metadata",
+   "dst_port": "leaky",
+   "bpkts_per_second": "constant",
+   "total_fhlen": "constant",
+   "backward_iat_std": "constant",
+   "backward_packet_length_mean": "constant",
+   "backward_iat_total": "constant",
+   "backward_packet_length_std": "constant",
+   "backward_packet_length_min": "constant",
+   "flow_cwr": "constant",
+   "flow_rst": "constant",
+   "backward_iat_mean": "constant",
+   "backward_packet_length_max": "constant",
+   "total_length_of_backward_packets": "constant",
+   "total_backward_packets": "constant",
+   "backward_iat_min": "constant",
+   "backward_iat_max": "constant",
+   "attack_flag": "label",
+   "attack_step": "label"
+  },
+  "test_unknown_rows": 199
+ },
+ "wall_sec": 1.138134241104126,
+ "peak_rss_mb": 392.88671875,
+ "peak_gpu_mb": 0.0
+}

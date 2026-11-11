@@ -1,0 +1,365 @@
+{
+ "history": {
+  "step2_epochs": [
+   {
+    "epoch": 1,
+    "val_macro_f1": 0.831702204940112,
+    "val_weighted_f1": 0.9959473194709966,
+    "sec": 8.48
+   },
+   {
+    "epoch": 2,
+    "val_macro_f1": 0.8313179976744701,
+    "val_weighted_f1": 0.9966918997008699,
+    "sec": 7.43
+   },
+   {
+    "epoch": 3,
+    "val_macro_f1": 0.8644191858397813,
+    "val_weighted_f1": 0.9970634067264535,
+    "sec": 7.64
+   },
+   {
+    "epoch": 4,
+    "val_macro_f1": 0.8575837165931831,
+    "val_weighted_f1": 0.9969180767189953,
+    "sec": 7.35
+   },
+   {
+    "epoch": 5,
+    "val_macro_f1": 0.8769606821101028,
+    "val_weighted_f1": 0.9973475656819117,
+    "sec": 7.37
+   },
+   {
+    "epoch": 6,
+    "val_macro_f1": 0.8884477113418019,
+    "val_weighted_f1": 0.9974540536646374,
+    "sec": 7.37
+   },
+   {
+    "epoch": 7,
+    "val_macro_f1": 0.8534357806210225,
+    "val_weighted_f1": 0.9971625963279755,
+    "sec": 7.47
+   },
+   {
+    "epoch": 8,
+    "val_macro_f1": 0.8808611414033218,
+    "val_weighted_f1": 0.9973569074693266,
+    "sec": 7.46
+   },
+   {
+    "epoch": 9,
+    "val_macro_f1": 0.8421610083127321,
+    "val_weighted_f1": 0.9973907622204492,
+    "sec": 7.6
+   },
+   {
+    "epoch": 10,
+    "val_macro_f1": 0.8651065626163345,
+    "val_weighted_f1": 0.997753021008586,
+    "sec": 7.39
+   },
+   {
+    "epoch": 11,
+    "val_macro_f1": 0.8630749780982928,
+    "val_weighted_f1": 0.9971381227488426,
+    "sec": 7.41
+   },
+   {
+    "epoch": 12,
+    "val_macro_f1": 0.8838037623902977,
+    "val_weighted_f1": 0.9975895147109336,
+    "sec": 7.39
+   },
+   {
+    "epoch": 13,
+    "val_macro_f1": 0.8725410264535935,
+    "val_weighted_f1": 0.9974820810526076,
+    "sec": 7.37
+   },
+   {
+    "epoch": 14,
+    "val_macro_f1": 0.8681860798703912,
+    "val_weighted_f1": 0.997667567889647,
+    "sec": 7.4
+   }
+  ],
+  "selected_epoch": 6,
+  "step2_sec": 109.87
+ },
+ "train_sec": 128.65912222862244,
+ "encoder_sec": 18.77875018119812,
+ "theta1": null,
+ "theta2": null,
+ "val": {
+  "macro_f1": 0.8812900182537041,
+  "macro_precision": 0.9034095035358773,
+  "macro_recall": 0.8960667025751972,
+  "weighted_f1": 0.9977913662509024,
+  "weighted_precision": 0.9981289514119619,
+  "weighted_recall": 0.9976531988743438,
+  "accuracy": 0.9976531988743438,
+  "macro_f1_attack_only": 0.872898642195537,
+  "binary": {
+   "tp": 77766,
+   "fp": 658,
+   "tn": 317310,
+   "fn": 124,
+   "f1_attack": 0.9949972491267577,
+   "recall_attack": 0.9984080112979843,
+   "precision_attack": 0.9916097113128635,
+   "fpr": 0.0020693906305036987,
+   "macro_f1": 0.9968832660973999
+  }
+ },
+ "test": {
+  "macro_f1": 0.8628707542516713,
+  "macro_precision": 0.902749979935414,
+  "macro_recall": 0.8727208245358681,
+  "weighted_f1": 0.9978722655597922,
+  "weighted_precision": 0.998185860814427,
+  "weighted_recall": 0.9977586349120305,
+  "accuracy": 0.9977586349120305,
+  "macro_f1_attack_only": 0.8531581513138937,
+  "per_class": {
+   "benign": {
+    "precision": 0.9996281686497672,
+    "recall": 0.9980674414509597,
+    "f1": 0.9988471953805577,
+    "support": 681480
+   },
+   "dos hulk": {
+    "precision": 0.996618252763928,
+    "recall": 0.9985520047494244,
+    "f1": 0.9975841916444856,
+    "support": 69061
+   },
+   "portscan": {
+    "precision": 0.9940983194860097,
+    "recall": 0.9996001683501684,
+    "f1": 0.9968416524138799,
+    "support": 47520
+   },
+   "ddos": {
+    "precision": 0.9995855566492255,
+    "recall": 0.9993525831930596,
+    "f1": 0.9994690563447767,
+    "support": 38615
+   },
+   "dos goldeneye": {
+    "precision": 0.9816129032258064,
+    "recall": 0.9960720130932897,
+    "f1": 0.9887896019496344,
+    "support": 3055
+   },
+   "ftp-patator": {
+    "precision": 0.9979381443298969,
+    "recall": 0.9861450692746536,
+    "f1": 0.9920065587210494,
+    "support": 2454
+   },
+   "ssh-patator": {
+    "precision": 0.9743309666848716,
+    "recall": 0.9955357142857143,
+    "f1": 0.9848192105989512,
+    "support": 1792
+   },
+   "dos slowloris": {
+    "precision": 0.9948776323278316,
+    "recall": 0.9943117178612059,
+    "f1": 0.9945945945945946,
+    "support": 1758
+   },
+   "dos slowhttptest": {
+    "precision": 0.910092807424594,
+    "recall": 0.9886578449905482,
+    "f1": 0.9477499244941106,
+    "support": 1587
+   },
+   "bot": {
+    "precision": 0.48990342405618964,
+    "recall": 0.9425675675675675,
+    "f1": 0.6447140381282496,
+    "support": 592
+   },
+   "web attack brute force": {
+    "precision": 0.83399209486166,
+    "recall": 0.4470338983050847,
+    "f1": 0.5820689655172414,
+    "support": 472
+   },
+   "web attack xss": {
+    "precision": 0.36857142857142855,
+    "recall": 0.6972972972972973,
+    "f1": 0.4822429906542056,
+    "support": 185
+   },
+   "infiltration": {
+    "precision": 1.0,
+    "recall": 0.7142857142857143,
+    "f1": 0.8333333333333334,
+    "support": 7
+   },
+   "web attack sql injection": {
+    "precision": 1.0,
+    "recall": 0.3333333333333333,
+    "f1": 0.5,
+    "support": 9
+   },
+   "heartbleed": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 3
+   }
+  },
+  "binary": {
+   "tp": 166857,
+   "fp": 1317,
+   "tn": 680163,
+   "fn": 253,
+   "f1_attack": 0.9953174025602176,
+   "recall_attack": 0.9984860271677338,
+   "precision_attack": 0.9921688251453852,
+   "fpr": 0.001932558549040324,
+   "macro_f1": 0.9970822989703876
+  }
+ },
+ "infer_ms_per_sample": 0.0027565193088610477,
+ "test_int8_proto": {
+  "macro_f1": 0.17394445895540597,
+  "weighted_f1": 0.8482335944778466,
+  "accuracy": 0.8842208840547261
+ },
+ "eval_sec": 8.932297229766846,
+ "dataset": "cicids2017",
+ "model": "hyde",
+ "seed": 1,
+ "tag": "ablation/class_weight_on",
+ "holdout": [],
+ "config": {
+  "seed": 1,
+  "threads": 6,
+  "device": "cuda",
+  "data": {
+   "val_frac": 0.2,
+   "tune_subsample": null
+  },
+  "encoder": {
+   "type": "pairbind",
+   "D": 10000,
+   "bins": 8,
+   "categorical_threshold": 32,
+   "tree_min_samples_leaf": 64,
+   "tree_min_fraction_leaf": 0.001,
+   "tree_fit_max": 100000
+  },
+  "step1": {
+   "enabled": false,
+   "K": null,
+   "kmeans_fit_max": 5000,
+   "theta1": 0.9,
+   "retrain": {
+    "enabled": true,
+    "epochs": 5,
+    "lr": 0.05,
+    "batch": 512
+   }
+  },
+  "step2": {
+   "readout": "adamw",
+   "mass": {
+    "lr": 0.035,
+    "batch": 8192
+   },
+   "adamw": {
+    "lr": 0.03,
+    "weight_decay": 0.0001,
+    "batch": 4096
+   },
+   "epochs": 60,
+   "patience": 8,
+   "select_metric": "macro_f1",
+   "val_select_max": 200000,
+   "benign_split": 0
+  },
+  "class_weight": {
+   "p": 0.25,
+   "cap": 100.0
+  },
+  "hard_negative": {
+   "beta": 0.0
+  },
+  "boosting": {
+   "T": 0,
+   "d_cap_mult": 100.0
+  },
+  "unknown": {
+   "enabled": false,
+   "reject_rate": 0.05
+  },
+  "eval": {
+   "int8_proto": false,
+   "infer_check_rows": 20000
+  },
+  "ml": {
+   "class_weight_p": [
+    0.0,
+    0.5
+   ],
+   "mlp": {
+    "hidden": 512,
+    "layers": 3,
+    "lr": 0.001,
+    "batch": 256,
+    "epochs": 50,
+    "patience": 8
+   }
+  }
+ },
+ "git": "ce3180c",
+ "finished": "2026-11-08 08:38:58",
+ "data": {
+  "n_fit": 1583428,
+  "n_val": 395858,
+  "n_test": 848590,
+  "n_numeric": 69,
+  "n_categorical": 0,
+  "classes": [
+   "benign",
+   "dos hulk",
+   "portscan",
+   "ddos",
+   "dos goldeneye",
+   "ftp-patator",
+   "ssh-patator",
+   "dos slowloris",
+   "dos slowhttptest",
+   "bot",
+   "web attack brute force",
+   "web attack xss",
+   "infiltration",
+   "web attack sql injection",
+   "heartbleed"
+  ],
+  "dropped_columns": {
+   "destination port": "leaky",
+   "bwd psh flags": "constant",
+   "bwd urg flags": "constant",
+   "fwd avg bytes/bulk": "constant",
+   "fwd avg packets/bulk": "constant",
+   "fwd avg bulk rate": "constant",
+   "bwd avg bytes/bulk": "constant",
+   "bwd avg packets/bulk": "constant",
+   "bwd avg bulk rate": "constant",
+   "attack_flag": "label",
+   "attack_step": "label"
+  },
+  "test_unknown_rows": 0
+ },
+ "wall_sec": 138.90013313293457,
+ "peak_rss_mb": 4449.4609375,
+ "peak_gpu_mb": 717.154296875
+}

@@ -1,0 +1,327 @@
+{
+ "ml": {
+  "candidates": [
+   {
+    "p": 0.0,
+    "val_macro_f1": 0.7292045048341478,
+    "val_weighted_f1": 0.9981721669318234,
+    "train_sec": 117.48
+   },
+   {
+    "p": 0.5,
+    "val_macro_f1": 0.7881563725516887,
+    "val_weighted_f1": 0.9985874725850138,
+    "train_sec": 127.93
+   }
+  ],
+  "class_weight_p": 0.5,
+  "train_sec": 127.93
+ },
+ "train_sec": 127.93,
+ "infer_ms_per_sample": 0.014565964384735518,
+ "val": {
+  "macro_f1": 0.7881563725516887,
+  "macro_precision": 0.7844827437071697,
+  "macro_recall": 0.8305525564388196,
+  "weighted_f1": 0.9985874725850138,
+  "weighted_precision": 0.9986298601634667,
+  "weighted_recall": 0.9986109457475096,
+  "accuracy": 0.9986109457475096,
+  "macro_f1_attack_only": 0.7785692933401211,
+  "binary": {
+   "tp": 11713,
+   "fp": 10,
+   "tn": 13459,
+   "fn": 15,
+   "f1_attack": 0.9989339473796427,
+   "recall_attack": 0.9987210095497954,
+   "precision_attack": 0.9991469760300264,
+   "fpr": 0.0007424456158586384,
+   "macro_f1": 0.9990030312929093
+  }
+ },
+ "test": {
+  "macro_f1": 0.4406611035899125,
+  "macro_precision": 0.457530615149191,
+  "macro_recall": 0.5408461346833985,
+  "weighted_f1": 0.6245129774974093,
+  "weighted_precision": 0.6223044248011067,
+  "weighted_recall": 0.7239176721078779,
+  "accuracy": 0.7239176721078779,
+  "macro_f1_attack_only": 0.4242560718441619,
+  "per_class": {
+   "unknown": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 3750
+   },
+   "benign": {
+    "precision": 0.6568912922906267,
+    "recall": 0.9756976624446504,
+    "f1": 0.7851667702506733,
+    "support": 9711
+   },
+   "neptune": {
+    "precision": 0.9653733833959116,
+    "recall": 0.9937728151170281,
+    "f1": 0.9793672627235214,
+    "support": 4657
+   },
+   "satan": {
+    "precision": 0.6366001734605378,
+    "recall": 0.998639455782313,
+    "f1": 0.777542372881356,
+    "support": 735
+   },
+   "ipsweep": {
+    "precision": 0.5847457627118644,
+    "recall": 0.9787234042553191,
+    "f1": 0.7320954907161804,
+    "support": 141
+   },
+   "portsweep": {
+    "precision": 0.7711442786069652,
+    "recall": 0.9872611464968153,
+    "f1": 0.8659217877094972,
+    "support": 157
+   },
+   "smurf": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 665
+   },
+   "nmap": {
+    "precision": 0.9864864864864865,
+    "recall": 1.0,
+    "f1": 0.9931972789115646,
+    "support": 73
+   },
+   "back": {
+    "precision": 0.43656716417910446,
+    "recall": 0.9777158774373259,
+    "f1": 0.6036113499570077,
+    "support": 359
+   },
+   "teardrop": {
+    "precision": 0.24489795918367346,
+    "recall": 1.0,
+    "f1": 0.39344262295081966,
+    "support": 12
+   },
+   "pod": {
+    "precision": 0.7115384615384616,
+    "recall": 0.9024390243902439,
+    "f1": 0.7956989247311828,
+    "support": 41
+   },
+   "guess_passwd": {
+    "precision": 1.0,
+    "recall": 0.03330625507717303,
+    "f1": 0.06446540880503145,
+    "support": 1231
+   },
+   "buffer_overflow": {
+    "precision": 0.16666666666666666,
+    "recall": 0.05,
+    "f1": 0.07692307692307693,
+    "support": 20
+   },
+   "warezmaster": {
+    "precision": 0.3333333333333333,
+    "recall": 0.001059322033898305,
+    "f1": 0.0021119324181626186,
+    "support": 944
+   },
+   "land": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 7
+   },
+   "imap": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 1
+   },
+   "rootkit": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 13
+   },
+   "loadmodule": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 2
+   },
+   "ftp_write": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 3
+   },
+   "multihop": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "support": 18
+   },
+   "phf": {
+    "precision": 0.5,
+    "recall": 0.5,
+    "f1": 0.5,
+    "support": 2
+   },
+   "perl": {
+    "precision": 0.07142857142857142,
+    "recall": 0.5,
+    "f1": 0.125,
+    "support": 2
+   }
+  },
+  "binary": {
+   "tp": 7884,
+   "fp": 236,
+   "tn": 9475,
+   "fn": 4949,
+   "f1_attack": 0.7525414021858445,
+   "recall_attack": 0.6143536195745344,
+   "precision_attack": 0.970935960591133,
+   "fpr": 0.024302337555349603,
+   "macro_f1": 0.7688540862182589
+  }
+ },
+ "model_bytes": 8122323,
+ "dataset": "nsl-kdd",
+ "model": "xgboost",
+ "seed": 1,
+ "tag": "ml",
+ "holdout": [],
+ "config": {
+  "seed": 1,
+  "threads": 4,
+  "device": "cuda",
+  "data": {
+   "val_frac": 0.2,
+   "tune_subsample": null
+  },
+  "encoder": {
+   "type": "pairbind",
+   "D": 10000,
+   "bins": 16,
+   "categorical_threshold": 32,
+   "tree_min_samples_leaf": 64,
+   "tree_min_fraction_leaf": 0.001,
+   "tree_fit_max": 100000
+  },
+  "step1": {
+   "enabled": true,
+   "K": null,
+   "kmeans_fit_max": 5000,
+   "theta1": 0.9,
+   "retrain": {
+    "enabled": true,
+    "epochs": 5,
+    "lr": 0.05,
+    "batch": 512
+   }
+  },
+  "step2": {
+   "readout": "mass",
+   "mass": {
+    "lr": 0.035,
+    "batch": 8192
+   },
+   "adamw": {
+    "lr": 0.01,
+    "weight_decay": 0.0001,
+    "batch": 4096
+   },
+   "epochs": 60,
+   "patience": 8,
+   "select_metric": "macro_f1",
+   "val_select_max": 200000
+  },
+  "class_weight": {
+   "p": 0.0,
+   "cap": 100.0
+  },
+  "hard_negative": {
+   "beta": 0.0
+  },
+  "boosting": {
+   "T": 0,
+   "d_cap_mult": 100.0
+  },
+  "unknown": {
+   "enabled": false,
+   "reject_rate": 0.05
+  },
+  "eval": {
+   "int8_proto": false,
+   "infer_check_rows": 20000
+  },
+  "ml": {
+   "class_weight_p": [
+    0.0,
+    0.5
+   ],
+   "mlp": {
+    "hidden": 512,
+    "layers": 3,
+    "lr": 0.001,
+    "batch": 256,
+    "epochs": 50,
+    "patience": 8
+   }
+  }
+ },
+ "git": "c2610f8",
+ "finished": "2026-11-08 00:45:33",
+ "data": {
+  "n_fit": 100776,
+  "n_val": 25197,
+  "n_test": 22544,
+  "n_numeric": 37,
+  "n_categorical": 3,
+  "classes": [
+   "benign",
+   "neptune",
+   "satan",
+   "ipsweep",
+   "portsweep",
+   "smurf",
+   "nmap",
+   "back",
+   "teardrop",
+   "warezclient",
+   "pod",
+   "guess_passwd",
+   "buffer_overflow",
+   "warezmaster",
+   "land",
+   "imap",
+   "rootkit",
+   "loadmodule",
+   "ftp_write",
+   "multihop",
+   "phf",
+   "perl",
+   "spy"
+  ],
+  "dropped_columns": {
+   "num_outbound_cmds": "constant",
+   "unknown": "leaky",
+   "attack_flag": "label",
+   "attack_step": "label"
+  },
+  "test_unknown_rows": 3750
+ },
+ "wall_sec": 247.09914875030518,
+ "peak_rss_mb": 702.73828125,
+ "peak_gpu_mb": 0.0
+}

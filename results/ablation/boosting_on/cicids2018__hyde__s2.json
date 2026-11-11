@@ -1,0 +1,297 @@
+{
+ "history": {
+  "samme": [
+   {
+    "t": 1,
+    "eps": 0.7812145948410034
+   },
+   {
+    "t": 2,
+    "eps": 0.44451361894607544
+   },
+   {
+    "t": 3,
+    "eps": 0.8291301131248474
+   },
+   {
+    "t": 4,
+    "eps": 0.9684842824935913
+   }
+  ],
+  "step2_sec": 190.29
+ },
+ "train_sec": 298.0160586833954,
+ "encoder_sec": 107.71876931190491,
+ "theta1": null,
+ "theta2": null,
+ "val": {
+  "macro_f1": 0.3700632844394508,
+  "macro_precision": 0.3673193799930153,
+  "macro_recall": 0.6790161647814578,
+  "weighted_f1": 0.7121318413425649,
+  "weighted_precision": 0.9193839817765271,
+  "weighted_recall": 0.6109664180838984,
+  "accuracy": 0.6109664180838984,
+  "macro_f1_attack_only": 0.34408446763340345,
+  "binary": {
+   "tp": 372251,
+   "fp": 780889,
+   "tn": 1093235,
+   "fn": 12430,
+   "f1_attack": 0.4841278666372744,
+   "recall_attack": 0.9676875125103658,
+   "precision_attack": 0.32281509617219073,
+   "fpr": 0.4166688009971592,
+   "macro_f1": 0.6089472931806945
+  }
+ },
+ "test": {
+  "macro_f1": 0.37088238782707283,
+  "macro_precision": 0.367790210761238,
+  "macro_recall": 0.6850666244501684,
+  "weighted_f1": 0.7122147556655166,
+  "weighted_precision": 0.9196092517901845,
+  "weighted_recall": 0.6110033759020472,
+  "accuracy": 0.6110033759020472,
+  "macro_f1_attack_only": 0.3449704876247427,
+  "per_class": {
+   "benign": {
+    "precision": 0.9888093227381367,
+    "recall": 0.5831645159292064,
+    "f1": 0.7336489906596958,
+    "support": 4019629
+   },
+   "ddos hoic": {
+    "precision": 0.7912971490100804,
+    "recall": 0.7116918509866901,
+    "f1": 0.7493863663149696,
+    "support": 205485
+   },
+   "ddos loic-http": {
+    "precision": 0.4227317332965131,
+    "recall": 0.9943165012845867,
+    "f1": 0.5932460558163193,
+    "support": 172429
+   },
+   "dos hulk": {
+    "precision": 0.5557973348188251,
+    "recall": 0.919272989022854,
+    "f1": 0.6927527033954158,
+    "support": 138925
+   },
+   "bot": {
+    "precision": 0.9639373955043656,
+    "recall": 0.48370407485521855,
+    "f1": 0.6441656386024533,
+    "support": 85819
+   },
+   "ftp-patator": {
+    "precision": 0.14294602412268734,
+    "recall": 0.45496708297868643,
+    "f1": 0.2175424316546165,
+    "support": 57569
+   },
+   "ssh-patator": {
+    "precision": 0.9937754233279728,
+    "recall": 0.9250303788105595,
+    "f1": 0.9581714369105602,
+    "support": 56783
+   },
+   "infilteration": {
+    "precision": 0.010366073746667596,
+    "recall": 0.03401841191995179,
+    "f1": 0.015890118423607068,
+    "support": 48121
+   },
+   "dos slowhttptest": {
+    "precision": 0.43377970804680904,
+    "recall": 0.8567071717893734,
+    "f1": 0.5759410539804581,
+    "support": 41970
+   },
+   "dos goldeneye": {
+    "precision": 0.013312665121910823,
+    "recall": 0.6685778890414278,
+    "f1": 0.02610551939861763,
+    "support": 12383
+   },
+   "dos slowloris": {
+    "precision": 0.035897243201943915,
+    "recall": 0.893113119351823,
+    "f1": 0.06902032559483672,
+    "support": 3209
+   },
+   "ddos loic-udp": {
+    "precision": 0.15295095594347466,
+    "recall": 1.0,
+    "f1": 0.2653208363374189,
+    "support": 552
+   },
+   "brute force": {
+    "precision": 0.010206653225806451,
+    "recall": 0.44751381215469616,
+    "f1": 0.019958112603178514,
+    "support": 181
+   },
+   "xss": {
+    "precision": 0.00016139286936958967,
+    "recall": 0.9705882352941176,
+    "f1": 0.0003227320737002699,
+    "support": 68
+   },
+   "sql injection": {
+    "precision": 0.0008840864440078585,
+    "recall": 0.3333333333333333,
+    "f1": 0.0017634956402468895,
+    "support": 27
+   }
+  },
+  "binary": {
+   "tp": 796992,
+   "fp": 1675524,
+   "tn": 2344105,
+   "fn": 26529,
+   "f1_attack": 0.4836062216534584,
+   "recall_attack": 0.9677858852415421,
+   "precision_attack": 0.32234048232650464,
+   "fpr": 0.41683548407079357,
+   "macro_f1": 0.6086276061565771
+  }
+ },
+ "infer_ms_per_sample": 0.00296493207849741,
+ "test_int8_proto": {
+  "macro_f1": 0.28311151766957876,
+  "weighted_f1": 0.5453936439233432,
+  "accuracy": 0.42776746538926114
+ },
+ "eval_sec": 56.65118408203125,
+ "dataset": "cicids2018",
+ "model": "hyde",
+ "seed": 2,
+ "tag": "ablation/boosting_on",
+ "holdout": [],
+ "config": {
+  "seed": 2,
+  "threads": 8,
+  "device": "cuda",
+  "data": {
+   "val_frac": 0.2,
+   "tune_subsample": null
+  },
+  "encoder": {
+   "type": "pairbind",
+   "D": 10000,
+   "bins": 16,
+   "categorical_threshold": 32,
+   "tree_min_samples_leaf": 64,
+   "tree_min_fraction_leaf": 0.001,
+   "tree_fit_max": 100000
+  },
+  "step1": {
+   "enabled": false,
+   "K": null,
+   "kmeans_fit_max": 5000,
+   "theta1": 0.9,
+   "retrain": {
+    "enabled": true,
+    "epochs": 5,
+    "lr": 0.05,
+    "batch": 512
+   }
+  },
+  "step2": {
+   "readout": "adamw",
+   "mass": {
+    "lr": 0.035,
+    "batch": 8192
+   },
+   "adamw": {
+    "lr": 0.01,
+    "weight_decay": 0.0001,
+    "batch": 4096
+   },
+   "epochs": 60,
+   "patience": 8,
+   "select_metric": "macro_f1",
+   "val_select_max": 200000,
+   "benign_split": 0
+  },
+  "class_weight": {
+   "p": 0.0,
+   "cap": 100.0
+  },
+  "hard_negative": {
+   "beta": 0.0
+  },
+  "boosting": {
+   "T": 10,
+   "d_cap_mult": 100.0
+  },
+  "unknown": {
+   "enabled": false,
+   "reject_rate": 0.05
+  },
+  "eval": {
+   "int8_proto": false,
+   "infer_check_rows": 20000
+  },
+  "ml": {
+   "class_weight_p": [
+    0.0,
+    0.5
+   ],
+   "mlp": {
+    "hidden": 512,
+    "layers": 3,
+    "lr": 0.001,
+    "batch": 256,
+    "epochs": 50,
+    "patience": 8
+   }
+  }
+ },
+ "git": "4097139",
+ "finished": "2026-11-09 07:49:39",
+ "data": {
+  "n_fit": 9035228,
+  "n_val": 2258805,
+  "n_test": 4843150,
+  "n_numeric": 68,
+  "n_categorical": 1,
+  "classes": [
+   "benign",
+   "ddos hoic",
+   "ddos loic-http",
+   "dos hulk",
+   "bot",
+   "ftp-patator",
+   "ssh-patator",
+   "infilteration",
+   "dos slowhttptest",
+   "dos goldeneye",
+   "dos slowloris",
+   "ddos loic-udp",
+   "brute force",
+   "xss",
+   "sql injection"
+  ],
+  "dropped_columns": {
+   "dst port": "leaky",
+   "timestamp": "metadata",
+   "bwd psh flags": "constant",
+   "bwd urg flags": "constant",
+   "fwd byts/b avg": "constant",
+   "fwd pkts/b avg": "constant",
+   "fwd blk rate avg": "constant",
+   "bwd byts/b avg": "constant",
+   "bwd pkts/b avg": "constant",
+   "bwd blk rate avg": "constant",
+   "attack_flag": "label",
+   "attack_step": "label"
+  },
+  "test_unknown_rows": 0
+ },
+ "wall_sec": 361.4456076622009,
+ "peak_rss_mb": 13793.046875,
+ "peak_gpu_mb": 845.62060546875
+}

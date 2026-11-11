@@ -1,0 +1,208 @@
+{
+ "ml": {
+  "candidates": [
+   {
+    "p": 0.0,
+    "val_macro_f1": 0.39038603401356725,
+    "val_weighted_f1": 0.9748903651530034,
+    "train_sec": 16.31
+   },
+   {
+    "p": 0.5,
+    "val_macro_f1": 0.9745340122247141,
+    "val_weighted_f1": 0.9999465496476414,
+    "train_sec": 15.33
+   }
+  ],
+  "class_weight_p": 0.5,
+  "train_sec": 15.33
+ },
+ "train_sec": 15.33,
+ "infer_ms_per_sample": 0.0034972010404010633,
+ "val": {
+  "macro_f1": 0.9745340122247141,
+  "macro_precision": 0.9933879571952879,
+  "macro_recall": 0.957420711749416,
+  "weighted_f1": 0.9999465496476414,
+  "weighted_precision": 0.9999471742190114,
+  "weighted_recall": 0.9999476752095607,
+  "accuracy": 0.9999476752095607,
+  "macro_f1_attack_only": 0.9681745696560162,
+  "binary": {
+   "tp": 13914,
+   "fp": 2,
+   "tn": 177190,
+   "fn": 8,
+   "f1_attack": 0.9996407787915799,
+   "recall_attack": 0.9994253699181153,
+   "precision_attack": 0.9998562805403852,
+   "fpr": 1.1287191295318072e-05,
+   "macro_f1": 0.999806280645543
+  }
+ },
+ "test": {
+  "macro_f1": 0.9759070208205305,
+  "macro_precision": 0.9845963038891833,
+  "macro_recall": 0.9676061441963466,
+  "weighted_f1": 0.9999534504779742,
+  "weighted_precision": 0.9999533109486557,
+  "weighted_recall": 0.9999539542807868,
+  "accuracy": 0.9999539542807868,
+  "macro_f1_attack_only": 0.9698899839388334,
+  "per_class": {
+   "benign": {
+    "precision": 0.9999683962924336,
+    "recall": 0.9999819404939275,
+    "f1": 0.999975168347318,
+    "support": 221490
+   },
+   "DoS": {
+    "precision": 0.9999362000765599,
+    "recall": 1.0,
+    "f1": 0.99996809902064,
+    "support": 15673
+   },
+   "Reconn": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 1639
+   },
+   "CommInj": {
+    "precision": 1.0,
+    "recall": 0.96,
+    "f1": 0.9795918367346939,
+    "support": 50
+   },
+   "Backdoor": {
+    "precision": 0.9230769230769231,
+    "recall": 0.8780487804878049,
+    "f1": 0.9,
+    "support": 41
+   }
+  },
+  "binary": {
+   "tp": 17396,
+   "fp": 4,
+   "tn": 221486,
+   "fn": 7,
+   "f1_attack": 0.9996839352929345,
+   "recall_attack": 0.9995977704993392,
+   "precision_attack": 0.9997701149425288,
+   "fpr": 1.8059506072508916e-05,
+   "macro_f1": 0.9998295518201263
+  }
+ },
+ "model_bytes": 1762014,
+ "dataset": "wustl-iiot-2021",
+ "model": "lightgbm",
+ "seed": 1,
+ "tag": "ml",
+ "holdout": [],
+ "config": {
+  "seed": 1,
+  "threads": 4,
+  "device": "cuda",
+  "data": {
+   "val_frac": 0.2,
+   "tune_subsample": null
+  },
+  "encoder": {
+   "type": "pairbind",
+   "D": 10000,
+   "bins": 8,
+   "categorical_threshold": 32,
+   "tree_min_samples_leaf": 64,
+   "tree_min_fraction_leaf": 0.001,
+   "tree_fit_max": 100000
+  },
+  "step1": {
+   "enabled": false,
+   "K": null,
+   "kmeans_fit_max": 5000,
+   "theta1": 0.9,
+   "retrain": {
+    "enabled": true,
+    "epochs": 5,
+    "lr": 0.05,
+    "batch": 512
+   }
+  },
+  "step2": {
+   "readout": "adamw",
+   "mass": {
+    "lr": 0.035,
+    "batch": 8192
+   },
+   "adamw": {
+    "lr": 0.003,
+    "weight_decay": 0.0001,
+    "batch": 4096
+   },
+   "epochs": 60,
+   "patience": 8,
+   "select_metric": "macro_f1",
+   "val_select_max": 200000,
+   "benign_split": 0
+  },
+  "class_weight": {
+   "p": 0.25,
+   "cap": 100.0
+  },
+  "hard_negative": {
+   "beta": 0.0
+  },
+  "boosting": {
+   "T": 0,
+   "d_cap_mult": 100.0
+  },
+  "unknown": {
+   "enabled": false,
+   "reject_rate": 0.05
+  },
+  "eval": {
+   "int8_proto": false,
+   "infer_check_rows": 20000
+  },
+  "ml": {
+   "class_weight_p": [
+    0.0,
+    0.5
+   ],
+   "mlp": {
+    "hidden": 512,
+    "layers": 3,
+    "lr": 0.001,
+    "batch": 256,
+    "epochs": 50,
+    "patience": 8
+   }
+  }
+ },
+ "git": "9a31c77",
+ "finished": "2026-11-08 06:35:05",
+ "data": {
+  "n_fit": 764457,
+  "n_val": 191114,
+  "n_test": 238893,
+  "n_numeric": 40,
+  "n_categorical": 1,
+  "classes": [
+   "benign",
+   "DoS",
+   "Reconn",
+   "CommInj",
+   "Backdoor"
+  ],
+  "dropped_columns": {
+   "Sport": "leaky",
+   "Dport": "leaky",
+   "attack_flag": "label",
+   "attack_step": "label"
+  },
+  "test_unknown_rows": 0
+ },
+ "wall_sec": 36.28996300697327,
+ "peak_rss_mb": 1074.09765625,
+ "peak_gpu_mb": 0.0
+}

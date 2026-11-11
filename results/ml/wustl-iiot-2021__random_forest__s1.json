@@ -1,0 +1,208 @@
+{
+ "ml": {
+  "candidates": [
+   {
+    "p": 0.0,
+    "val_macro_f1": 0.9623336616275837,
+    "val_weighted_f1": 0.9999347273989118,
+    "train_sec": 55.0
+   },
+   {
+    "p": 0.5,
+    "val_macro_f1": 0.9623336616275837,
+    "val_weighted_f1": 0.9999347273989118,
+    "train_sec": 31.94
+   }
+  ],
+  "class_weight_p": 0.0,
+  "train_sec": 55.0
+ },
+ "train_sec": 55.0,
+ "infer_ms_per_sample": 0.002917945680640921,
+ "val": {
+  "macro_f1": 0.9623336616275837,
+  "macro_precision": 0.9898384415322546,
+  "macro_recall": 0.9397747816450162,
+  "weighted_f1": 0.9999347273989118,
+  "weighted_precision": 0.9999366930906307,
+  "weighted_recall": 0.999937210251473,
+  "accuracy": 0.999937210251473,
+  "macro_f1_attack_only": 0.9529241313697921,
+  "binary": {
+   "tp": 13913,
+   "fp": 1,
+   "tn": 177191,
+   "fn": 9,
+   "f1_attack": 0.9996407529817503,
+   "recall_attack": 0.9993535411578797,
+   "precision_attack": 0.9999281299410665,
+   "fpr": 5.643595647659036e-06,
+   "macro_f1": 0.9998062678202505
+  }
+ },
+ "test": {
+  "macro_f1": 0.9657769186737039,
+  "macro_precision": 0.9769065009980883,
+  "macro_recall": 0.9569738038054902,
+  "weighted_f1": 0.9999524668158237,
+  "weighted_precision": 0.9999530049225003,
+  "weighted_recall": 0.9999539542807868,
+  "accuracy": 0.9999539542807868,
+  "macro_f1_attack_only": 0.9572250988323292,
+  "per_class": {
+   "benign": {
+    "precision": 0.9999774259231669,
+    "recall": 0.9999909702469637,
+    "f1": 0.9999841980392024,
+    "support": 221490
+   },
+   "DoS": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 15673
+   },
+   "Reconn": {
+    "precision": 0.999390243902439,
+    "recall": 1.0,
+    "f1": 0.9996950289722476,
+    "support": 1639
+   },
+   "CommInj": {
+    "precision": 0.9423076923076923,
+    "recall": 0.98,
+    "f1": 0.9607843137254902,
+    "support": 50
+   },
+   "Backdoor": {
+    "precision": 0.9428571428571428,
+    "recall": 0.8048780487804879,
+    "f1": 0.868421052631579,
+    "support": 41
+   }
+  },
+  "binary": {
+   "tp": 17398,
+   "fp": 2,
+   "tn": 221488,
+   "fn": 5,
+   "f1_attack": 0.9997988679136856,
+   "recall_attack": 0.9997126932138137,
+   "precision_attack": 0.9998850574712643,
+   "fpr": 9.029753036254458e-06,
+   "macro_f1": 0.999891532976444
+  }
+ },
+ "model_bytes": 2223258,
+ "dataset": "wustl-iiot-2021",
+ "model": "random_forest",
+ "seed": 1,
+ "tag": "ml",
+ "holdout": [],
+ "config": {
+  "seed": 1,
+  "threads": 4,
+  "device": "cuda",
+  "data": {
+   "val_frac": 0.2,
+   "tune_subsample": null
+  },
+  "encoder": {
+   "type": "pairbind",
+   "D": 10000,
+   "bins": 8,
+   "categorical_threshold": 32,
+   "tree_min_samples_leaf": 64,
+   "tree_min_fraction_leaf": 0.001,
+   "tree_fit_max": 100000
+  },
+  "step1": {
+   "enabled": false,
+   "K": null,
+   "kmeans_fit_max": 5000,
+   "theta1": 0.9,
+   "retrain": {
+    "enabled": true,
+    "epochs": 5,
+    "lr": 0.05,
+    "batch": 512
+   }
+  },
+  "step2": {
+   "readout": "adamw",
+   "mass": {
+    "lr": 0.035,
+    "batch": 8192
+   },
+   "adamw": {
+    "lr": 0.003,
+    "weight_decay": 0.0001,
+    "batch": 4096
+   },
+   "epochs": 60,
+   "patience": 8,
+   "select_metric": "macro_f1",
+   "val_select_max": 200000,
+   "benign_split": 0
+  },
+  "class_weight": {
+   "p": 0.25,
+   "cap": 100.0
+  },
+  "hard_negative": {
+   "beta": 0.0
+  },
+  "boosting": {
+   "T": 0,
+   "d_cap_mult": 100.0
+  },
+  "unknown": {
+   "enabled": false,
+   "reject_rate": 0.05
+  },
+  "eval": {
+   "int8_proto": false,
+   "infer_check_rows": 20000
+  },
+  "ml": {
+   "class_weight_p": [
+    0.0,
+    0.5
+   ],
+   "mlp": {
+    "hidden": 512,
+    "layers": 3,
+    "lr": 0.001,
+    "batch": 256,
+    "epochs": 50,
+    "patience": 8
+   }
+  }
+ },
+ "git": "9a31c77",
+ "finished": "2026-11-08 06:38:56",
+ "data": {
+  "n_fit": 764457,
+  "n_val": 191114,
+  "n_test": 238893,
+  "n_numeric": 40,
+  "n_categorical": 1,
+  "classes": [
+   "benign",
+   "DoS",
+   "Reconn",
+   "CommInj",
+   "Backdoor"
+  ],
+  "dropped_columns": {
+   "Sport": "leaky",
+   "Dport": "leaky",
+   "attack_flag": "label",
+   "attack_step": "label"
+  },
+  "test_unknown_rows": 0
+ },
+ "wall_sec": 91.42481303215027,
+ "peak_rss_mb": 1164.33984375,
+ "peak_gpu_mb": 0.0
+}

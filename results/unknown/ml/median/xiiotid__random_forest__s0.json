@@ -1,0 +1,294 @@
+{
+ "ml": {
+  "candidates": [
+   {
+    "p": 0.0,
+    "val_macro_f1": 0.9834898332614611,
+    "val_weighted_f1": 0.9966940404416764,
+    "train_sec": 42.99
+   },
+   {
+    "p": 0.5,
+    "val_macro_f1": 0.9840711639984465,
+    "val_weighted_f1": 0.9967867936116297,
+    "train_sec": 41.91
+   }
+  ],
+  "class_weight_p": 0.5,
+  "train_sec": 41.91
+ },
+ "train_sec": 41.91,
+ "infer_ms_per_sample": 0.004115220627069558,
+ "unknown_by_rate": {
+  "0.01": {
+   "theta2": 0.8,
+   "unknown_recall": 0.22448057813911473,
+   "unknown_precision": 0.626733921815889,
+   "unknown_f1": 0.3305620219487862,
+   "auroc": 0.9974894328217905,
+   "known_macro_f1": 0.9596035404812907,
+   "known_weighted_f1": 0.9952280155306914,
+   "benign_to_unknown_rate": 0.0008661295872239953,
+   "n_unknown": 4428,
+   "test_macro_f1": 0.8946148575338093
+  },
+  "0.05": {
+   "theta2": 0.98,
+   "unknown_recall": 0.23148148148148148,
+   "unknown_precision": 0.24387342374494408,
+   "unknown_f1": 0.2375159309465879,
+   "auroc": 0.9974894328217905,
+   "known_macro_f1": 0.8592722991566092,
+   "known_weighted_f1": 0.9864002003053517,
+   "benign_to_unknown_rate": 0.0010322366313491452,
+   "n_unknown": 4428,
+   "test_macro_f1": 0.795127893509004
+  },
+  "0.1": {
+   "theta2": 1.0,
+   "unknown_recall": 0.23148148148148148,
+   "unknown_precision": 0.14963503649635038,
+   "unknown_f1": 0.18176981734350062,
+   "auroc": 0.9974894328217905,
+   "known_macro_f1": 0.7733880290166683,
+   "known_weighted_f1": 0.976691660723773,
+   "benign_to_unknown_rate": 0.0010322366313491452,
+   "n_unknown": 4428,
+   "test_macro_f1": 0.7122574390227484
+  }
+ },
+ "theta2": 0.98,
+ "unknown": {
+  "unknown_recall": 0.23148148148148148,
+  "unknown_precision": 0.24387342374494408,
+  "unknown_f1": 0.2375159309465879,
+  "auroc": 0.9974894328217905,
+  "known_macro_f1": 0.8592722991566092,
+  "known_weighted_f1": 0.9864002003053517,
+  "benign_to_unknown_rate": 0.0010322366313491452,
+  "n_unknown": 4428
+ },
+ "val": {
+  "macro_f1": 0.8804567651962583,
+  "macro_precision": 0.9994615421236581,
+  "macro_recall": 0.8092085221539642,
+  "weighted_f1": 0.9869567450430166,
+  "weighted_precision": 0.9974430771941334,
+  "weighted_recall": 0.9781132134529008,
+  "accuracy": 0.9781132134529008,
+  "macro_f1_attack_only": 0.8658839296785935,
+  "binary": {
+   "tp": 60039,
+   "fp": 72,
+   "tn": 67355,
+   "fn": 328,
+   "f1_attack": 0.9966798917644715,
+   "recall_attack": 0.9945665678267928,
+   "precision_attack": 0.9988022159005839,
+   "fpr": 0.0010678214958399453,
+   "macro_f1": 0.9968596705510242
+  }
+ },
+ "test": {
+  "macro_f1": 0.795127893509004,
+  "macro_precision": 0.9200287495740673,
+  "macro_recall": 0.7285303843725985,
+  "weighted_f1": 0.9560930905819834,
+  "weighted_precision": 0.9572281638729009,
+  "weighted_recall": 0.957268862005531,
+  "accuracy": 0.957268862005531,
+  "macro_f1_attack_only": 0.7748945612704923,
+  "per_class": {
+   "unknown": {
+    "precision": 0.24387342374494408,
+    "recall": 0.23148148148148148,
+    "f1": 0.23751593094658788,
+    "support": 4428
+   },
+   "benign": {
+    "precision": 0.9564140719957289,
+    "recall": 0.9989677633686509,
+    "f1": 0.9772278836556094,
+    "support": 84283
+   },
+   "RDOS": {
+    "precision": 1.0,
+    "recall": 0.9991437134294278,
+    "f1": 0.999571673329526,
+    "support": 28028
+   },
+   "Reconnaissance": {
+    "precision": 1.0,
+    "recall": 0.9299570217214543,
+    "f1": 0.96370749322901,
+    "support": 25827
+   },
+   "Weaponization": {
+    "precision": 1.0,
+    "recall": 0.9827276805742485,
+    "f1": 0.9912886073085191,
+    "support": 13374
+   },
+   "Lateral _movement": {
+    "precision": 1.0,
+    "recall": 0.872461029759093,
+    "f1": 0.9318869828456104,
+    "support": 6351
+   },
+   "Tampering": {
+    "precision": 1.0,
+    "recall": 0.7800788954635108,
+    "f1": 0.8764542936288089,
+    "support": 1014
+   },
+   "C&C": {
+    "precision": 1.0,
+    "recall": 0.5490909090909091,
+    "f1": 0.7089201877934272,
+    "support": 550
+   },
+   "Exploitation": {
+    "precision": 1.0,
+    "recall": 0.36,
+    "f1": 0.5294117647058824,
+    "support": 225
+   },
+   "crypto-ransomware": {
+    "precision": 1.0,
+    "recall": 0.5813953488372093,
+    "f1": 0.7352941176470589,
+    "support": 86
+   }
+  },
+  "binary": {
+   "tp": 76046,
+   "fp": 87,
+   "tn": 84196,
+   "fn": 3837,
+   "f1_attack": 0.9748487334632345,
+   "recall_attack": 0.9519672521062054,
+   "precision_attack": 0.9988572629477362,
+   "fpr": 0.0010322366313491452,
+   "macro_f1": 0.976038308559422
+  }
+ },
+ "dataset": "xiiotid",
+ "model": "random_forest",
+ "seed": 0,
+ "tag": "unknown/ml/median",
+ "holdout": [
+  "Exfiltration"
+ ],
+ "config": {
+  "seed": 0,
+  "threads": 6,
+  "device": "cuda",
+  "data": {
+   "val_frac": 0.2,
+   "tune_subsample": null
+  },
+  "encoder": {
+   "type": "pairbind",
+   "D": 10000,
+   "bins": 32,
+   "categorical_threshold": 32,
+   "tree_min_samples_leaf": 64,
+   "tree_min_fraction_leaf": 0.001,
+   "tree_fit_max": 100000
+  },
+  "step1": {
+   "enabled": false,
+   "K": null,
+   "kmeans_fit_max": 5000,
+   "theta1": 0.9,
+   "retrain": {
+    "enabled": true,
+    "epochs": 5,
+    "lr": 0.05,
+    "batch": 512
+   }
+  },
+  "step2": {
+   "readout": "adamw",
+   "mass": {
+    "lr": 0.035,
+    "batch": 8192
+   },
+   "adamw": {
+    "lr": 0.03,
+    "weight_decay": 0.0001,
+    "batch": 4096
+   },
+   "epochs": 60,
+   "patience": 8,
+   "select_metric": "macro_f1",
+   "val_select_max": 200000,
+   "benign_split": 0
+  },
+  "class_weight": {
+   "p": 0.0,
+   "cap": 100.0
+  },
+  "hard_negative": {
+   "beta": 1.0
+  },
+  "boosting": {
+   "T": 0,
+   "d_cap_mult": 100.0
+  },
+  "unknown": {
+   "enabled": true,
+   "reject_rate": 0.05
+  },
+  "eval": {
+   "int8_proto": false,
+   "infer_check_rows": 20000
+  },
+  "ml": {
+   "class_weight_p": [
+    0.0,
+    0.5
+   ],
+   "mlp": {
+    "hidden": 512,
+    "layers": 3,
+    "lr": 0.001,
+    "batch": 256,
+    "epochs": 50,
+    "patience": 8
+   }
+  }
+ },
+ "git": "4097139",
+ "finished": "2026-11-09 07:54:48",
+ "data": {
+  "n_fit": 511168,
+  "n_val": 127794,
+  "n_test": 164166,
+  "n_numeric": 54,
+  "n_categorical": 3,
+  "classes": [
+   "benign",
+   "RDOS",
+   "Reconnaissance",
+   "Weaponization",
+   "Lateral _movement",
+   "Tampering",
+   "C&C",
+   "Exploitation",
+   "crypto-ransomware"
+  ],
+  "dropped_columns": {
+   "Scr_port": "leaky",
+   "Des_port": "leaky",
+   "Bad_checksum": "constant",
+   "is_SYN_with_RST": "constant",
+   "attack_flag": "label",
+   "attack_step": "label"
+  },
+  "test_unknown_rows": 4428
+ },
+ "wall_sec": 88.729651927948,
+ "peak_rss_mb": 1258.33203125,
+ "peak_gpu_mb": 0.0
+}

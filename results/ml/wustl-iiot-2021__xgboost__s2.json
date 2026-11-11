@@ -1,0 +1,208 @@
+{
+ "ml": {
+  "candidates": [
+   {
+    "p": 0.0,
+    "val_macro_f1": 0.988272436737283,
+    "val_weighted_f1": 0.99996821064646,
+    "train_sec": 75.08
+   },
+   {
+    "p": 0.5,
+    "val_macro_f1": 0.9752696886251846,
+    "val_weighted_f1": 0.9999327486789585,
+    "train_sec": 82.4
+   }
+  ],
+  "class_weight_p": 0.0,
+  "train_sec": 75.08
+ },
+ "train_sec": 75.08,
+ "infer_ms_per_sample": 0.0024971220630274123,
+ "val": {
+  "macro_f1": 0.988272436737283,
+  "macro_precision": 0.9999783910172614,
+  "macro_recall": 0.9774383925439212,
+  "weighted_f1": 0.99996821064646,
+  "weighted_precision": 0.9999686061340191,
+  "weighted_recall": 0.9999686051257365,
+  "accuracy": 0.9999686051257365,
+  "macro_f1_attack_only": 0.9853447785705649,
+  "binary": {
+   "tp": 13917,
+   "fp": 1,
+   "tn": 177191,
+   "fn": 5,
+   "f1_attack": 0.9997844827586206,
+   "recall_attack": 0.999640856198822,
+   "precision_attack": 0.9999281505963501,
+   "fpr": 5.643595647659036e-06,
+   "macro_f1": 0.9998837760813883
+  }
+ },
+ "test": {
+  "macro_f1": 0.9870107296002079,
+  "macro_precision": 0.9999954852254002,
+  "macro_recall": 0.975609756097561,
+  "weighted_f1": 0.9999783907044381,
+  "weighted_precision": 0.9999790706000986,
+  "weighted_recall": 0.9999790701276303,
+  "accuracy": 0.9999790701276303,
+  "macro_f1_attack_only": 0.9837662337662337,
+  "per_class": {
+   "benign": {
+    "precision": 0.9999774261270006,
+    "recall": 1.0,
+    "f1": 0.9999887129361039,
+    "support": 221490
+   },
+   "DoS": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 15673
+   },
+   "Reconn": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 1639
+   },
+   "CommInj": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "support": 50
+   },
+   "Backdoor": {
+    "precision": 1.0,
+    "recall": 0.8780487804878049,
+    "f1": 0.935064935064935,
+    "support": 41
+   }
+  },
+  "binary": {
+   "tp": 17398,
+   "fp": 0,
+   "tn": 221490,
+   "fn": 5,
+   "f1_attack": 0.9998563259676446,
+   "recall_attack": 0.9997126932138137,
+   "precision_attack": 1.0,
+   "fpr": 0.0,
+   "macro_f1": 0.9999225194518743
+  }
+ },
+ "model_bytes": 1872272,
+ "dataset": "wustl-iiot-2021",
+ "model": "xgboost",
+ "seed": 2,
+ "tag": "ml",
+ "holdout": [],
+ "config": {
+  "seed": 2,
+  "threads": 4,
+  "device": "cuda",
+  "data": {
+   "val_frac": 0.2,
+   "tune_subsample": null
+  },
+  "encoder": {
+   "type": "pairbind",
+   "D": 10000,
+   "bins": 8,
+   "categorical_threshold": 32,
+   "tree_min_samples_leaf": 64,
+   "tree_min_fraction_leaf": 0.001,
+   "tree_fit_max": 100000
+  },
+  "step1": {
+   "enabled": false,
+   "K": null,
+   "kmeans_fit_max": 5000,
+   "theta1": 0.9,
+   "retrain": {
+    "enabled": true,
+    "epochs": 5,
+    "lr": 0.05,
+    "batch": 512
+   }
+  },
+  "step2": {
+   "readout": "adamw",
+   "mass": {
+    "lr": 0.035,
+    "batch": 8192
+   },
+   "adamw": {
+    "lr": 0.003,
+    "weight_decay": 0.0001,
+    "batch": 4096
+   },
+   "epochs": 60,
+   "patience": 8,
+   "select_metric": "macro_f1",
+   "val_select_max": 200000,
+   "benign_split": 0
+  },
+  "class_weight": {
+   "p": 0.25,
+   "cap": 100.0
+  },
+  "hard_negative": {
+   "beta": 0.0
+  },
+  "boosting": {
+   "T": 0,
+   "d_cap_mult": 100.0
+  },
+  "unknown": {
+   "enabled": false,
+   "reject_rate": 0.05
+  },
+  "eval": {
+   "int8_proto": false,
+   "infer_check_rows": 20000
+  },
+  "ml": {
+   "class_weight_p": [
+    0.0,
+    0.5
+   ],
+   "mlp": {
+    "hidden": 512,
+    "layers": 3,
+    "lr": 0.001,
+    "batch": 256,
+    "epochs": 50,
+    "patience": 8
+   }
+  }
+ },
+ "git": "9a31c77",
+ "finished": "2026-11-08 06:33:48",
+ "data": {
+  "n_fit": 764457,
+  "n_val": 191114,
+  "n_test": 238893,
+  "n_numeric": 40,
+  "n_categorical": 1,
+  "classes": [
+   "benign",
+   "DoS",
+   "Reconn",
+   "CommInj",
+   "Backdoor"
+  ],
+  "dropped_columns": {
+   "Sport": "leaky",
+   "Dport": "leaky",
+   "attack_flag": "label",
+   "attack_step": "label"
+  },
+  "test_unknown_rows": 0
+ },
+ "wall_sec": 160.88746213912964,
+ "peak_rss_mb": 1083.5625,
+ "peak_gpu_mb": 0.0
+}
